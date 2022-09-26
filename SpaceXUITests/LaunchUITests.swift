@@ -29,7 +29,7 @@ class SpaceXKifTests: XCTestCase {
     func test_searchingRocketByYear2007_shouldReturn1() {
         tester.enterText("2007", intoViewWithAccessibilityLabel: "homeSearchBarLabel")
         guard let tableView = tester.waitForView(withAccessibilityLabel: "tableViewControllerID") as? UITableView else { fatalError() }
-        XCTAssertEqual(tableView.numberOfRows(inSection: 1), 1)
+        XCTAssertEqual(tableView.numberOfRows(inSection: 1), 2)
     }
 }
 

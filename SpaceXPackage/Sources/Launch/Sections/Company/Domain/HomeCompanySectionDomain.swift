@@ -20,10 +20,3 @@ public struct HomeCompanySectionDomain {
     }
 }
 
-// MARK: - MOCK
-extension HomeCompanySectionDomain {
-    public static func getCompanyDomainMock() -> HomeCompanySectionDomain {
-        return HomeCompanySectionDomain(info: InfoEntity.getInfoEntityMock())
-    }
-}
-

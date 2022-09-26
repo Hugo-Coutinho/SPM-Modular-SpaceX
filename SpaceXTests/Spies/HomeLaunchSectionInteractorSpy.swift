@@ -13,17 +13,3 @@ class HomeLaunchSectionInteractorOutputSpy: HomeLaunchSectionInteractorOutput {
     func handleSuccess(launches: Launches) {}
     func removeSection() {}
 }
-
-class HomeLaunchSectionInteractorSpy: HomeLaunchSectionInteractorInput {
-    weak var output: HomeLaunchSectionInteractorOutput?
-    var service: HomeLaunchSectionServiceInput
-
-    init(service: HomeLaunchSectionServiceInput) {
-        self.service = service
-    }
-
-    func getLaunches(offSet: Int) {
-        output?.handleSuccess(launches: [LaunchEntity.getLaunchEntityMock()])
-    }
-}
-

@@ -12,21 +12,16 @@ import Launch
 class HomeCompanySectionPresenterTests: XCTestCase {
 
     //MARK: - DECLARATIONS -
-    var companyDomain: HomeCompanySectionDomain?
     var companyDomainResult: HomeCompanySectionDomain?
     var isCompanyError: Bool = false
+    private var expectedInfo: String = "SpaceX was founded by Elon Musk in 2002.\n\n It has now 7000 employees, 3 Company sites, and is valued at USD $27500000000.00"
 
     //MARK: - OVERRIDE TESTS FUNCTIONS -
-    override func setUp() {
-        super.setUp()
-        self.companyDomain = HomeCompanySectionDomain.getCompanyDomainMock()
-    }
-
     override func tearDown() {
         super.tearDown()
-        self.companyDomain = nil
         self.companyDomainResult = nil
         self.isCompanyError = false
+        self.expectedInfo = ""
     }
 
 
@@ -65,9 +60,8 @@ class HomeCompanySectionPresenterTests: XCTestCase {
         sut.getInfo()
 
         // 3. THEN
-        XCTAssertNotNil(self.companyDomain)
         XCTAssertNotNil(self.companyDomainResult)
-        assert(self.companyDomain?.info == self.companyDomainResult?.info)
+        XCTAssertEqual(expectedInfo, self.companyDomainResult?.info)
     }
 
     func test_shouldHandleError_info() {
@@ -100,7 +94,7 @@ extension HomeCompanySectionPresenterTests {
     private func makeSUT() -> HomeCompanySectionPresenter {
         let baseRequestSpy = BaseRequestSuccessHandlerSpy(service: .company)
         let service = HomeCompanySectionService(baseRequest: baseRequestSpy)
-        let interactorSpy = HomeCompanySectionInteractorSpy(service: service)
+        let interactorSpy = HomeCompanySectionInteractor(service: service)
         let sut = HomeCompanySectionPresenter(input: interactorSpy)
         interactorSpy.output = sut
         return sut

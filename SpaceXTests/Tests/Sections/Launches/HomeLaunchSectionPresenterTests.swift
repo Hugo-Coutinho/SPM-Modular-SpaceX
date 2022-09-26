@@ -12,21 +12,16 @@ import Launch
 class HomeLaunchSectionPresenterTests: XCTestCase {
 
     //MARK: - DECLARATIONS -
-    var launchDomain: HomeLaunchSectionDomain?
     var launchDomainResult: HomeLaunchSectionDomain?
     var isLaunchError: Bool = false
+    private var expectedMissionName: String = "Falconzin Sat"
 
     //MARK: - OVERRIDE TESTS FUNCTIONS -
-    override func setUp() {
-        super.setUp()
-        self.launchDomain = HomeLaunchSectionDomain.getLaunchDomainMock()
-    }
-
     override func tearDown() {
         super.tearDown()
-        self.launchDomain = nil
         self.launchDomainResult = nil
         self.isLaunchError = false
+        self.expectedMissionName = ""
     }
 
 
@@ -65,9 +60,8 @@ class HomeLaunchSectionPresenterTests: XCTestCase {
         sut.getLaunch(offSet: 0)
 
         // 3. THEN
-        XCTAssertNotNil(self.launchDomain)
         XCTAssertNotNil(self.launchDomainResult)
-        assert(self.launchDomain?.launches.first?.missionName == self.launchDomainResult?.launches.first?.missionName)
+        XCTAssertEqual(expectedMissionName, self.launchDomainResult?.launches.first?.missionName)
     }
 
     func test_shouldHandleError_Launches() {
@@ -100,7 +94,7 @@ extension HomeLaunchSectionPresenterTests {
     private func makeSUT() -> HomeLaunchSectionPresenter {
         let baseRequestSpy = BaseRequestSuccessHandlerSpy(service: .launch)
         let service = HomeLaunchSectionService(baseRequest: baseRequestSpy)
-        let interactorSpy = HomeLaunchSectionInteractorSpy(service: service)
+        let interactorSpy = HomeLaunchSectionInteractor(service: service)
         let sut = HomeLaunchSectionPresenter(input: interactorSpy)
         interactorSpy.output = sut
         return sut

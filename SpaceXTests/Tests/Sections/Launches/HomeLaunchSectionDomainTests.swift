@@ -13,197 +13,193 @@ import Launch
 class HomeLaunchSectionDomainTests: XCTestCase {
 
     private lazy var dateHelper = DateHelper()
+    private var sut: HomeLaunchSectionDomain?
+    private var presenter: HomeLaunchSectionPresenterInput?
+    
+    //MARK: - OVERRIDE TESTS FUNCTIONS -
+    override func setUp() {
+        super.setUp()
+        self.presenter = makeSUT()
+        self.presenter?.getLaunch(offSet: 0)
+    }
+
+    override func tearDown() {
+        super.tearDown()
+        self.sut = nil
+        self.presenter = nil
+    }
 
     func test_shouldMatchDate() {
         // 1. GIVEN
-        let sut: HomeLaunchSectionDomain = HomeLaunchSectionDomain(launches: [LaunchEntity.getLaunchEntityMock()], dateHelper: dateHelper)
-        let expected = "2018/04/10 - 5:00 AM"
+        let expected = "2006/03/24 - 10:30 PM"
 
         // 2. WHEN
 
         // 3. THEN
-        XCTAssertEqual(sut.launches.first?.date, expected)
+        XCTAssertNotNil(sut)
+        XCTAssertEqual(sut?.launches.first?.date, expected)
     }
 
     func test_fields_notEmpty() {
         // 1. GIVEN
-        let sut: HomeLaunchSectionDomain = HomeLaunchSectionDomain(launches: [LaunchEntity.getLaunchEntityMock()], dateHelper: dateHelper)
 
         // 2. WHEN
 
         // 3. THEN
-        XCTAssertNotEqual(sut.launches.first?.missionName, "")
-        XCTAssertNotEqual(sut.launches.first?.date, "")
-        XCTAssertNotEqual(sut.launches.first?.rocket, "")
-        XCTAssertNotEqual(sut.launches.first?.launchYear, "")
-        XCTAssertNotEqual(sut.launches.first?.isLaunchSuccess, false)
-        XCTAssertNotEqual(sut.launches.first?.imageURL.absoluteString, "")
-        XCTAssertNotEqual(sut.launches.first?.articleURL.absoluteString, "")
+        XCTAssertNotNil(sut)
+        XCTAssertNotEqual(sut?.launches.first?.missionName, "")
+        XCTAssertNotEqual(sut?.launches.first?.date, "")
+        XCTAssertNotEqual(sut?.launches.first?.rocket, "")
+        XCTAssertNotEqual(sut?.launches.first?.launchYear, "")
+        XCTAssertFalse(sut!.launches.first!.isLaunchSuccess)
+        XCTAssertNotEqual(sut?.launches.first?.imageURL.absoluteString, "")
+        XCTAssertNotEqual(sut?.launches.first?.articleURL.absoluteString, "")
     }
 
     func test_shouldMatchRocket() {
         // 1. GIVEN
-        let sut: HomeLaunchSectionDomain = HomeLaunchSectionDomain(launches: [LaunchEntity.getLaunchEntityMock()], dateHelper: dateHelper)
         let expected = "Falcon 1 / Merlin A"
 
         // 2. WHEN
 
         // 3. THEN
-        XCTAssertEqual(sut.launches.first?.rocket, expected)
+        XCTAssertNotNil(sut)
+        XCTAssertEqual(sut?.launches.first?.rocket, expected)
     }
 
     func test_shouldMatchDays_withSince() {
         // 1. GIVEN
-        let sut: HomeLaunchSectionDomain = HomeLaunchSectionDomain(launches: [LaunchEntity.getLaunchEntityMock()], dateHelper: dateHelper)
         let currentDateAsString = dateHelper.getDateString(date: Date())
-        let expected = "\(currentDateAsString) - 2018/04/10"
+        let expected = "\(currentDateAsString) - 2006/03/24"
 
         // 2. WHEN
 
 
         // 3. THEN
-        XCTAssertEqual(sut.launches.first?.days, expected)
+        XCTAssertNotNil(sut)
+        XCTAssertEqual(sut?.launches.first?.days, expected)
     }
 
     func test_shouldMatchDays_withFromNow() {
         // 1. GIVEN
-        let launchDateAsString = "2023-04-10T04:00:00.000Z"
-        let sut: HomeLaunchSectionDomain = HomeLaunchSectionDomain(launches: [LaunchEntity.getLaunchEntityMock(launchDate: launchDateAsString)], dateHelper: DateHelper())
         let currentDateAsString = dateHelper.getDateString(date: Date())
         let expected = "2023/04/10 - \(currentDateAsString)"
 
         // 2. WHEN
-
-
-        // 3. THEN
-        XCTAssertEqual(sut.launches.first?.days, expected)
-    }
-
-    func test_shouldMatchDays_withCurrentDate() {
-        // 1. GIVEN
-        let sut: HomeLaunchSectionDomain = HomeLaunchSectionDomain(launches: [LaunchEntity.getLaunchEntityMock(launchDate: dateHelper.fromDateToUTC(date: Date()))], dateHelper: DateHelper())
-        let expected = "today"
-
-        // 2. WHEN
-
+        let result = sut?.launches.first(where: { $0.missionName.elementsEqual("DemoSat") })
 
         // 3. THEN
-        XCTAssertEqual(sut.launches.first?.days, expected)
+        XCTAssertNotNil(result)
+        XCTAssertEqual(result?.days, expected)
     }
 
     func test_shouldMatchDaysDesc_withFromNow() {
         // 1. GIVEN
         let launchDateAsString = "2023-04-10T04:00:00.000Z"
-        let sut: HomeLaunchSectionDomain = HomeLaunchSectionDomain(launches: [LaunchEntity.getLaunchEntityMock(launchDate: launchDateAsString)], dateHelper: DateHelper())
         let launchDate = dateHelper.fromUTCToDate(dateString: launchDateAsString) ?? Date()
         let dayExpected = "\(abs(dateHelper.numberOfDaysBetween(launchDate, and: Date())))"
         let expected = "\(dayExpected) days\n from now:"
 
         // 2. WHEN
-
+        let result = sut?.launches.first(where: { $0.missionName.elementsEqual("DemoSat") })
 
         // 3. THEN
-        XCTAssertEqual(sut.launches.first?.daysDescription, expected)
+        XCTAssertNotNil(result)
+        XCTAssertEqual(result?.daysDescription, expected)
     }
 
     func test_shouldMatchDaysDesc_withSinceNow() {
         // 1. GIVEN
-        let sut: HomeLaunchSectionDomain = HomeLaunchSectionDomain(launches: [LaunchEntity.getLaunchEntityMock()], dateHelper: dateHelper)
-        let launchDate = dateHelper.fromUTCToDate(dateString: LaunchEntity.getLaunchEntityMock().launchDate ?? "") ?? Date()
+        let launchDateAsString = "2006-03-24T22:30:00.000Z"
+        let launchDate = dateHelper.fromUTCToDate(dateString: launchDateAsString) ?? Date()
         let dayExpected = "\(abs(dateHelper.numberOfDaysBetween(launchDate, and: Date())))"
         let expected = "\(dayExpected) days\n since now:"
 
         // 2. WHEN
-
-
-        // 3. THEN
-        XCTAssertEqual(sut.launches.first?.daysDescription, expected)
-    }
-
-    func test_shouldMatchDaysDesc_withCurrentDate() {
-        // 1. GIVEN
-        let sut: HomeLaunchSectionDomain = HomeLaunchSectionDomain(launches: [LaunchEntity.getLaunchEntityMock(launchDate: dateHelper.fromDateToUTC(date: Date()))], dateHelper: DateHelper())
-        let expected = "now"
-
-        // 2. WHEN
-
+        let result = sut?.launches.first(where: { $0.missionName.elementsEqual("Falconzin Sat") })
 
         // 3. THEN
-        XCTAssertEqual(sut.launches.first?.daysDescription, expected)
+        XCTAssertNotNil(result)
+        XCTAssertEqual(result?.daysDescription, expected)
     }
 
     func test_shouldFilter_2007Launches() {
         // 1. GIVEN
-        var sut: HomeLaunchSectionDomain = HomeLaunchSectionDomain(launches: [
-            LaunchEntity.getLaunchEntityMock(launchDate: dateHelper.fromDateToUTC(date: Date())),
-            LaunchEntity.getLaunchEntityMock(launchDate: dateHelper.fromDateToUTC(date: Date()), year: "2007"),
-            LaunchEntity.getLaunchEntityMock(launchDate: dateHelper.fromDateToUTC(date: Date()), year: "2009")
-            ,LaunchEntity.getLaunchEntityMock(launchDate: dateHelper.fromDateToUTC(date: Date()), year: "2011")
-            ,LaunchEntity.getLaunchEntityMock(launchDate: dateHelper.fromDateToUTC(date: Date()), year: "2007")
-        ], dateHelper: DateHelper())
         let expected = "2007"
+        let expectedName = "CRS-1"
 
         // 2. WHEN
-        sut.getLaunchesFilteredBy(text: expected)
+        sut?.getLaunchesFilteredBy(text: expected)
 
         // 3. THEN
-        XCTAssertEqual(sut.launches.count, 2)
-        XCTAssertEqual(sut.launches.first?.launchYear, expected)
-        XCTAssertEqual(sut.launches[1].launchYear, expected)
+        XCTAssertNotNil(sut)
+        XCTAssertEqual(sut?.launches.count, 2)
+        XCTAssertEqual(sut?.launches.first?.launchYear, expected)
+        XCTAssertEqual(sut?.launches[1].missionName, expectedName)
     }
 
     func test_shouldSortYear_ascendingOrder() {
         // 1. GIVEN
-        var sut: HomeLaunchSectionDomain = HomeLaunchSectionDomain(launches: [
-            LaunchEntity.getLaunchEntityMock(launchDate: dateHelper.fromDateToUTC(date: Date())),
-            LaunchEntity.getLaunchEntityMock(launchDate: dateHelper.fromDateToUTC(date: Date()), year: "2007"),
-            LaunchEntity.getLaunchEntityMock(launchDate: dateHelper.fromDateToUTC(date: Date()), year: "2009")
-            ,LaunchEntity.getLaunchEntityMock(launchDate: dateHelper.fromDateToUTC(date: Date()), year: "2011")
-            ,LaunchEntity.getLaunchEntityMock(launchDate: dateHelper.fromDateToUTC(date: Date()), year: "2007")
-        ], dateHelper: DateHelper())
         let firstItemExpected = "2006"
         let secondThirdItemsExpected = "2007"
-        let fourthItemExpected = "2009"
-        let fifthItemExpected = "2011"
+        let fourthFifthItemExpected = "2008"
+        let sixthItemExpected = "2009"
 
 
         // 2. WHEN
-        sut.getLaunchesAscendingOrder()
+        sut?.getLaunchesAscendingOrder()
 
         // 3. THEN
-        XCTAssertEqual(sut.launches.count, 5)
-        XCTAssertEqual(sut.launches.first?.launchYear, firstItemExpected)
-        XCTAssertEqual(sut.launches[1].launchYear, secondThirdItemsExpected)
-        XCTAssertEqual(sut.launches[2].launchYear, secondThirdItemsExpected)
-        XCTAssertEqual(sut.launches[3].launchYear, fourthItemExpected)
-        XCTAssertEqual(sut.launches[4].launchYear, fifthItemExpected)
+        XCTAssertNotNil(sut)
+        XCTAssertEqual(sut?.launches.count, 9)
+        XCTAssertEqual(sut?.launches.first?.launchYear, firstItemExpected)
+        XCTAssertEqual(sut?.launches[1].launchYear, secondThirdItemsExpected)
+        XCTAssertEqual(sut?.launches[2].launchYear, secondThirdItemsExpected)
+        XCTAssertEqual(sut?.launches[3].launchYear, fourthFifthItemExpected)
+        XCTAssertEqual(sut?.launches[4].launchYear, fourthFifthItemExpected)
+        XCTAssertEqual(sut?.launches[5].launchYear, sixthItemExpected)
     }
 
     func test_shouldSortYear_descendingOrder() {
         // 1. GIVEN
-        var sut: HomeLaunchSectionDomain = HomeLaunchSectionDomain(launches: [
-            LaunchEntity.getLaunchEntityMock(launchDate: dateHelper.fromDateToUTC(date: Date())),
-            LaunchEntity.getLaunchEntityMock(launchDate: dateHelper.fromDateToUTC(date: Date()), year: "2007"),
-            LaunchEntity.getLaunchEntityMock(launchDate: dateHelper.fromDateToUTC(date: Date()), year: "2009")
-            ,LaunchEntity.getLaunchEntityMock(launchDate: dateHelper.fromDateToUTC(date: Date()), year: "2011")
-            ,LaunchEntity.getLaunchEntityMock(launchDate: dateHelper.fromDateToUTC(date: Date()), year: "2007")
-        ], dateHelper: DateHelper())
-        let firstItemExpected = "2011"
-        let secondItemsExpected = "2009"
-        let thirdFourthItemExpected = "2007"
-        let fifthItemExpected = "2006"
-
+        let firstItemExpected = "2012"
+        let secondThirdItemsExpected = "2010"
+        let fourthItemExpected = "2009"
 
         // 2. WHEN
-        sut.getLaunchesDescendingOrder()
+        sut?.getLaunchesDescendingOrder()
 
         // 3. THEN
-        XCTAssertEqual(sut.launches.count, 5)
-        XCTAssertEqual(sut.launches.first?.launchYear, firstItemExpected)
-        XCTAssertEqual(sut.launches[1].launchYear, secondItemsExpected)
-        XCTAssertEqual(sut.launches[2].launchYear, thirdFourthItemExpected)
-        XCTAssertEqual(sut.launches[3].launchYear, thirdFourthItemExpected)
-        XCTAssertEqual(sut.launches[4].launchYear, fifthItemExpected)
+        XCTAssertNotNil(sut)
+        XCTAssertEqual(sut?.launches.count, 9)
+        XCTAssertEqual(sut?.launches.first?.launchYear, firstItemExpected)
+        XCTAssertEqual(sut?.launches[1].launchYear, secondThirdItemsExpected)
+        XCTAssertEqual(sut?.launches[2].launchYear, secondThirdItemsExpected)
+        XCTAssertEqual(sut?.launches[3].launchYear, fourthItemExpected)
     }
 
 }
+
+extension HomeLaunchSectionDomainTests: HomeLaunchSectionPresenterOutput {
+    func handleSuccess(domain: Launch.HomeLaunchSectionDomain) {
+        sut = domain
+    }
+    
+    func removeSection() {
+        sut = nil
+    }
+}
+
+// MARK: - MAKE SUT -
+extension HomeLaunchSectionDomainTests {
+    private func makeSUT() -> HomeLaunchSectionPresenter {
+        let baseRequestSpy = BaseRequestSuccessHandlerSpy(service: .launch)
+        let serviceSpy = HomeLaunchSectionService(baseRequest: baseRequestSpy)
+        let interactor = HomeLaunchSectionInteractor(service: serviceSpy)
+        let presenter = HomeLaunchSectionPresenter(input: interactor)
+        presenter.output = self
+        interactor.output = presenter
+        return presenter
+    }
+}
+

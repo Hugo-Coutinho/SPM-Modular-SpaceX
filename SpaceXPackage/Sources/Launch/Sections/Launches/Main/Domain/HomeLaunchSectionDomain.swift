@@ -99,11 +99,3 @@ public struct LaunchDomain {
 }
 
 public typealias LaunchDomainItems = [LaunchDomain]
-
-
-// MARK: - MOCK
-extension HomeLaunchSectionDomain {
-    public static func getLaunchDomainMock() -> HomeLaunchSectionDomain {
-        return HomeLaunchSectionDomain(launches: [LaunchEntity.getLaunchEntityMock()], dateHelper: DateHelper())
-    }
-}

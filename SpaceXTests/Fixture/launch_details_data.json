@@ -1,0 +1,141 @@
+{
+    "flight_number": 67,
+    "mission_name": "Merah Putih",
+    "mission_id": [],
+    "launch_year": "2018",
+    "launch_date_unix": 1533619080,
+    "launch_date_utc": "2018-08-07T05:18:00.000Z",
+    "launch_date_local": "2018-08-07T01:18:00-04:00",
+    "is_tentative": false,
+    "tentative_max_precision": "hour",
+    "tbd": false,
+    "launch_window": 7200,
+    "rocket": {
+        "rocket_id": "falcon9",
+        "rocket_name": "Falcon 9",
+        "rocket_type": "FT",
+        "first_stage": {
+            "cores": [
+                {
+                    "core_serial": "B1046",
+                    "flight": 2,
+                    "block": 5,
+                    "gridfins": true,
+                    "legs": true,
+                    "reused": true,
+                    "land_success": true,
+                    "landing_intent": true,
+                    "landing_type": "ASDS",
+                    "landing_vehicle": "OCISLY"
+                }
+            ]
+        },
+        "second_stage": {
+            "block": 5,
+            "payloads": [
+                {
+                    "payload_id": "Telkom-4",
+                    "norad_id": [
+                        43587
+                    ],
+                    "reused": false,
+                    "customers": [
+                        "Telkom"
+                    ],
+                    "nationality": "Indonesia",
+                    "manufacturer": "SSL",
+                    "payload_type": "Satellite",
+                    "payload_mass_kg": 5800,
+                    "payload_mass_lbs": 12786.81,
+                    "orbit": "GTO",
+                    "orbit_params": {
+                        "reference_system": "geocentric",
+                        "regime": "geostationary",
+                        "longitude": -108,
+                        "semi_major_axis_km": 42164.822,
+                        "eccentricity": 0.0001132,
+                        "periapsis_km": 35781.914,
+                        "apoapsis_km": 35791.46,
+                        "inclination_deg": 0.0175,
+                        "period_min": 1436.101,
+                        "lifespan_years": 15,
+                        "epoch": "2020-12-20T20:41:58.000Z",
+                        "mean_motion": 1.00271462,
+                        "raan": 61.1054,
+                        "arg_of_pericenter": 220.3159,
+                        "mean_anomaly": 226.9504
+                    }
+                }
+            ]
+        },
+        "fairings": {
+            "reused": false,
+            "recovery_attempt": false,
+            "recovered": false,
+            "ship": null
+        }
+    },
+    "ships": [
+        "HAWK",
+        "OCISLY"
+    ],
+    "telemetry": {
+        "flight_club": null
+    },
+    "launch_site": {
+        "site_id": "ccafs_slc_40",
+        "site_name": "CCAFS SLC 40",
+        "site_name_long": "Cape Canaveral Air Force Station Space Launch Complex 40"
+    },
+    "launch_success": true,
+    "links": {
+        "mission_patch": "https://images2.imgbox.com/a8/f5/ZgdsrbqW_o.png",
+        "mission_patch_small": "https://images2.imgbox.com/a7/ec/sbwePzVD_o.png",
+        "reddit_campaign": "https://www.reddit.com/r/spacex/comments/91gwfg/merah_putih_telkom4_launch_campaign_thread/",
+        "reddit_launch": "https://www.reddit.com/r/spacex/comments/9539nr/rspacex_merah_putih_telkom4_official_launch/",
+        "reddit_recovery": null,
+        "reddit_media": "https://www.reddit.com/r/spacex/comments/94zr0b/rspacex_merah_putih_media_thread_videos_images/",
+        "presskit": "https://www.spacex.com/sites/spacex/files/merahputihpresskit.pdf",
+        "article_link": "https://spaceflightnow.com/2018/08/07/indonesian-communications-satellite-deployed-in-orbit-by-spacex/",
+        "wikipedia": "https://en.wikipedia.org/wiki/Telkom_Indonesia",
+        "video_link": "https://www.youtube.com/watch?v=FjfQNBYv2IY",
+        "youtube_id": "FjfQNBYv2IY",
+        "flickr_images": [
+            "https://farm2.staticflickr.com/1798/43862495212_8fe1688c4b_o.jpg",
+            "https://farm1.staticflickr.com/935/43006330655_f1623a3fa1_o.jpg",
+            "https://farm1.staticflickr.com/938/28974313177_d16381ff5f_o.jpg",
+            "https://farm2.staticflickr.com/1780/43006334045_fb7b4a8714_o.jpg",
+            "https://farm1.staticflickr.com/929/28974335747_ffd87ff274_o.jpg",
+            "https://farm1.staticflickr.com/930/30041972208_f735b9690b_o.jpg"
+        ]
+    },
+    "details": "SpaceX's fifteenth flight of 2018 launched the Merah Putih (also known as Telkom-4) geostationary communications satellite for Telkom Indonesia. It marked the first reuse of any Block 5 first stage; the booster B1046 had previously launched Bangabandhu-1. The stage was recovered and is expected to become the first Falcon 9 booster to fly three missions.",
+    "upcoming": false,
+    "static_fire_date_utc": "2018-08-02T15:53:00.000Z",
+    "static_fire_date_unix": 1533225180,
+    "timeline": {
+        "webcast_liftoff": 1316,
+        "go_for_prop_loading": -2280,
+        "rp1_loading": -2100,
+        "stage1_lox_loading": -2100,
+        "stage2_lox_loading": -960,
+        "engine_chill": -420,
+        "prelaunch_checks": -60,
+        "propellant_pressurization": -60,
+        "go_for_launch": -45,
+        "ignition": -3,
+        "liftoff": 0,
+        "maxq": 79,
+        "meco": 150,
+        "stage_sep": 154,
+        "second_stage_ignition": 156,
+        "fairing_deploy": 208,
+        "first_stage_entry_burn": 373,
+        "seco-1": 486,
+        "first_stage_landing": 488,
+        "second_stage_restart": 1575,
+        "seco-2": 1633,
+        "payload_deploy": 1913
+    },
+    "crew": null
+}

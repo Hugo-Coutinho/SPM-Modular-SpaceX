@@ -13,18 +13,3 @@ public class HomeCompanySectionInteractorOutputSpy: HomeCompanySectionInteractor
     public func handleSuccess(info: InfoEntity) {}
     public func removeSection() {}
 }
-
-public class HomeCompanySectionInteractorSpy: HomeCompanySectionInteractorInput {
-    public weak var output: HomeCompanySectionInteractorOutput?
-    public var service: HomeCompanySectionServiceInput
-
-    public init(service: HomeCompanySectionServiceInput) {
-        self.service = service
-    }
-
-    public func getInfo() {
-        output?.handleSuccess(info: InfoEntity.getInfoEntityMock())
-    }
-}
-
-

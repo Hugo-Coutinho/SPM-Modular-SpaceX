@@ -16,4 +16,5 @@ public protocol BaseRequestInput: AnyObject {
 public struct APIConstant {
     public static let baseURLString = "https://api.spacexdata.com/v3"
     public static let info = "/info"
+    public static let launches = "/launches"
 }

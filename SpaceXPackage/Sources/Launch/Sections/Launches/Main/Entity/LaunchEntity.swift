@@ -18,7 +18,21 @@ public struct LaunchEntity: Codable {
     public let rocket: Rocket?
     public let links: Links?
     public let launchSuccess: Bool?
-
+    
+    public init(missionName: String? = nil,
+                launchDate: String? = nil,
+                launchYear: String? = nil,
+                rocket: Rocket? = nil,
+                links: Links? = nil,
+                launchSuccess: Bool? = nil) {
+        self.missionName = missionName
+        self.launchDate = launchDate
+        self.launchYear = launchYear
+        self.rocket = rocket
+        self.links = links
+        self.launchSuccess =  launchSuccess
+    }
+    
     public enum CodingKeys: String, CodingKey {
         case missionName = "mission_name"
         case launchDate = "launch_date_utc"
@@ -47,15 +61,5 @@ public struct Rocket: Codable {
     public enum CodingKeys: String, CodingKey {
         case rocketName = "rocket_name"
         case rocketType = "rocket_type"
-    }
-}
-
-// MARK: - MOCK
-extension LaunchEntity {
-    public static func getLaunchEntityMock(launchDate: String = "2018-04-10T04:00:00.000Z", year: String = "2006") -> LaunchEntity {
-        return LaunchEntity(missionName: "Falconzin Sat",
-                            launchDate: launchDate, launchYear: year,
-                            rocket: Rocket(rocketName: "Falcon 1", rocketType: "Merlin A"),
-                            links: Links(missionPatch: "https://images2.imgbox.com/40/e3/GypSkayF_o.png", articleUrl: "https://www.space.com/2196-spacex-inaugural-falcon-1-rocket-lost-launch.html"), launchSuccess: true)
     }
 }

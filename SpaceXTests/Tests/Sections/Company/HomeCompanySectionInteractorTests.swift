@@ -12,21 +12,16 @@ import Launch
 class HomeCompanySectionInteractorTests: XCTestCase {
 
     //MARK: - DECLARATIONS -
-    var infoEntity: InfoEntity?
     var infoEntityResult: InfoEntity?
     var isCompanyError: Bool = false
+    private var expectedFounder: String = "Elon Musk"
 
     //MARK: - OVERRIDE TESTS FUNCTIONS -
-    override func setUp() {
-        super.setUp()
-        self.infoEntity = InfoEntity.getInfoEntityMock()
-    }
-
     override func tearDown() {
         super.tearDown()
-        self.infoEntity = nil
         self.infoEntityResult = nil
         self.isCompanyError = false
+        self.expectedFounder = ""
     }
 
     func test_outputNotRetained() {
@@ -64,9 +59,8 @@ class HomeCompanySectionInteractorTests: XCTestCase {
         sut.getInfo()
 
         // 3. THEN
-        XCTAssertNotNil(self.infoEntity)
         XCTAssertNotNil(self.infoEntityResult)
-        assert(self.infoEntity?.founder == self.infoEntityResult?.founder)
+        XCTAssertEqual(expectedFounder, self.infoEntityResult?.founder)
     }
 
     func test_shouldHandleError_info() {

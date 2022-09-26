@@ -1,26 +1,25 @@
 //
-//  HomeLaunchSectionInteractorTests.swift
+//  LaunchDetailsInteractorTests.swift
 //  SpaceXTests
 //
-//  Created by hugo.coutinho on 16/12/21.
-//  Copyright © 2021 . All rights reserved.
+//  Created by Hugo on 26/09/2022.
 //
 
 import XCTest
 import Launch
 
-class HomeLaunchSectionInteractorTests: XCTestCase {
+class LaunchDetailsInteractorTests: XCTestCase {
 
     //MARK: - DECLARATIONS -
-    private var launchEntity: LaunchEntity?
-    private var launchEntityResult: LaunchEntity?
-    private var isLaunchError: Bool = false
-    private var expectedMissionName: String = "Falconzin Sat"
+    var launchEntity: LaunchEntity?
+    var launchEntityResult: LaunchEntity?
+    var isLaunchError: Bool = false
+    var expectedMissionName: String = "Merah Putih"
 
     //MARK: - OVERRIDE TESTS FUNCTIONS -
     override func setUp() {
         super.setUp()
-        self.launchEntity = LaunchEntity(missionName: expectedMissionName)
+        launchEntity = LaunchEntity(missionName: expectedMissionName)
     }
 
     override func tearDown() {
@@ -32,7 +31,7 @@ class HomeLaunchSectionInteractorTests: XCTestCase {
 
     func test_outputNotRetained() {
         // 1. GIVEN
-        var outputSpy: HomeLaunchSectionInteractorOutput? = HomeLaunchSectionInteractorOutputSpy()
+        var outputSpy: LaunchDetailsInteractorOutputSpy? = LaunchDetailsInteractorOutputSpy()
         let sut = makeSUT()
 
         // 2. WHEN
@@ -45,10 +44,10 @@ class HomeLaunchSectionInteractorTests: XCTestCase {
 
     func test_interactorNotRetained() {
         // 1. GIVEN
-        var sut: HomeLaunchSectionInteractor? = makeSUT()
+        var sut: LaunchDetailsInteractor? = makeSUT()
 
         // 2. WHEN
-        sut?.getLaunches(offSet: 0)
+        sut?.getDetails(flightNumber: 0)
         weak var sutWeak = sut
         sut = nil
 
@@ -56,13 +55,13 @@ class HomeLaunchSectionInteractorTests: XCTestCase {
         XCTAssertNil(sutWeak)
     }
 
-    func test_shouldHandleSuccess_Launches() {
+    func test_shouldHandleSuccess_Launch() {
         // 1. GIVEN
         let sut = makeSUT()
         sut.output = self
 
         // 2. WHEN
-        sut.getLaunches(offSet: 0)
+        sut.getDetails(flightNumber: 0)
 
         // 3. THEN
         XCTAssertNotNil(self.launchEntity)
@@ -70,13 +69,13 @@ class HomeLaunchSectionInteractorTests: XCTestCase {
         assert(self.launchEntity?.missionName == self.launchEntityResult?.missionName)
     }
 
-    func test_shouldHandleError_Launches() {
+    func test_shouldHandleError_Launch() {
         // 1. GIVEN
         let sut = makeSUTErrorHandler()
         sut.output = self
 
         // 2. WHEN
-        sut.getLaunches(offSet: 0)
+        sut.getDetails(flightNumber: 0)
 
         // 3. THEN
         XCTAssertTrue(self.isLaunchError)
@@ -84,9 +83,9 @@ class HomeLaunchSectionInteractorTests: XCTestCase {
 }
 
 // MARK: - OUTPUT -
-extension HomeLaunchSectionInteractorTests: HomeLaunchSectionInteractorOutput {
-    func handleSuccess(launches: Launches) {
-        launchEntityResult = launches.first
+extension LaunchDetailsInteractorTests: LaunchDetailsInteractorOutput {
+    func handleSuccess(launch: LaunchEntity) {
+        launchEntityResult = launch
     }
 
     func removeSection() {
@@ -96,16 +95,17 @@ extension HomeLaunchSectionInteractorTests: HomeLaunchSectionInteractorOutput {
 }
 
 // MARK: - MAKE SUT -
-extension HomeLaunchSectionInteractorTests {
-    private func makeSUT() -> HomeLaunchSectionInteractor {
-        let baseRequestSpy = BaseRequestSuccessHandlerSpy(service: .launch)
-        let serviceSpy = HomeLaunchSectionService(baseRequest: baseRequestSpy)
-        return HomeLaunchSectionInteractor(service: serviceSpy)
+extension LaunchDetailsInteractorTests {
+    private func makeSUT() -> LaunchDetailsInteractor {
+        let baseRequestSpy = BaseRequestSuccessHandlerSpy(service: .launchDetails)
+        let serviceSpy = LaunchDetailsService(baseRequest: baseRequestSpy)
+        return LaunchDetailsInteractor(service: serviceSpy)
     }
 
-    private func makeSUTErrorHandler() -> HomeLaunchSectionInteractor {
+    private func makeSUTErrorHandler() -> LaunchDetailsInteractor {
         let baseRequestSpy = BaseRequestErrorHandlerSpy()
-        let service = HomeLaunchSectionService(baseRequest: baseRequestSpy)
-        return HomeLaunchSectionInteractor(service: service)
+        let service = LaunchDetailsService(baseRequest: baseRequestSpy)
+        return LaunchDetailsInteractor(service: service)
     }
 }
+
