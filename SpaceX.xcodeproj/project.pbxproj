@@ -53,6 +53,10 @@
 		9AF43DB928E1D10700A955FD /* LaunchDetailsInteractorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AF43DB828E1D10700A955FD /* LaunchDetailsInteractorTests.swift */; };
 		9AF43DBB28E1D2F300A955FD /* LaunchDetailsInteractorSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AF43DBA28E1D2F300A955FD /* LaunchDetailsInteractorSpy.swift */; };
 		9AF43DBC28E1D62100A955FD /* launch_details_data.json in Resources */ = {isa = PBXBuildFile; fileRef = 9A383C6C28DE307100C63F30 /* launch_details_data.json */; };
+		9AF5618E28E4E837006F746B /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AF5618D28E4E837006F746B /* HomeViewController.swift */; };
+		9AF5619028E5AD6E006F746B /* Company in Frameworks */ = {isa = PBXBuildFile; productRef = 9AF5618F28E5AD6E006F746B /* Company */; };
+		9AF5619528E5F23A006F746B /* HomeBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AF5619328E5F23A006F746B /* HomeBuilder.swift */; };
+		9AF5619628E5F23A006F746B /* HomeBuilderInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AF5619428E5F23A006F746B /* HomeBuilderInput.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -127,6 +131,9 @@
 		9AE275B428A7C35D0082F470 /* sorting.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = sorting.gif; sourceTree = "<group>"; };
 		9AF43DB828E1D10700A955FD /* LaunchDetailsInteractorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchDetailsInteractorTests.swift; sourceTree = "<group>"; };
 		9AF43DBA28E1D2F300A955FD /* LaunchDetailsInteractorSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchDetailsInteractorSpy.swift; sourceTree = "<group>"; };
+		9AF5618D28E4E837006F746B /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		9AF5619328E5F23A006F746B /* HomeBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeBuilder.swift; sourceTree = "<group>"; };
+		9AF5619428E5F23A006F746B /* HomeBuilderInput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeBuilderInput.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -134,6 +141,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9AF5619028E5AD6E006F746B /* Company in Frameworks */,
 				9A2020D628A8164A00439E0D /* Launch in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -191,6 +199,7 @@
 			children = (
 				098F83BF277A40A500E89652 /* AppStart */,
 				098F839D277A409F00E89652 /* Core */,
+				9AF5618C28E4E80A006F746B /* Home */,
 				098F832D277A3FF000E89652 /* Main.storyboard */,
 				098F8330277A3FF300E89652 /* Assets.xcassets */,
 				098F8332277A3FF300E89652 /* LaunchScreen.storyboard */,
@@ -352,6 +361,32 @@
 			path = "readme gifs";
 			sourceTree = "<group>";
 		};
+		9AF5618C28E4E80A006F746B /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				9AF5619228E5EF1D006F746B /* View */,
+				9AF5619128E5EF18006F746B /* Builder */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		9AF5619128E5EF18006F746B /* Builder */ = {
+			isa = PBXGroup;
+			children = (
+				9AF5619328E5F23A006F746B /* HomeBuilder.swift */,
+				9AF5619428E5F23A006F746B /* HomeBuilderInput.swift */,
+			);
+			path = Builder;
+			sourceTree = "<group>";
+		};
+		9AF5619228E5EF1D006F746B /* View */ = {
+			isa = PBXGroup;
+			children = (
+				9AF5618D28E4E837006F746B /* HomeViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -370,6 +405,7 @@
 			name = SpaceX;
 			packageProductDependencies = (
 				9A2020D528A8164A00439E0D /* Launch */,
+				9AF5618F28E5AD6E006F746B /* Company */,
 			);
 			productName = SpaceX;
 			productReference = 098F8324277A3FF000E89652 /* SpaceX.app */;
@@ -539,8 +575,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9AF5619528E5F23A006F746B /* HomeBuilder.swift in Sources */,
 				098F8328277A3FF000E89652 /* AppDelegate.swift in Sources */,
 				098F832A277A3FF000E89652 /* SceneDelegate.swift in Sources */,
+				9AF5619628E5F23A006F746B /* HomeBuilderInput.swift in Sources */,
+				9AF5618E28E4E837006F746B /* HomeViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -985,6 +1024,10 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 9AB2749228A9B98600B7F614 /* XCRemoteSwiftPackageReference "KIF" */;
 			productName = KIF;
+		};
+		9AF5618F28E5AD6E006F746B /* Company */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = Company;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

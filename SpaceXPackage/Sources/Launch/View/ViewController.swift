@@ -64,9 +64,6 @@ extension ViewController: UISearchBarDelegate {
     }
 }
 
-// MARK: - COMPANY SECTION OUTPUT -
-extension ViewController: HomeCompanySectionOutput {}
-
 // MARK: - LAUNCH SECTION OUTPUT -
 extension ViewController: HomeLaunchSectionOutput {
     public func openBrowserWith(articleLink: URL) {

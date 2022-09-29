@@ -21,7 +21,10 @@ let package = Package(
             targets: ["UIComponent"]),
         .library(
             name: "Launch",
-            targets: ["Launch"])
+            targets: ["Launch"]),
+        .library(
+            name: "Company",
+            targets: ["Company"])
     ],
     dependencies: [
         // Dependencies declare other packages that this package depends on.
@@ -48,6 +51,15 @@ let package = Package(
                 "UIComponent",
                 "Network"
             ]),
-        .testTarget(name: "CoreTests", dependencies: ["Core"])
+        .target(
+            name: "Company",
+            dependencies: [
+                "Network"
+            ]),
+        .testTarget(
+            name: "CoreTests",
+            dependencies: [
+                "Core"
+            ])
     ]
 )
