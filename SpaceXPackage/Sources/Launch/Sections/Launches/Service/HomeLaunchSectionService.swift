@@ -20,7 +20,7 @@ public class HomeLaunchSectionService: HomeLaunchSectionServiceInput {
     
     // MARK: - CONSTRUCTOR -
     public init(baseRequest: BaseRequestInput,
-                launchType: LaunchType) {
+                launchType: LaunchType = .all) {
         self.baseRequest = baseRequest
         self.launchType = launchType
     }

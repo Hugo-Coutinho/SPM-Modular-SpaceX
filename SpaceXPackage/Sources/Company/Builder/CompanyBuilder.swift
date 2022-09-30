@@ -15,7 +15,7 @@ public final class CompanyBuilder: CompanyBuilderInput {
     // MARK: - CONSTRUCTOR -
     public init(){}
 
-    public func make() -> UIView {
+    public func make() -> CompanyWidget {
         let widget = CompanyWidget()
         let presenter = makePresenter(widget: widget)
         widget.presenter = presenter

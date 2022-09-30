@@ -7,9 +7,9 @@
 //
 
 import Foundation
-import Launch
+import Company
 
-class HomeCompanySectionPresenterOutputSpy: HomeCompanySectionPresenterOutput {
-    func handleSuccess(domain: HomeCompanySectionDomain) {}
+class CompanyPresenterOutputSpy: CompanyPresenterOutput {
+    func handleSuccess(domain: CompanyDomain) {}
     func removeSection() {}
 }

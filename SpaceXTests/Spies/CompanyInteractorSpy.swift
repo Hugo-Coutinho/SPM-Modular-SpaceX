@@ -7,9 +7,9 @@
 //
 
 import Foundation
-import Launch
+import Company
 
-public class HomeCompanySectionInteractorOutputSpy: HomeCompanySectionInteractorOutput {
+public class CompanyInteractorOutputSpy: CompanyInteractorOutput {
     public func handleSuccess(info: InfoEntity) {}
     public func removeSection() {}
 }

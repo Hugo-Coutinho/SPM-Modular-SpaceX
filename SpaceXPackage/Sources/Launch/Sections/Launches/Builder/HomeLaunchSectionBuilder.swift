@@ -14,7 +14,7 @@ public final class HomeLaunchSectionBuilder: HomeLaunchSectionBuilderInput {
     // MARK: - CONSTRUCTOR -
     public init(){}
 
-    public func make(with type: LaunchType,
+    public func make(with type: LaunchType = .all,
                      output: HomeLaunchSectionOutput) -> HomeLaunchSection {
         let section = HomeLaunchSection()
         let presenter = makePresenter(with: type, section: section)

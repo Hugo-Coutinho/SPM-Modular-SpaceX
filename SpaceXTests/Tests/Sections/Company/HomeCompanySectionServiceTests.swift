@@ -7,12 +7,12 @@
 //
 
 import XCTest
-import Launch
+import Company
 
 class HomeCompanySectionServiceTests: XCTestCase {
     func test_ServiceNotRetained() {
         // 1. GIVEN
-        var sut: HomeCompanySectionInteractor? = makeSUT()
+        var sut: CompanyInteractor? = makeSUT()
 
         // 2. WHEN
         sut?.getInfo()
@@ -26,10 +26,10 @@ class HomeCompanySectionServiceTests: XCTestCase {
 
 // MARK: - MAKE SUT -
 extension HomeCompanySectionServiceTests {
-    private func makeSUT() -> HomeCompanySectionInteractor {
+    private func makeSUT() -> CompanyInteractor {
         let baseRequestSpy = BaseRequestSuccessHandlerSpy(service: .company)
-        let service = HomeCompanySectionService(baseRequest: baseRequestSpy)
-        return HomeCompanySectionInteractor(service: service)
+        let service = CompanyService(baseRequest: baseRequestSpy)
+        return CompanyInteractor(service: service)
     }
 }
 

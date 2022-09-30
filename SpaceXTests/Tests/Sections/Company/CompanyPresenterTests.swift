@@ -7,12 +7,12 @@
 //
 
 import XCTest
-import Launch
+import Company
 
-class HomeCompanySectionPresenterTests: XCTestCase {
+class CompanyPresenterTests: XCTestCase {
 
     //MARK: - DECLARATIONS -
-    var companyDomainResult: HomeCompanySectionDomain?
+    var companyDomainResult: CompanyDomain?
     var isCompanyError: Bool = false
     private var expectedInfo: String = "SpaceX was founded by Elon Musk in 2002.\n\n It has now 7000 employees, 3 Company sites, and is valued at USD $27500000000.00"
 
@@ -27,7 +27,7 @@ class HomeCompanySectionPresenterTests: XCTestCase {
 
     func test_outputNotRetained() {
         // 1. GIVEN
-        var outputSpy: HomeCompanySectionPresenterOutput? = HomeCompanySectionPresenterOutputSpy()
+        var outputSpy: CompanyPresenterOutput? = CompanyPresenterOutputSpy()
         let sut = makeSUT()
 
         // 2. WHEN
@@ -40,7 +40,7 @@ class HomeCompanySectionPresenterTests: XCTestCase {
 
     func test_PresenterNotRetained() {
         // 1. GIVEN
-        var sut: HomeCompanySectionPresenter? = makeSUT()
+        var sut: CompanyPresenter? = makeSUT()
 
         // 2. WHEN
         sut?.getInfo()
@@ -79,8 +79,8 @@ class HomeCompanySectionPresenterTests: XCTestCase {
 }
 
 // MARK: - MAKE SUT -
-extension HomeCompanySectionPresenterTests: HomeCompanySectionPresenterOutput {
-    func handleSuccess(domain: HomeCompanySectionDomain) {
+extension CompanyPresenterTests: CompanyPresenterOutput {
+    func handleSuccess(domain: CompanyDomain) {
         companyDomainResult = domain
     }
 
@@ -90,21 +90,21 @@ extension HomeCompanySectionPresenterTests: HomeCompanySectionPresenterOutput {
 }
 
 // MARK: - MAKE SUT -
-extension HomeCompanySectionPresenterTests {
-    private func makeSUT() -> HomeCompanySectionPresenter {
+extension CompanyPresenterTests {
+    private func makeSUT() -> CompanyPresenter {
         let baseRequestSpy = BaseRequestSuccessHandlerSpy(service: .company)
-        let service = HomeCompanySectionService(baseRequest: baseRequestSpy)
-        let interactorSpy = HomeCompanySectionInteractor(service: service)
-        let sut = HomeCompanySectionPresenter(input: interactorSpy)
+        let service = CompanyService(baseRequest: baseRequestSpy)
+        let interactorSpy = CompanyInteractor(service: service)
+        let sut = CompanyPresenter(input: interactorSpy)
         interactorSpy.output = sut
         return sut
     }
 
-    private func makeSUTErrorHandler() -> HomeCompanySectionPresenter {
+    private func makeSUTErrorHandler() -> CompanyPresenter {
         let baseRequestSpy = BaseRequestErrorHandlerSpy()
-        let service = HomeCompanySectionService(baseRequest: baseRequestSpy)
-        let interactor = HomeCompanySectionInteractor(service: service)
-        let sut = HomeCompanySectionPresenter(input: interactor)
+        let service = CompanyService(baseRequest: baseRequestSpy)
+        let interactor = CompanyInteractor(service: service)
+        let sut = CompanyPresenter(input: interactor)
         interactor.output = sut
         return sut
     }

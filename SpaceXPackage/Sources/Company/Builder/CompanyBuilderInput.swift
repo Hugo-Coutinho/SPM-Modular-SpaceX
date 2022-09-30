@@ -8,6 +8,6 @@
 import UIKit
 
 public protocol CompanyBuilderInput {
-    func make() -> UIView
+    func make() -> CompanyWidget
 }
 

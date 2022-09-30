@@ -7,9 +7,9 @@
 //
 
 import XCTest
-import Launch
+import Company
 
-class HomeCompanySectionInteractorTests: XCTestCase {
+class CompanyInteractorTests: XCTestCase {
 
     //MARK: - DECLARATIONS -
     var infoEntityResult: InfoEntity?
@@ -26,7 +26,7 @@ class HomeCompanySectionInteractorTests: XCTestCase {
 
     func test_outputNotRetained() {
         // 1. GIVEN
-        var outputSpy: HomeCompanySectionInteractorOutput? = HomeCompanySectionInteractorOutputSpy()
+        var outputSpy: CompanyInteractorOutput? = CompanyInteractorOutputSpy()
         let sut = makeSUT()
 
         // 2. WHEN
@@ -39,7 +39,7 @@ class HomeCompanySectionInteractorTests: XCTestCase {
 
     func test_interactorNotRetained() {
         // 1. GIVEN
-        var sut: HomeCompanySectionInteractor? = makeSUT()
+        var sut: CompanyInteractor? = makeSUT()
 
         // 2. WHEN
         sut?.getInfo()
@@ -77,7 +77,7 @@ class HomeCompanySectionInteractorTests: XCTestCase {
 }
 
 // MARK: - OUTPUT -
-extension HomeCompanySectionInteractorTests: HomeCompanySectionInteractorOutput {
+extension CompanyInteractorTests: CompanyInteractorOutput {
     func handleSuccess(info: InfoEntity) {
         infoEntityResult = info
     }
@@ -89,17 +89,17 @@ extension HomeCompanySectionInteractorTests: HomeCompanySectionInteractorOutput 
 }
 
 // MARK: - MAKE SUT -
-extension HomeCompanySectionInteractorTests {
-    private func makeSUT() -> HomeCompanySectionInteractor {
+extension CompanyInteractorTests {
+    private func makeSUT() -> CompanyInteractor {
         let baseRequestSpy = BaseRequestSuccessHandlerSpy(service: .company)
-        let serviceSpy = HomeCompanySectionService(baseRequest: baseRequestSpy)
-        return HomeCompanySectionInteractor(service: serviceSpy)
+        let serviceSpy = CompanyService(baseRequest: baseRequestSpy)
+        return CompanyInteractor(service: serviceSpy)
     }
 
-    private func makeSUTErrorHandler() -> HomeCompanySectionInteractor {
+    private func makeSUTErrorHandler() -> CompanyInteractor {
         let baseRequestSpy = BaseRequestErrorHandlerSpy()
-        let service = HomeCompanySectionService(baseRequest: baseRequestSpy)
-        return HomeCompanySectionInteractor(service: service)
+        let service = CompanyService(baseRequest: baseRequestSpy)
+        return CompanyInteractor(service: service)
     }
 }
 
