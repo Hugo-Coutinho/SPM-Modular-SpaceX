@@ -8,6 +8,7 @@
 
 import Foundation
 import Core
+import Network
 
 public struct HomeLaunchSectionDomain {
     // MARK: - PROPERTIES -
@@ -45,15 +46,14 @@ extension HomeLaunchSectionDomain {
                   let details = current.details,
                   let year = current.launchYear,
                   let launchDate = dateHelper.fromUTCToDate(dateString: launchDateString),
-                  let isLaunchSuccess = current.launchSuccess,
                   let rocket = current.rocket,
                   let rocketName = rocket.rocketName,
                   let RocketType = rocket.rocketType,
                   let link = current.links,
                   let patch = link.missionPatch,
-                  let articleLink = link.articleUrl,
                   let imageURL = URL(string: patch),
-                  let articleURL = URL(string: articleLink)else { return nil }
+                  let articleURL = URL(string: link.articleUrl ?? APIConstant.spaceXHomeURLString) else { return nil }
+            let isLaunchSuccess = current.launchSuccess ?? false
             let days = getDaysMessage(launchDate: launchDate, dateHelper: dateHelper)
             let daysDescription = getDaysDescriptionMessage(launchDate: launchDate, dateHelper: dateHelper)
             let date = dateHelper.getUTCDayFormatted(dateString: launchDateString)
@@ -109,3 +109,7 @@ public struct LaunchDomain {
 }
 
 public typealias LaunchDomainItems = [LaunchDomain]
+
+public enum LaunchType {
+    case upcoming, past, all
+}

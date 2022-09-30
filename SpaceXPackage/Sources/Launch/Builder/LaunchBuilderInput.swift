@@ -8,5 +8,5 @@
 import Foundation
 
 public protocol LaunchBuilderInput {
-    func make() -> ViewController
+    func make(with type: LaunchType) -> LaunchViewController
 }

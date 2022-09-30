@@ -11,10 +11,10 @@ public final class LaunchBuilder: LaunchBuilderInput {
     // MARK: - CONSTRUCTOR -
     public init(){}
 
-    public func make() -> ViewController {
-        let vc = ViewController()
+    public func make(with type: LaunchType) -> LaunchViewController {
+        let vc = LaunchViewController()
         vc.homeSections = [
-            HomeLaunchSectionBuilder().make(output: vc)
+            HomeLaunchSectionBuilder().make(with: type, output: vc)
         ]
         return vc
     }

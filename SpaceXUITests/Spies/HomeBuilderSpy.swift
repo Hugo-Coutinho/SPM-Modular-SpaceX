@@ -9,8 +9,8 @@ import Foundation
 import Launch
 
 final class HomeBuilderSpy: LaunchBuilderInput {
-    func make() -> ViewController {
-        let vc = ViewController()
+    func make() -> LaunchViewController {
+        let vc = LaunchViewController()
         vc.homeSections = [
             HomeCompanySectionBuilderSpy().make(output: vc),
             HomeLaunchSectionBuilderSpy().make(output: vc)

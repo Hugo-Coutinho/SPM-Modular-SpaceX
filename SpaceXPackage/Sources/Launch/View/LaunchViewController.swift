@@ -9,17 +9,17 @@
 import UIKit
 import UIComponent
 
-public class ViewController: TableViewController {
+public class LaunchViewController: TableViewController {
 
     // MARK: - HOME PROPERTIES -
     private let searchController: UISearchController = {
         let searchController = UISearchController(searchResultsController: nil)
         searchController.obscuresBackgroundDuringPresentation = false
         searchController.searchBar.showsScopeBar = true
-        searchController.searchBar.placeholder = Constant.Home.searchBarPlaceHolder
+        searchController.searchBar.placeholder = Constant.Launch.searchBarPlaceHolder
         searchController.searchBar.scopeButtonTitles = [
-            Constant.Home.ScopeButtons.asc.name,
-            Constant.Home.ScopeButtons.desc.name
+            Constant.Launch.ScopeButtons.asc.name,
+            Constant.Launch.ScopeButtons.desc.name
         ]
         searchController.searchBar.searchTextField.accessibilityLabel = "homeSearchBarLabel"
         return searchController
@@ -36,7 +36,7 @@ public class ViewController: TableViewController {
 
     // MARK: - LIFE CYCLE -
     public override func viewWillLayoutSubviews() {
-        title = Constant.Home.homeTitle
+        title = Constant.Launch.launchTitle
         searchController.searchResultsUpdater = self
         searchController.searchBar.delegate = self
         navigationItem.searchController = searchController
@@ -51,21 +51,21 @@ public class ViewController: TableViewController {
 }
 
 // MARK: - SEARCHING UPDATING -
-extension ViewController: UISearchResultsUpdating {
+extension LaunchViewController: UISearchResultsUpdating {
     public func updateSearchResults(for searchController: UISearchController) {
       launchSection?.updateSearchResults(for: searchController)
   }
 }
 
 // MARK: - SEARCHBAR DELEGATE
-extension ViewController: UISearchBarDelegate {
+extension LaunchViewController: UISearchBarDelegate {
     public func searchBar(_ searchBar: UISearchBar, selectedScopeButtonIndexDidChange selectedScope: Int) {
         launchSection?.searchBar(searchBar: searchBar, selectedScopeButtonIndexDidChange: selectedScope)
     }
 }
 
 // MARK: - LAUNCH SECTION OUTPUT -
-extension ViewController: HomeLaunchSectionOutput {
+extension LaunchViewController: HomeLaunchSectionOutput {
     public func openBrowserWith(articleLink: URL) {
         UIApplication.shared.open(articleLink, options: [:], completionHandler: nil)
     }

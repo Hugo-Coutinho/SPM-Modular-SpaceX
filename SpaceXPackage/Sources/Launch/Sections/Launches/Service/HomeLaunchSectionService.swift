@@ -16,10 +16,13 @@ public class HomeLaunchSectionService: HomeLaunchSectionServiceInput {
     
     // MARK: - VARIABLES -
     public var baseRequest: BaseRequestInput
+    private var launchType: LaunchType
     
     // MARK: - CONSTRUCTOR -
-    public init(baseRequest: BaseRequestInput) {
+    public init(baseRequest: BaseRequestInput,
+                launchType: LaunchType) {
         self.baseRequest = baseRequest
+        self.launchType = launchType
     }
     
     public func getLaunches(offSet: Int, completionHandler: @escaping (Data?) -> Void) {
@@ -32,6 +35,13 @@ public class HomeLaunchSectionService: HomeLaunchSectionServiceInput {
 // MARK: - ASSISTANT METHODS -
 extension HomeLaunchSectionService {
     private func getUrlString(offSet: Int) -> String {
-        return APIConstant.baseURLString + APIConstant.launches + String(format: launchQueryString, "\(offSet)")
+        switch launchType {
+        case .all:
+            return APIConstant.baseURLString + APIConstant.launches + String(format: launchQueryString, "\(offSet)")
+        case .past:
+            return APIConstant.baseURLString + APIConstant.pastLaunches + String(format: launchQueryString, "\(offSet)")
+        case .upcoming:
+            return APIConstant.baseURLString + APIConstant.upcomingLaunches + String(format: launchQueryString, "\(offSet)")
+        }
     }
 }

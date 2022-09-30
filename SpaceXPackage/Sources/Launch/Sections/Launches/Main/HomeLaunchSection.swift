@@ -21,9 +21,10 @@ public final class HomeLaunchSection: Section {
     // MARK: - VARIABLE DELCARATIONS -
     public weak var delegate: HomeLaunchSectionOutput?
     public var presenter: HomeLaunchSectionPresenterInput!
+    public var launchType: LaunchType!
     private var launch: HomeLaunchSectionDomain!
     private lazy var isLastPage: Bool = false
-    private var currentScopeButton = Constant.Home.ScopeButtons.asc
+    private var currentScopeButton = Constant.Launch.ScopeButtons.asc
     
     // MARK: - CONSTANT -
     private let homeLaunchSection = "LAUNCHES"
@@ -46,7 +47,7 @@ public final class HomeLaunchSection: Section {
 
     public func searchBar(searchBar: UISearchBar, selectedScopeButtonIndexDidChange selectedScope: Int) {
         switch selectedScope {
-        case Constant.Home.ScopeButtons.asc.rawValue:
+        case Constant.Launch.ScopeButtons.asc.rawValue:
             currentScopeButton = .asc
             self.output?.reloadSection(section: self, animation: .automatic)
         default:
@@ -143,7 +144,7 @@ extension HomeLaunchSection: TableSectionCellInput {
 
     public func willDisplayCell(_ cell: UITableViewCell, at indexPath: IndexPath) {
         guard let cell = cell as? HomeLaunchSectionSuccessTableViewCell else { return }
-        handleScroll(row: indexPath.row)
+        if launchType != .upcoming { handleScroll(row: indexPath.row) }
         guard items.count > 0,
         indexPath.row < items.count,
         let launch = items[indexPath.row] as? LaunchDomain else { return }

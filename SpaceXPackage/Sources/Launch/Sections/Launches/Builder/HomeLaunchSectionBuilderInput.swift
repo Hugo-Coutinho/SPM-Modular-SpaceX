@@ -8,5 +8,6 @@
 import Foundation
 
 public protocol HomeLaunchSectionBuilderInput {
-    func make(output: HomeLaunchSectionOutput) -> HomeLaunchSection
+    func make(with type: LaunchType,
+              output: HomeLaunchSectionOutput) -> HomeLaunchSection
 }

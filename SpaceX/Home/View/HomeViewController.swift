@@ -7,6 +7,7 @@
 
 import UIKit
 import Company
+import Launch
 import UIComponent
 
 public class HomeViewController: UIViewController {
@@ -33,7 +34,14 @@ public class HomeViewController: UIViewController {
         return view
     }()
     
+    // MARK: - PROPERTIES DELCARATIONS -
+    private enum HomeWidgetsEnum: Int {
+        case companyInfo = 0
+        case launches = 1
+    }
+    
     public override func viewDidLoad() {
+        title = Constant.Home.homeTitle
         setupWidgets()
     }
 }
@@ -51,19 +59,30 @@ extension HomeViewController {
     
     private func addCompanyInfoWidget() {
         let companyWidget = CompanyBuilder().make()
-        companyWidget.tag = 0
+        companyWidget.tag = HomeWidgetsEnum.companyInfo.rawValue
         companyWidget.translatesAutoresizingMaskIntoConstraints = false
-        companyWidget.heightAnchor.constraint(equalToConstant: 200.0).isActive = true
         stackView.addArrangedSubview(companyWidget)
     }
     
     private func addLaunchesWidget() {
-        let view = UIView()
-        view.tag = 1
-        view.backgroundColor = .yellow
-        view.translatesAutoresizingMaskIntoConstraints = false
-        view.heightAnchor.constraint(equalToConstant: 35.0).isActive = true
-        stackView.addArrangedSubview(view)
+        let domain = LaunchWidgetDomain { [weak self] in
+            guard let self = self else { return }
+            self.navigationController?.pushViewController(LaunchBuilder().make(with: .upcoming), animated: false)
+            
+        } didSelectPastLaunches: { [weak self] in
+            guard let self = self else { return }
+            self.navigationController?.pushViewController(LaunchBuilder().make(with: .past), animated: false)
+            
+        } didSelectAllLaunches: { [weak self] in
+            guard let self = self else { return }
+            self.navigationController?.pushViewController(LaunchBuilder().make(with: .all), animated: false)
+            
+        }
+
+        guard let launchWidget = LaunchWidgetBuilder().make(domain: domain) else { return }
+        launchWidget.tag = HomeWidgetsEnum.launches.rawValue
+        launchWidget.translatesAutoresizingMaskIntoConstraints = false
+        stackView.addArrangedSubview(launchWidget)
     }
 }
 

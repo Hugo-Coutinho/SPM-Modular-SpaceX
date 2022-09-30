@@ -88,7 +88,7 @@ extension CompanyWidget {
             homeHeader.trailingAnchor.constraint(equalTo: trailingAnchor),
             homeHeader.heightAnchor.constraint(equalToConstant: 50),
             
-            infoLabel.topAnchor.constraint(equalTo: homeHeader.bottomAnchor, constant: 8),
+            infoLabel.topAnchor.constraint(equalTo: homeHeader.bottomAnchor, constant: 16),
             infoLabel.leadingAnchor.constraint(equalTo: leadingAnchor),
             infoLabel.trailingAnchor.constraint(equalTo: trailingAnchor),
             infoLabel.bottomAnchor.constraint(equalTo: bottomAnchor),
