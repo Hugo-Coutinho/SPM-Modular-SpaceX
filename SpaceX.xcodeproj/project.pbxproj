@@ -39,12 +39,13 @@
 		9AB2744728A9B57C00B7F614 /* company_info_data.json in Resources */ = {isa = PBXBuildFile; fileRef = 9AB2742128A9B57500B7F614 /* company_info_data.json */; };
 		9AB2748D28A9B95800B7F614 /* LaunchUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AB2748728A9B95800B7F614 /* LaunchUITests.swift */; };
 		9AB2748E28A9B95800B7F614 /* HomeCompanySectionBuilderSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AB2748928A9B95800B7F614 /* HomeCompanySectionBuilderSpy.swift */; };
-		9AB2748F28A9B95800B7F614 /* HomeBuilderSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AB2748A28A9B95800B7F614 /* HomeBuilderSpy.swift */; };
+		9AB2748F28A9B95800B7F614 /* LaunchBuilderSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AB2748A28A9B95800B7F614 /* LaunchBuilderSpy.swift */; };
 		9AB2749028A9B95800B7F614 /* HomeLaunchSectionBuilderSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AB2748B28A9B95800B7F614 /* HomeLaunchSectionBuilderSpy.swift */; };
 		9AB2749128A9B95800B7F614 /* UIExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AB2748C28A9B95800B7F614 /* UIExtension.swift */; };
 		9AB2749428A9B98600B7F614 /* KIF in Frameworks */ = {isa = PBXBuildFile; productRef = 9AB2749328A9B98600B7F614 /* KIF */; };
 		9AB2749528A9B99A00B7F614 /* BaseRequestSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AB2742528A9B57500B7F614 /* BaseRequestSpy.swift */; };
 		9AC4A60628E7229D0087C414 /* LaunchWidgetBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AC4A60528E7229D0087C414 /* LaunchWidgetBuilder.swift */; };
+		9AC4A61128EB25390087C414 /* SnapshotTesting in Frameworks */ = {isa = PBXBuildFile; productRef = 9AC4A61028EB25390087C414 /* SnapshotTesting */; };
 		9AE275B528A7C35D0082F470 /* opening.gif in Resources */ = {isa = PBXBuildFile; fileRef = 9AE275AA28A7C35D0082F470 /* opening.gif */; };
 		9AE275B728A7C35D0082F470 /* scrolling.gif in Resources */ = {isa = PBXBuildFile; fileRef = 9AE275AC28A7C35D0082F470 /* scrolling.gif */; };
 		9AE275BC28A7C35D0082F470 /* filtering.gif in Resources */ = {isa = PBXBuildFile; fileRef = 9AE275B128A7C35D0082F470 /* filtering.gif */; };
@@ -116,7 +117,7 @@
 		9AB2748628A9B95700B7F614 /* SpaceXUITests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SpaceXUITests-Bridging-Header.h"; sourceTree = "<group>"; };
 		9AB2748728A9B95800B7F614 /* LaunchUITests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LaunchUITests.swift; sourceTree = "<group>"; };
 		9AB2748928A9B95800B7F614 /* HomeCompanySectionBuilderSpy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeCompanySectionBuilderSpy.swift; sourceTree = "<group>"; };
-		9AB2748A28A9B95800B7F614 /* HomeBuilderSpy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeBuilderSpy.swift; sourceTree = "<group>"; };
+		9AB2748A28A9B95800B7F614 /* LaunchBuilderSpy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LaunchBuilderSpy.swift; sourceTree = "<group>"; };
 		9AB2748B28A9B95800B7F614 /* HomeLaunchSectionBuilderSpy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeLaunchSectionBuilderSpy.swift; sourceTree = "<group>"; };
 		9AB2748C28A9B95800B7F614 /* UIExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIExtension.swift; sourceTree = "<group>"; };
 		9AC4A60528E7229D0087C414 /* LaunchWidgetBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchWidgetBuilder.swift; sourceTree = "<group>"; };
@@ -158,6 +159,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9AB2749428A9B98600B7F614 /* KIF in Frameworks */,
+				9AC4A61128EB25390087C414 /* SnapshotTesting in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -320,7 +322,7 @@
 			isa = PBXGroup;
 			children = (
 				9AB2748928A9B95800B7F614 /* HomeCompanySectionBuilderSpy.swift */,
-				9AB2748A28A9B95800B7F614 /* HomeBuilderSpy.swift */,
+				9AB2748A28A9B95800B7F614 /* LaunchBuilderSpy.swift */,
 				9AB2748B28A9B95800B7F614 /* HomeLaunchSectionBuilderSpy.swift */,
 			);
 			path = Spies;
@@ -453,6 +455,7 @@
 			name = SpaceXUITests;
 			packageProductDependencies = (
 				9AB2749328A9B98600B7F614 /* KIF */,
+				9AC4A61028EB25390087C414 /* SnapshotTesting */,
 			);
 			productName = SpaceXUITests;
 			productReference = 9AB2747D28A9B93A00B7F614 /* SpaceXUITests.xctest */;
@@ -497,6 +500,7 @@
 			mainGroup = 098F831B277A3FF000E89652;
 			packageReferences = (
 				9AB2749228A9B98600B7F614 /* XCRemoteSwiftPackageReference "KIF" */,
+				9AC4A60F28EB25390087C414 /* XCRemoteSwiftPackageReference "swift-snapshot-testing" */,
 			);
 			productRefGroup = 098F8325277A3FF000E89652 /* Products */;
 			projectDirPath = "";
@@ -607,7 +611,7 @@
 				9AB2749028A9B95800B7F614 /* HomeLaunchSectionBuilderSpy.swift in Sources */,
 				9AB2749528A9B99A00B7F614 /* BaseRequestSpy.swift in Sources */,
 				9AB2748D28A9B95800B7F614 /* LaunchUITests.swift in Sources */,
-				9AB2748F28A9B95800B7F614 /* HomeBuilderSpy.swift in Sources */,
+				9AB2748F28A9B95800B7F614 /* LaunchBuilderSpy.swift in Sources */,
 				9AB2749128A9B95800B7F614 /* UIExtension.swift in Sources */,
 				9AB2748E28A9B95800B7F614 /* HomeCompanySectionBuilderSpy.swift in Sources */,
 			);
@@ -999,6 +1003,14 @@
 				minimumVersion = 3.0.0;
 			};
 		};
+		9AC4A60F28EB25390087C414 /* XCRemoteSwiftPackageReference "swift-snapshot-testing" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/pointfreeco/swift-snapshot-testing.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -1010,6 +1022,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 9AB2749228A9B98600B7F614 /* XCRemoteSwiftPackageReference "KIF" */;
 			productName = KIF;
+		};
+		9AC4A61028EB25390087C414 /* SnapshotTesting */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 9AC4A60F28EB25390087C414 /* XCRemoteSwiftPackageReference "swift-snapshot-testing" */;
+			productName = SnapshotTesting;
 		};
 		9AF5618F28E5AD6E006F746B /* Company */ = {
 			isa = XCSwiftPackageProductDependency;

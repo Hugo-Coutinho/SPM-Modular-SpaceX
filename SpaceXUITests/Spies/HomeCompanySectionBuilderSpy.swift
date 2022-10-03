@@ -6,26 +6,28 @@
 //
 
 import Foundation
-import Launch
+import Company
 
-final class HomeCompanySectionBuilderSpy: HomeCompanySectionBuilderInput {
-    func make(output: HomeCompanySectionOutput) -> HomeCompanySection {
-        let section = HomeCompanySection()
-        let presenter = makePresenter(section: section)
-        section.presenter = presenter
-        section.delegate = output
-        section.output = output
-        section.startSection()
-        return section
+final class HomeCompanySectionBuilderSpy: CompanyBuilderInput {
+    func make() -> CompanyWidget {
+        let widget = CompanyWidget()
+        let presenter = makePresenter(widget: widget)
+        widget.presenter = presenter
+        widget.setupInfo()
+        return widget
     }
+}
 
-    private func makePresenter(section: HomeCompanySection) -> HomeCompanySectionPresenter {
-        let service = HomeCompanySectionService(baseRequest: BaseRequestSuccessHandlerSpy(service: .company))
-        let interactor = HomeCompanySectionInteractor(service: service)
-        let presenter = HomeCompanySectionPresenter(input: interactor)
+// MARK: - AUX METHODS -
+extension HomeCompanySectionBuilderSpy {
+    // MARK: - PRESENTER BUILDER -
+    private func makePresenter(widget: CompanyWidget) -> CompanyPresenter {
+        let service = CompanyService(baseRequest: BaseRequestSuccessHandlerSpy(service: .company))
+        let interactor = CompanyInteractor(service: service)
+        let presenter = CompanyPresenter(input: interactor)
         interactor.output = presenter
-        presenter.output = section
+        presenter.output = widget
         return presenter
     }
-
 }
+
