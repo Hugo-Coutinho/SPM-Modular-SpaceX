@@ -54,6 +54,7 @@ let package = Package(
         .target(
             name: "Company",
             dependencies: [
+                "UIComponent",
                 "Network"
             ]),
         .testTarget(
