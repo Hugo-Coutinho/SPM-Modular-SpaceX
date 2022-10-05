@@ -43,7 +43,7 @@ class SpaceXKifTests: XCTestCase {
         
         setRootViewController(UINavigationController(rootViewController: vc))
         
-        assertSnapshot(matching: vc, as: .image(on: .iPhone8), named: "launchCellTest", record: false)
+        assertSnapshot(matching: vc, as: .image(on: .iPhone13), named: "launchCellTest", record: false)
     }
     
     func test_companyWidget() {
@@ -56,7 +56,7 @@ class SpaceXKifTests: XCTestCase {
         
         setRootViewController(UINavigationController(rootViewController: vc))
         
-        assertSnapshot(matching: vc, as: .image(on: .iPhone8), named: "CompanyWidgetTest", record: false)
+        assertSnapshot(matching: vc, as: .image(on: .iPhone13), named: "CompanyWidgetTest", record: false)
     }
     
  
@@ -72,7 +72,7 @@ class SpaceXKifTests: XCTestCase {
         
         setRootViewController(UINavigationController(rootViewController: vc))
         
-        assertSnapshot(matching: vc, as: .image(on: .iPhone8), named: "LaunchWidgetTest", record: false)
+        assertSnapshot(matching: vc, as: .image(on: .iPhone13), named: "LaunchWidgetTest", record: false)
     }
 }
 
