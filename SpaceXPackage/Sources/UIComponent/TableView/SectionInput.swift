@@ -21,6 +21,7 @@ import UIKit
     @objc func willDisplayCell(_ cell: UITableViewCell, at indexPath: IndexPath)
     @objc func didSelectCell(_ cell: UITableViewCell, at indexPath: IndexPath)
     @objc optional func heightForRowInSection(indexPath: IndexPath) -> CGFloat
+    @objc optional func estimatedRowHeight() -> CGFloat
 }
 
 @objc public protocol TableSectionHeaderInput: SectionInput {

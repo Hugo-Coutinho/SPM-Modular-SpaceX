@@ -14,6 +14,8 @@ public class LaunchWidget: UIView {
         let stackView = UIStackView()
         stackView.axis = .vertical
         stackView.spacing = 8
+        stackView.alignment = .center
+        stackView.distribution = .equalSpacing
         stackView.translatesAutoresizingMaskIntoConstraints = false
         return stackView
     }()
@@ -26,15 +28,14 @@ public class LaunchWidget: UIView {
     }()
     
     private lazy var upcomingLaunchImageView: BannerView = {
-        let imageView = BannerView()
-        imageView.contentMode = .scaleToFill
-        imageView.translatesAutoresizingMaskIntoConstraints = false
-        imageView.layer.cornerRadius = 20
-        imageView.layer.masksToBounds = true
-        imageView.heightAnchor.constraint(equalToConstant: 120).isActive = true
+        let bannerView = BannerView()
+        bannerView.contentMode = .scaleToFill
+        bannerView.translatesAutoresizingMaskIntoConstraints = false
+        bannerView.layer.cornerRadius = 20
+        bannerView.layer.masksToBounds = true
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(self.didSelectUpcomingLaunches))
-        imageView.addGestureRecognizer(tapGesture)
-        return imageView
+        bannerView.addGestureRecognizer(tapGesture)
+        return bannerView
     }()
     
     private lazy var pastLaunchImageView: BannerView = {
@@ -43,7 +44,6 @@ public class LaunchWidget: UIView {
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.layer.cornerRadius = 20
         imageView.layer.masksToBounds = true
-        imageView.heightAnchor.constraint(equalToConstant: 120).isActive = true
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(self.didSelectPastLaunches))
         imageView.addGestureRecognizer(tapGesture)
         return imageView
@@ -55,7 +55,6 @@ public class LaunchWidget: UIView {
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.layer.cornerRadius = 20
         imageView.layer.masksToBounds = true
-        imageView.heightAnchor.constraint(equalToConstant: 120).isActive = true
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(self.didSelectAllLaunches))
         imageView.addGestureRecognizer(tapGesture)
         return imageView

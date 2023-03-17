@@ -25,7 +25,7 @@ public struct APIConstant {
     public static let spaceXHomeURLString = "https://www.space.com"
     
     // MARK: - SPACEX BANNER URL -
-    public static let upcomingImageUrlString = "https://ychef.files.bbci.co.uk/976x549/p0bgc3nn.jpg"
+    public static let upcomingImageUrlString = "https://media.timeout.com/images/105653190/image.jpg"
     public static let pastImageUrlString = "https://www.grunge.com/img/gallery/the-unexpected-creature-caught-on-film-during-a-rocket-launch/l-intro-1662747807.jpg"
-    public static let allImageUrlString = "https://img.freepik.com/premium-photo/space-rocket-launch-ship-concept-business-product-market-spaceship-takes-off-starry-sky-rocket-space-ship-mixed-media_338491-12881.jpg"
+    public static let allImageUrlString = "https://www.cnet.com/a/img/resize/8d22add9ceea83a850ccbb4adcf2ef7e5ec6eb7a/hub/2022/12/15/c15bb709-6ace-41b9-8747-812bb240a5bb/starship24staticfire.jpg?auto=webp&fit=crop&height=675&width=1200"
 }

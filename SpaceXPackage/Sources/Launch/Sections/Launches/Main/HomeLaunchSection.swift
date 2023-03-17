@@ -154,6 +154,10 @@ extension HomeLaunchSection: TableSectionCellInput {
     public func heightForRowInSection(indexPath: IndexPath) -> CGFloat {
         return 150
     }
+    
+    public func estimatedRowHeight() -> CGFloat {
+        return 150
+    }
 }
 
 // MARK: - HEADER OUTPUT -

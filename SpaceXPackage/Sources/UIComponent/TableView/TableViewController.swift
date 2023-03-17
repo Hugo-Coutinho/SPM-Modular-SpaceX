@@ -120,7 +120,12 @@ extension TableViewController: UITableViewDataSource {
         return height
     }
 
-    public func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat { return UITableView.automaticDimension }
+    public func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
+        guard let height = (sections[indexPath.section] as? TableSectionCellInput)?.estimatedRowHeight?() else {
+            return UITableView.automaticDimension
+        }
+        return height
+    }
 
     public func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
         let section = sections[section]

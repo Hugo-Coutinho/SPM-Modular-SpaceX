@@ -17,6 +17,10 @@ class BannerView: UIView {
         label.font = UIFont.preferredFont(forTextStyle: .title1)
         label.textColor = .black
         label.backgroundColor = .white.withAlphaComponent(0.5)
+        label.numberOfLines = 0
+        label.adjustsFontForContentSizeCategory = true
+        label.isAccessibilityElement = true
+        label.setContentHuggingPriority(.defaultHigh, for: .vertical)
         return label
     }()
     
@@ -26,7 +30,6 @@ class BannerView: UIView {
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.layer.cornerRadius = 20
         imageView.layer.masksToBounds = true
-        imageView.heightAnchor.constraint(equalToConstant: 120).isActive = true
         return imageView
     }()
     
@@ -58,6 +61,7 @@ extension BannerView {
             bannerImageView.trailingAnchor.constraint(equalTo: trailingAnchor),
             bannerImageView.bottomAnchor.constraint(equalTo: bottomAnchor),
             
+            bannerTitle.topAnchor.constraint(equalTo: topAnchor, constant: 80),
             bannerTitle.centerXAnchor.constraint(equalTo: bannerImageView.centerXAnchor),
             bannerTitle.leadingAnchor.constraint(equalTo: bannerImageView.leadingAnchor),
             bannerTitle.trailingAnchor.constraint(equalTo: bannerImageView.trailingAnchor),
