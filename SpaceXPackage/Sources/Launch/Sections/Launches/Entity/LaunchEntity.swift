@@ -17,6 +17,7 @@ public struct LaunchEntity: Codable {
     public let launchYear: String?
     public let rocket: Rocket?
     public let links: Links?
+    public let site: Site?
     public let launchSuccess: Bool?
     
     public init(missionName: String? = nil,
@@ -24,12 +25,14 @@ public struct LaunchEntity: Codable {
                 launchYear: String? = nil,
                 rocket: Rocket? = nil,
                 links: Links? = nil,
+                site: Site? = nil,
                 launchSuccess: Bool? = nil) {
         self.missionName = missionName
         self.launchDate = launchDate
         self.launchYear = launchYear
         self.rocket = rocket
         self.links = links
+        self.site = site
         self.launchSuccess = launchSuccess
     }
     
@@ -39,6 +42,7 @@ public struct LaunchEntity: Codable {
         case launchYear = "launch_year"
         case rocket = "rocket"
         case links = "links"
+        case site = "launch_site"
         case launchSuccess = "launch_success"
     }
 }
@@ -61,5 +65,14 @@ public struct Rocket: Codable {
     public enum CodingKeys: String, CodingKey {
         case rocketName = "rocket_name"
         case rocketType = "rocket_type"
+    }
+}
+
+// MARK: - Site
+public struct Site: Codable {
+    let siteName: String?
+
+    enum CodingKeys: String, CodingKey {
+        case siteName = "site_name_long"
     }
 }

@@ -150,10 +150,6 @@ extension HomeLaunchSection: TableSectionCellInput {
         let launch = items[indexPath.row] as? LaunchDomain else { return }
         cell.setup(launch: launch)
     }
-
-    public func heightForRowInSection(indexPath: IndexPath) -> CGFloat {
-        return 150
-    }
     
     public func estimatedRowHeight() -> CGFloat {
         return 150

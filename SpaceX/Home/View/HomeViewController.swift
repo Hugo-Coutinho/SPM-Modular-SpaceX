@@ -42,6 +42,7 @@ public class HomeViewController: UIViewController {
     
     public override func viewDidLoad() {
         title = Constant.Home.homeTitle
+        view.backgroundColor = .systemBackground
         setupWidgets()
     }
 }

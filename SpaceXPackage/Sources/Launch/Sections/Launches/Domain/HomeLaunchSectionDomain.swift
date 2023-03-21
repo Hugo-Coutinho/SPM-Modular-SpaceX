@@ -43,8 +43,9 @@ extension HomeLaunchSectionDomain {
         return launches.compactMap({ (current) -> LaunchDomain? in
             guard let missionName = current.missionName,
                   let launchDateString = current.launchDate,
+                  let site = current.site,
+                  let siteName = site.siteName,
                   let year = current.launchYear,
-                  let launchDate = dateHelper.fromUTCToDate(dateString: launchDateString),
                   let rocket = current.rocket,
                   let rocketName = rocket.rocketName,
                   let RocketType = rocket.rocketType,
@@ -53,17 +54,14 @@ extension HomeLaunchSectionDomain {
                   let imageURL = URL(string: patch),
                   let articleURL = URL(string: link.articleUrl ?? APIConstant.spaceXHomeURLString) else { return nil }
             let isLaunchSuccess = current.launchSuccess ?? false
-            let days = getDaysMessage(launchDate: launchDate, dateHelper: dateHelper)
-            let daysDescription = getDaysDescriptionMessage(launchDate: launchDate, dateHelper: dateHelper)
             let date = dateHelper.getUTCDayFormatted(dateString: launchDateString)
             let rocketString = "\(rocketName) / \(RocketType)"
 
             return LaunchDomain(missionName: missionName,
                                 date: date,
                                 rocket: rocketString,
-                                days: days,
-                                daysDescription: daysDescription,
                                 launchYear: year,
+                                siteName: getSiteNameFormatted(site: siteName),
                                 isLaunchSuccess: isLaunchSuccess,
                                 imageURL: imageURL,
                                 articleURL: articleURL)
@@ -97,11 +95,15 @@ extension HomeLaunchSectionDomain {
             return "\(dateHelper.getDateString(date: launchDate)) - \(dateHelper.getDateString(date: today))"
         }
     }
+    
+    private func getSiteNameFormatted(site: String) -> String {
+        return site.components(separatedBy: " ").prefix(3).joined(separator: " ")
+    }
 }
 
 // MARK: - LAUNCH ITEM -
 public struct LaunchDomain {
-    public let missionName, date, rocket, days, daysDescription, launchYear: String
+    public let missionName, date, rocket, launchYear, siteName: String
     public let isLaunchSuccess: Bool
     public let imageURL, articleURL: URL
 }

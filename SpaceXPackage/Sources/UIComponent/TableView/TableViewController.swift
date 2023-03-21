@@ -30,6 +30,7 @@ open class TableViewController: UIViewController {
     //MARK: - Life Cycle
     public override func viewDidLoad() {
         super.viewDidLoad()
+        view.backgroundColor = .systemBackground
         self.setupConstraints()
         self.setupSectionsOutput()
         sections.forEach({($0 as? SectionStateInput)?.viewDidLoad?()})

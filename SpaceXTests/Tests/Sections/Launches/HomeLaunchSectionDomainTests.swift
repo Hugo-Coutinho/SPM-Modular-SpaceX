@@ -67,62 +67,6 @@ class HomeLaunchSectionDomainTests: XCTestCase {
         XCTAssertEqual(sut?.launches.first?.rocket, expected)
     }
 
-    func test_shouldMatchDays_withSince() {
-        // 1. GIVEN
-        let currentDateAsString = dateHelper.getDateString(date: Date())
-        let expected = "\(currentDateAsString) - 2006/03/24"
-
-        // 2. WHEN
-
-
-        // 3. THEN
-        XCTAssertNotNil(sut)
-        XCTAssertEqual(sut?.launches.first?.days, expected)
-    }
-
-    func test_shouldMatchDays_withFromNow() {
-        // 1. GIVEN
-        let currentDateAsString = dateHelper.getDateString(date: Date())
-        let expected = "2023/04/10 - \(currentDateAsString)"
-
-        // 2. WHEN
-        let result = sut?.launches.first(where: { $0.missionName.elementsEqual("DemoSat") })
-
-        // 3. THEN
-        XCTAssertNotNil(result)
-        XCTAssertEqual(result?.days, expected)
-    }
-
-    func test_shouldMatchDaysDesc_withFromNow() {
-        // 1. GIVEN
-        let launchDateAsString = "2023-04-10T04:00:00.000Z"
-        let launchDate = dateHelper.fromUTCToDate(dateString: launchDateAsString) ?? Date()
-        let dayExpected = "\(abs(dateHelper.numberOfDaysBetween(launchDate, and: Date())))"
-        let expected = "\(dayExpected) days\n from now:"
-
-        // 2. WHEN
-        let result = sut?.launches.first(where: { $0.missionName.elementsEqual("DemoSat") })
-
-        // 3. THEN
-        XCTAssertNotNil(result)
-        XCTAssertEqual(result?.daysDescription, expected)
-    }
-
-    func test_shouldMatchDaysDesc_withSinceNow() {
-        // 1. GIVEN
-        let launchDateAsString = "2006-03-24T22:30:00.000Z"
-        let launchDate = dateHelper.fromUTCToDate(dateString: launchDateAsString) ?? Date()
-        let dayExpected = "\(abs(dateHelper.numberOfDaysBetween(launchDate, and: Date())))"
-        let expected = "\(dayExpected) days\n since now:"
-
-        // 2. WHEN
-        let result = sut?.launches.first(where: { $0.missionName.elementsEqual("Falconzin Sat") })
-
-        // 3. THEN
-        XCTAssertNotNil(result)
-        XCTAssertEqual(result?.daysDescription, expected)
-    }
-
     func test_shouldFilter_2007Launches() {
         // 1. GIVEN
         let expected = "2007"
@@ -177,7 +121,15 @@ class HomeLaunchSectionDomainTests: XCTestCase {
         XCTAssertEqual(sut?.launches[2].launchYear, secondThirdItemsExpected)
         XCTAssertEqual(sut?.launches[3].launchYear, fourthItemExpected)
     }
+    
+    func test_shouldFormatteSite() {
+        let expected = "Kwajalein Atoll Omelek"
 
+        // 2. WHEN
+
+        // 3. THEN
+        XCTAssertEqual(sut?.launches.first?.siteName, expected)
+    }
 }
 
 extension HomeLaunchSectionDomainTests: HomeLaunchSectionPresenterOutput {
