@@ -14,11 +14,11 @@ class HomeLaunchSectionSuccessTableViewCell: UITableViewCell {
     // MARK: - DEFINING UI ELEMENTS -
     private lazy var rocketImageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.accessibilityIdentifier = "rocketImageViewID"
         imageView.isAccessibilityElement = true
         imageView.accessibilityTraits = .image
         imageView.accessibilityIgnoresInvertColors = true
         imageView.translatesAutoresizingMaskIntoConstraints = false
+        imageView.accessibilityLabel = "Rocket"
         return imageView
     }()
     
@@ -26,21 +26,17 @@ class HomeLaunchSectionSuccessTableViewCell: UITableViewCell {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.numberOfLines = 0
-        label.accessibilityIdentifier = "missionID"
         label.font = UIFont.preferredFont(forTextStyle: .title2)
         label.isAccessibilityElement = true
         label.accessibilityTraits = .staticText
         label.adjustsFontForContentSizeCategory = true
         label.accessibilityIgnoresInvertColors = true
+        label.accessibilityLabel = "Mission"
         return label
     }()
     
     private lazy var calendarIconImageView: UIImageView = {
         let imageView = UIImageView(image: UIImage(named: "calendar")?.withRenderingMode(.alwaysTemplate))
-        imageView.accessibilityIdentifier = "rocketIconImageViewID"
-        imageView.isAccessibilityElement = true
-        imageView.accessibilityTraits = .image
-        imageView.accessibilityIgnoresInvertColors = true
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.tintColor = .darkText
         return imageView
@@ -49,7 +45,6 @@ class HomeLaunchSectionSuccessTableViewCell: UITableViewCell {
     private lazy var dateInfoLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.accessibilityIdentifier = "dateInfoID"
         label.font = UIFont.preferredFont(forTextStyle: .body)
         label.textAlignment = .left
         label.numberOfLines = 0
@@ -57,15 +52,12 @@ class HomeLaunchSectionSuccessTableViewCell: UITableViewCell {
         label.accessibilityTraits = .staticText
         label.adjustsFontForContentSizeCategory = true
         label.accessibilityIgnoresInvertColors = true
+        label.accessibilityLabel = "Date"
         return label
     }()
     
     private lazy var rocketIconImageView: UIImageView = {
         let imageView = UIImageView(image: UIImage(named: "rocket")?.withRenderingMode(.alwaysTemplate))
-        imageView.accessibilityIdentifier = "rocketIconImageViewID"
-        imageView.isAccessibilityElement = true
-        imageView.accessibilityTraits = .image
-        imageView.accessibilityIgnoresInvertColors = true
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.tintColor = .darkText
         return imageView
@@ -75,21 +67,17 @@ class HomeLaunchSectionSuccessTableViewCell: UITableViewCell {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.numberOfLines = 0
-        label.accessibilityIdentifier = "missionID"
         label.font = UIFont.preferredFont(forTextStyle: .body)
         label.isAccessibilityElement = true
         label.accessibilityTraits = .staticText
         label.adjustsFontForContentSizeCategory = true
         label.accessibilityIgnoresInvertColors = true
+        label.accessibilityLabel = "Rocket"
         return label
     }()
     
     private lazy var addressIconImageView: UIImageView = {
         let imageView = UIImageView(image: UIImage(named: "location")?.withRenderingMode(.alwaysTemplate))
-        imageView.accessibilityIdentifier = "rocketIconImageViewID"
-        imageView.isAccessibilityElement = true
-        imageView.accessibilityTraits = .image
-        imageView.accessibilityIgnoresInvertColors = true
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.tintColor = .darkText
         return imageView
@@ -99,21 +87,17 @@ class HomeLaunchSectionSuccessTableViewCell: UITableViewCell {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.numberOfLines = 0
-        label.accessibilityIdentifier = "missionID"
         label.font = UIFont.preferredFont(forTextStyle: .body)
         label.isAccessibilityElement = true
         label.accessibilityTraits = .staticText
         label.adjustsFontForContentSizeCategory = true
         label.accessibilityIgnoresInvertColors = true
+        label.accessibilityLabel = "Site Name"
         return label
     }()
     
     private lazy var rocketStatusIconImageview: UIImageView = {
         let imageView = UIImageView()
-        imageView.accessibilityIdentifier = "rocketIconImageViewID"
-        imageView.isAccessibilityElement = true
-        imageView.accessibilityTraits = .image
-        imageView.accessibilityIgnoresInvertColors = true
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.tintColor = .darkText
         return imageView
@@ -123,12 +107,12 @@ class HomeLaunchSectionSuccessTableViewCell: UITableViewCell {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.numberOfLines = 0
-        label.accessibilityIdentifier = "missionID"
         label.font = UIFont.preferredFont(forTextStyle: .body)
         label.isAccessibilityElement = true
         label.accessibilityTraits = .staticText
         label.adjustsFontForContentSizeCategory = true
         label.accessibilityIgnoresInvertColors = true
+        label.accessibilityLabel = "Launch Status"
         return label
     }()
     
@@ -137,14 +121,14 @@ class HomeLaunchSectionSuccessTableViewCell: UITableViewCell {
         label.text = "More"
         label.translatesAutoresizingMaskIntoConstraints = false
         label.numberOfLines = 0
-        label.accessibilityIdentifier = "missionID"
         label.font = UIFont.preferredFont(forTextStyle: .callout)
-        label.isAccessibilityElement = true
         label.textColor = .link
-        label.accessibilityTraits = .staticText
+        label.textAlignment = .right
+        label.isAccessibilityElement = true
+        label.accessibilityTraits = .button
         label.adjustsFontForContentSizeCategory = true
         label.accessibilityIgnoresInvertColors = true
-        label.textAlignment = .right
+        label.accessibilityLabel = "More"
         return label
     }()
     
@@ -161,46 +145,48 @@ class HomeLaunchSectionSuccessTableViewCell: UITableViewCell {
     
     // MARK: - SETUP -
     func setup(launch: LaunchDomain) {
-        setupAccessibilities(launch: launch)
+        applyAccessibility(launch: launch)
         Nuke.loadImage(with: launch.imageURL, into: rocketImageView)
         rocketStatusIconImageview.image = UIImage(systemName: launch.isLaunchSuccess ? "checkmark.circle" : "xmark.circle.fill")?.withRenderingMode(.alwaysTemplate)
         missionLabel.text = launch.missionName
         dateInfoLabel.text = launch.date
         rocketLabel.text = launch.rocket
         siteNameLabel.text = launch.siteName
-        rocketStatusLabel.text = launch.isLaunchSuccess ? "Successed" : "Failed"
+        rocketStatusLabel.text = launch.isLaunchSuccess ? Constants.successStatus.rawValue : Constants.failedstatus.rawValue
+    }
+    
+    private enum Constants: String {
+        case successStatus = "Successed"
+        case failedstatus = "Failed"
     }
 }
 
-// MARK: - CONFIGURING CELL ACCESSIBILITY -
+// MARK: - APPLYING ACCESSIBILITY -
 extension HomeLaunchSectionSuccessTableViewCell {
-    private func setupAccessibilities(launch: LaunchDomain) {
-        contentView.accessibilityLabel = launch.missionName
-        contentView.accessibilityHint = "Double tap to enter the \(launch.missionName) details"
-        rocketImageView.accessibilityLabel = launch.missionName
+    private func applyAccessibility(launch: LaunchDomain) {
+        //- MISSION -
+        missionLabel.accessibilityValue = launch.missionName
         
-        // MARK: - MISSION -
-        missionLabel.accessibilityLabel = launch.missionName
-        missionLabel.accessibilityHint = "mission"
+        // - DATE INFO -
+        dateInfoLabel.accessibilityHint = launch.date
         
-        // MARK: - DATE INFO -
-        dateInfoLabel.accessibilityLabel = launch.date
-        dateInfoLabel.accessibilityHint = "date info"
+        // - ROCKET -
+        rocketLabel.accessibilityValue = launch.rocket
         
-        // MARK: - ROCKET -
-        rocketLabel.accessibilityLabel = launch.rocket
-        rocketLabel.accessibilityHint = "rocket"
+        // - SITE -
+        siteNameLabel.accessibilityValue = launch.siteName
         
-        // MARK: - DAYS -
-        //        missionLabel.accessibilityLabel = launch.days
-        //        missionLabel.accessibilityHint = launch.daysDescription
+        // - LAUNCH STATUS -
+        rocketStatusLabel.accessibilityValue = launch.isLaunchSuccess ? Constants.successStatus.rawValue : Constants.failedstatus.rawValue
+        
+        // - LAUNCH STATUS -
+        moreDetailsLinkLabel.accessibilityValue = "Tap to enter the \(launch.missionName) details"
     }
 }
 
 // MARK: - UI -
 extension HomeLaunchSectionSuccessTableViewCell {
     private func setupComponents() {
-        accessibilityIdentifier = "HomeLaunchSuccessCellID"
         contentView.isAccessibilityElement = true
         contentView.accessibilityTraits = .selected
         contentView.addSubview(rocketImageView)

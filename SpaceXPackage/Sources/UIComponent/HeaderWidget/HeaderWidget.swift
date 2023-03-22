@@ -13,12 +13,13 @@ public class HeaderWidget: UIView {
     private lazy var headerDescription: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.accessibilityIdentifier = "HomeHeaderID"
         label.font = UIFont.preferredFont(forTextStyle: .headline)
         label.textColor = .white
+        label.isAccessibilityElement = true
         label.accessibilityTraits = .staticText
         label.adjustsFontForContentSizeCategory = true
         label.accessibilityIgnoresInvertColors = true
+        label.accessibilityLabel = "Section Header"
         return label
     }()
 
@@ -34,6 +35,7 @@ public class HeaderWidget: UIView {
     
     // MARK: - PUBLIC FUNCTIONS -
     public func setupHeaderDescription(text: String) {
+        setupAccessibility(headerTitle: text)
         headerDescription.text = text
     }
 }
@@ -44,6 +46,10 @@ extension HeaderWidget {
         backgroundColor = .black
         self.addSubview(headerDescription)
         self.activateHeaderConstraints()
+    }
+    
+    private func setupAccessibility(headerTitle: String) {
+        headerDescription.accessibilityValue = headerTitle
     }
 }
 

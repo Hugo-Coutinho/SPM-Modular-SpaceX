@@ -30,12 +30,12 @@ public class CompanyWidget: UIView {
         label.translatesAutoresizingMaskIntoConstraints = false
         label.numberOfLines = 0
         label.textAlignment = .center
-        label.accessibilityIdentifier = "SpaceXInfoID"
         label.font = UIFont.preferredFont(forTextStyle: .body)
         label.isAccessibilityElement = true
         label.accessibilityTraits = .staticText
         label.adjustsFontForContentSizeCategory = true
         label.accessibilityIgnoresInvertColors = true
+        label.accessibilityLabel = "SpaceX Description"
         return label
     }()
     
@@ -105,6 +105,13 @@ extension CompanyWidget {
     }
 }
 
+// MARK: - APPLYING ACCESSIBILITY -
+extension CompanyWidget {
+    private func applyAccessibility(value: String) {
+        infoLabel.accessibilityValue = value
+    }
+}
+
 // MARK: - PRESENTER OUTPUT -
 extension CompanyWidget: CompanyPresenterOutput {
     public func handleSuccess(domain: CompanyDomain) {
@@ -112,6 +119,7 @@ extension CompanyWidget: CompanyPresenterOutput {
             guard let self = self else { return }
             self.infoLabel.text = domain.info
             self.setupSuccessScene()
+            self.applyAccessibility(value: domain.info)
         }
     }
     

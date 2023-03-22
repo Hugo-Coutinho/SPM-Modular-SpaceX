@@ -18,9 +18,12 @@ class BannerView: UIView {
         label.textColor = .black
         label.backgroundColor = .white.withAlphaComponent(0.5)
         label.numberOfLines = 0
+        label.setContentHuggingPriority(.defaultHigh, for: .vertical)
         label.adjustsFontForContentSizeCategory = true
         label.isAccessibilityElement = true
-        label.setContentHuggingPriority(.defaultHigh, for: .vertical)
+        label.accessibilityIgnoresInvertColors = true
+        label.accessibilityTraits = .button
+        label.accessibilityLabel = "Banner Title"
         return label
     }()
     
@@ -30,6 +33,9 @@ class BannerView: UIView {
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.layer.cornerRadius = 20
         imageView.layer.masksToBounds = true
+        imageView.isAccessibilityElement = true
+        imageView.accessibilityTraits = .image
+        imageView.accessibilityLabel = "Rocket Launching"
         return imageView
     }()
     
@@ -42,9 +48,10 @@ class BannerView: UIView {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-
+    
     // MARK: - PUBLIC FUNCTIONS -
     func setupBanner(domain: BannerDomain) {
+        applyAccessibility(value: domain.title)
         Nuke.loadImage(with: domain.imageURL, into: bannerImageView)
         bannerTitle.text = domain.title
     }
@@ -70,4 +77,9 @@ extension BannerView {
     }
 }
 
-
+// MARK: - APPLYING ACCESSIBILITY -
+extension BannerView {
+    private func applyAccessibility(value: String) {
+        bannerTitle.accessibilityValue = value
+    }
+}

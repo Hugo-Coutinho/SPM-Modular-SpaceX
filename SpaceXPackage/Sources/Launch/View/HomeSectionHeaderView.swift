@@ -14,12 +14,13 @@ class HomeSectionHeaderView: UITableViewHeaderFooterView {
     private lazy var headerLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.accessibilityIdentifier = "HomeHeaderID"
         label.font = UIFont.preferredFont(forTextStyle: .headline)
         label.textColor = .white
         label.accessibilityTraits = .staticText
+        label.isAccessibilityElement = true
         label.adjustsFontForContentSizeCategory = true
         label.accessibilityIgnoresInvertColors = true
+        label.accessibilityLabel = "Section Title"
         return label
     }()
 
@@ -36,7 +37,7 @@ class HomeSectionHeaderView: UITableViewHeaderFooterView {
 
     // MARK: - PUBLIC FUNCTIONS -
     func setupHeaderDescription(text: String) {
-        setupAccessibilities(text: text)
+        applyAccessibility(value: text)
         headerLabel.text = text
     }
 }
@@ -50,11 +51,10 @@ extension HomeSectionHeaderView {
     }
 }
 
-// MARK: - CONFIGURING CELL ACCESSIBILITY -
+// MARK: - APPLYING ACCESSIBILITY -
 extension HomeSectionHeaderView {
-    private func setupAccessibilities(text: String) {
-        accessibilityIdentifier = "HomeHeaderViewID"
-        accessibilityLabel = text
+    private func applyAccessibility(value: String) {
+        headerLabel.accessibilityValue = value
     }
 }
 

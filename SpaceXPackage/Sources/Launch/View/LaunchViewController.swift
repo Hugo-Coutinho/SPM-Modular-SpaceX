@@ -21,7 +21,9 @@ public class LaunchViewController: TableViewController {
             Constant.Launch.ScopeButtons.asc.name,
             Constant.Launch.ScopeButtons.desc.name
         ]
-        searchController.searchBar.searchTextField.accessibilityLabel = "homeSearchBarLabel"
+        searchController.isAccessibilityElement = true
+        searchController.accessibilityTraits = .searchField
+        searchController.accessibilityLabel = Constant.Launch.searchBarPlaceHolder
         return searchController
     }()
 

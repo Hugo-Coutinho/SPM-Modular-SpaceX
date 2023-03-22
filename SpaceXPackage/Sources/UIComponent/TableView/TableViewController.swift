@@ -20,8 +20,6 @@ open class TableViewController: UIViewController {
         tableView.tableFooterView = UIView(frame: .zero)
         tableView.bounces = false
         tableView.separatorStyle = .singleLine
-        tableView.accessibilityIdentifier = "tableViewControllerID"
-        tableView.accessibilityLabel = "tableViewControllerID"
         return tableView
     }()
 

@@ -18,7 +18,7 @@ public struct Constant {
     
     public struct Launch {
         public static let launchTitle = "SpaceX"
-        public static let searchBarPlaceHolder = "Search launches"
+        public static let searchBarPlaceHolder = "Search launches by year"
         public static let searchBarScopeASCButton = "ASC"
         public static let searchBarScopeDESCButton = "DESC"
         
