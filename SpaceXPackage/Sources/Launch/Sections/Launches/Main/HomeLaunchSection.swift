@@ -25,9 +25,6 @@ public final class HomeLaunchSection: Section {
     private var launch: HomeLaunchSectionDomain!
     private lazy var isLastPage: Bool = false
     private var currentScopeButton = Constant.Launch.ScopeButtons.asc
-    
-    // MARK: - CONSTANT -
-    private let homeLaunchSection = "LAUNCHES"
 
     // MARK: - CONSTRUCTORS -
     public override init() {
@@ -168,7 +165,7 @@ extension HomeLaunchSection: TableSectionHeaderInput {
 
     public func willDisplayHeader(_ headerView: UIView) {
         guard let headerView = headerView as? HomeSectionHeaderView else { return }
-        headerView.setupHeaderDescription(text: homeLaunchSection)
+        headerView.setupHeaderDescription(text: launchType.longTitle)
     }
 
     public func shouldDisplayHeader() -> Bool {

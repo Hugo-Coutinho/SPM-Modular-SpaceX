@@ -83,4 +83,27 @@ class DateHelperTests: XCTestCase {
         XCTAssertNotNil(date)
         XCTAssertEqual(helper.fromDateToUTC(date: date!), expected)
     }
+    
+    func test_shouldReturn_numberOfDaysNegative() {
+        // GIVEN
+        let expected = false
+        let mockDate = "2018-04-10T04:00:00.000Z"
+        let date = helper.fromUTCToDate(dateString: mockDate)
+
+        // THEN
+        XCTAssertNotNil(date)
+        XCTAssertEqual(helper.isUpcomingDate(launchDate: date!), expected)
+    }
+    
+    func test_shouldReturn_numberOfDaysPositive() {
+        // GIVEN
+        let expected = true
+        let mockDate = "2050-04-10T04:00:00.000Z"
+        let date = helper.fromUTCToDate(dateString: mockDate)
+
+        // THEN
+        XCTAssertNotNil(date)
+        XCTAssertEqual(helper.isUpcomingDate(launchDate: date!), expected)
+    }
+
 }

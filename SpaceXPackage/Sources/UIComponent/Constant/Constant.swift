@@ -11,9 +11,6 @@ import Foundation
 public struct Constant {
     public struct Home {
         public static let homeTitle = "Home"
-        public static let upcomingLaunchBannerTitle = "Upcoming Launches"
-        public static let pastLaunchBannerTitle = "Past Launches"
-        public static let allLaunchBannerTitle = "All Launches"
     }
     
     public struct Launch {

@@ -146,6 +146,7 @@ class HomeLaunchSectionSuccessTableViewCell: UITableViewCell {
     // MARK: - SETUP -
     func setup(launch: LaunchDomain) {
         applyAccessibility(launch: launch)
+        rocketStatusVisibility(isHidden: launch.isUpcomingLaunch)
         Nuke.loadImage(with: launch.imageURL, into: rocketImageView)
         rocketStatusIconImageview.image = UIImage(systemName: launch.isLaunchSuccess ? "checkmark.circle" : "xmark.circle.fill")?.withRenderingMode(.alwaysTemplate)
         missionLabel.text = launch.missionName
@@ -215,6 +216,11 @@ extension HomeLaunchSectionSuccessTableViewCell {
         activateRocketStatusIconConstraints()
         activateRocketStatusConstraints()
         activateMoreConstraints()
+    }
+    
+    private func rocketStatusVisibility(isHidden: Bool) {
+        rocketStatusLabel.isHidden = isHidden
+        rocketStatusIconImageview.isHidden = isHidden
     }
 }
 

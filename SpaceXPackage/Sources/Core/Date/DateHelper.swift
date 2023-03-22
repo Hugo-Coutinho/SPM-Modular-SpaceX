@@ -66,4 +66,8 @@ public struct DateHelper {
 
             return dateFormatter.string(from: date)
     }
+    
+    public func isUpcomingDate(launchDate: Date) -> Bool {
+        return numberOfDaysBetween(launchDate, and: Date()) < -1
+    }
 }

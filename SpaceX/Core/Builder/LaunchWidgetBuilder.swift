@@ -8,6 +8,7 @@
 import UIKit
 import UIComponent
 import Network
+import Launch
 
 public final class LaunchWidgetBuilder {
     
@@ -19,9 +20,9 @@ public final class LaunchWidgetBuilder {
               let pastLaunchImageURL = URL(string: APIConstant.pastImageUrlString),
               let allLaunchImageURL = URL(string: APIConstant.allImageUrlString) else { return nil }
         let launchWidget = LaunchWidget()
-        let upcomingLaunchDomain = BannerDomain(imageURL: upcomingLaunchImageURL, title: Constant.Home.upcomingLaunchBannerTitle)
-        let pastLaunchDomain = BannerDomain(imageURL: pastLaunchImageURL, title: Constant.Home.pastLaunchBannerTitle)
-        let allLaunchDomain = BannerDomain(imageURL: allLaunchImageURL, title: Constant.Home.allLaunchBannerTitle)
+        let upcomingLaunchDomain = BannerDomain(imageURL: upcomingLaunchImageURL, title: LaunchType.upcoming.longTitle)
+        let pastLaunchDomain = BannerDomain(imageURL: pastLaunchImageURL, title: LaunchType.past.longTitle)
+        let allLaunchDomain = BannerDomain(imageURL: allLaunchImageURL, title: LaunchType.all.longTitle)
         
         launchWidget.setupInfo(domain: domain,
                                upcomingLaunchDomain: upcomingLaunchDomain,

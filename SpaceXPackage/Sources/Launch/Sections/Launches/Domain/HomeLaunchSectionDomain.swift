@@ -43,6 +43,7 @@ extension HomeLaunchSectionDomain {
         return launches.compactMap({ (current) -> LaunchDomain? in
             guard let missionName = current.missionName,
                   let launchDateString = current.launchDate,
+                  let launchDate = dateHelper.fromUTCToDate(dateString: launchDateString),
                   let site = current.site,
                   let siteName = site.siteName,
                   let year = current.launchYear,
@@ -63,6 +64,7 @@ extension HomeLaunchSectionDomain {
                                 launchYear: year,
                                 siteName: getSiteNameFormatted(site: siteName),
                                 isLaunchSuccess: isLaunchSuccess,
+                                isUpcomingLaunch: dateHelper.isUpcomingDate(launchDate: launchDate),
                                 imageURL: imageURL,
                                 articleURL: articleURL)
         })
@@ -104,7 +106,7 @@ extension HomeLaunchSectionDomain {
 // MARK: - LAUNCH ITEM -
 public struct LaunchDomain {
     public let missionName, date, rocket, launchYear, siteName: String
-    public let isLaunchSuccess: Bool
+    public let isLaunchSuccess, isUpcomingLaunch: Bool
     public let imageURL, articleURL: URL
 }
 
@@ -112,4 +114,15 @@ public typealias LaunchDomainItems = [LaunchDomain]
 
 public enum LaunchType {
     case upcoming, past, all
+    
+    public var longTitle: String {
+        switch self {
+        case .upcoming:
+            return "Upcoming Launches"
+        case .past:
+            return "Past Launches"
+        case .all:
+            return "All Launches"
+        }
+    }
 }
