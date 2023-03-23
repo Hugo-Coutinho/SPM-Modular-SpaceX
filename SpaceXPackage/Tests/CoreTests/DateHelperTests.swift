@@ -20,6 +20,7 @@ class DateHelperTests: XCTestCase {
         super.setUp()
         helper = DateHelper()
     }
+    
     func test_shouldReturn_stringDate() {
         // GIVEN
         let expectedDate = helper.fromUTCToDate(dateString: "2018-04-10T04:00:00.000Z")
@@ -68,7 +69,7 @@ class DateHelperTests: XCTestCase {
 
     func test_shouldReturn_UTCDayFormatted() {
         // GIVEN
-        let expected = "2018/04/10 - 5:00 AM"
+        let expected = "2018/04/10"
 
         // THEN
         XCTAssertEqual(helper.getUTCDayFormatted(dateString: "2018-04-10T04:00:00.000Z"), expected)

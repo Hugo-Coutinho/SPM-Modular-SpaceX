@@ -41,7 +41,7 @@ public struct DateHelper {
             return ""
         }
 
-        dateFormatter.dateFormat = "yyyy/MM/dd - h:mm a"
+        dateFormatter.dateFormat = "yyyy/MM/dd"
         dateFormatter.timeZone = TimeZone.current
         return dateFormatter.string(from: date)
     }

@@ -31,7 +31,7 @@ class HomeLaunchSectionDomainTests: XCTestCase {
 
     func test_shouldMatchDate() {
         // 1. GIVEN
-        let expected = "2006/03/24 - 10:30 PM"
+        let expected = "2006/03/24"
 
         // 2. WHEN
 
