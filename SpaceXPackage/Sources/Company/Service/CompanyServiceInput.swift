@@ -17,4 +17,3 @@ public protocol CompanyServiceInput: AnyObject {
     // MARK: - INPUT METHODS -
     func getInfo(completionHandler: @escaping (Data?) -> Void)
 }
-

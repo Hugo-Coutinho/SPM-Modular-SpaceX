@@ -28,11 +28,9 @@ public class HeaderWidget: UIView {
         super.init(frame: frame)
         setupView()
     }
-    
     public required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
     // MARK: - PUBLIC FUNCTIONS -
     public func setupHeaderDescription(text: String) {
         setupAccessibility(headerTitle: text)
@@ -47,7 +45,6 @@ extension HeaderWidget {
         self.addSubview(headerDescription)
         self.activateHeaderConstraints()
     }
-    
     private func setupAccessibility(headerTitle: String) {
         headerDescription.accessibilityValue = headerTitle
     }
@@ -60,7 +57,7 @@ extension HeaderWidget {
             headerDescription.topAnchor.constraint(equalTo: topAnchor),
             headerDescription.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 8),
             headerDescription.trailingAnchor.constraint(equalTo: trailingAnchor),
-            headerDescription.bottomAnchor.constraint(equalTo: bottomAnchor),
+            headerDescription.bottomAnchor.constraint(equalTo: bottomAnchor)
         ])
     }
 }

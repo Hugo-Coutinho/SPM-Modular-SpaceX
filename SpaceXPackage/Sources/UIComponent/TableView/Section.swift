@@ -19,4 +19,3 @@ public enum SectionsScenes {
     case sceneError
     case sceneSuccess
 }
-

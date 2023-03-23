@@ -12,7 +12,7 @@ import Network
 public final class HomeLaunchSectionBuilder: HomeLaunchSectionBuilderInput {
 
     // MARK: - CONSTRUCTOR -
-    public init(){}
+    public init() {}
 
     public func make(with type: LaunchType = .all,
                      output: HomeLaunchSectionOutput) -> HomeLaunchSection {
@@ -41,4 +41,3 @@ extension HomeLaunchSectionBuilder {
         return presenter
     }
 }
-

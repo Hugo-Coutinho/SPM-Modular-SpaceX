@@ -30,4 +30,3 @@ extension HomeCompanySectionBuilderSpy {
         return presenter
     }
 }
-

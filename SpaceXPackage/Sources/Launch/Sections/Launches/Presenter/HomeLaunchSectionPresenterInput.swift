@@ -24,4 +24,3 @@ public protocol HomeLaunchSectionPresenterOutput: AnyObject {
     func handleSuccess(domain: HomeLaunchSectionDomain)
     func removeSection()
 }
-

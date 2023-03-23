@@ -11,13 +11,13 @@ import Launch
 
 class HomeLaunchSectionInteractorTests: XCTestCase {
 
-    //MARK: - DECLARATIONS -
+    // MARK: - DECLARATIONS -
     private var launchEntity: LaunchEntity?
     private var launchEntityResult: LaunchEntity?
     private var isLaunchError: Bool = false
     private var expectedMissionName: String = "Falconzin Sat"
 
-    //MARK: - OVERRIDE TESTS FUNCTIONS -
+    // MARK: - OVERRIDE TESTS FUNCTIONS -
     override func setUp() {
         super.setUp()
         self.launchEntity = LaunchEntity(missionName: expectedMissionName)

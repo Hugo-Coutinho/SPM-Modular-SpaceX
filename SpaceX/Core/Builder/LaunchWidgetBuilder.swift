@@ -11,10 +11,10 @@ import Network
 import Launch
 
 public final class LaunchWidgetBuilder {
-    
+
     // MARK: - CONSTRUCTOR -
-    public init(){}
-    
+    public init() {}
+
     public func make(domain: LaunchWidgetDomain) -> LaunchWidget? {
         guard let upcomingLaunchImageURL = URL(string: APIConstant.upcomingImageUrlString),
               let pastLaunchImageURL = URL(string: APIConstant.pastImageUrlString),
@@ -23,7 +23,6 @@ public final class LaunchWidgetBuilder {
         let upcomingLaunchDomain = BannerDomain(imageURL: upcomingLaunchImageURL, title: LaunchType.upcoming.longTitle)
         let pastLaunchDomain = BannerDomain(imageURL: pastLaunchImageURL, title: LaunchType.past.longTitle)
         let allLaunchDomain = BannerDomain(imageURL: allLaunchImageURL, title: LaunchType.all.longTitle)
-        
         launchWidget.setupInfo(domain: domain,
                                upcomingLaunchDomain: upcomingLaunchDomain,
                                pastLaunchDomain: pastLaunchDomain,

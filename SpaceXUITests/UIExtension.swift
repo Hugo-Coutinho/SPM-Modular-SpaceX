@@ -9,29 +9,29 @@ import KIF
 @testable import SpaceX
 
 extension XCTestCase {
-    func setRootViewController(_ vc: UIViewController) {
+    func setRootViewController(_ viewController: UIViewController) {
         UIApplication.shared.windows.first?.rootViewController?.dismiss(animated: false, completion: {
-            self.tester().wait(forTimeInterval: 10.0)
-            UIApplication.shared.windows.first?.rootViewController = vc
+            self.tester().wait(forTimeInterval: 5.0)
+            UIApplication.shared.windows.first?.rootViewController = viewController
             UIApplication.shared.windows.first?.makeKeyAndVisible()
         })
     }
-    
-    func tester(file : String = #file, _ line : Int = #line) -> KIFUITestActor {
+
+    func tester(file: String = #file, _ line: Int = #line) -> KIFUITestActor {
         return KIFUITestActor(inFile: file, atLine: line, delegate: self)
     }
 
-    func system(file : String = #file, _ line : Int = #line) -> KIFSystemTestActor {
+    func system(file: String = #file, _ line: Int = #line) -> KIFSystemTestActor {
         return KIFSystemTestActor(inFile: file, atLine: line, delegate: self)
     }
 }
 
 extension KIFTestActor {
-    func tester(file : String = #file, _ line : Int = #line) -> KIFUITestActor {
+    func tester(file: String = #file, _ line: Int = #line) -> KIFUITestActor {
         return KIFUITestActor(inFile: file, atLine: line, delegate: self)
     }
 
-    func system(file : String = #file, _ line : Int = #line) -> KIFSystemTestActor {
+    func system(file: String = #file, _ line: Int = #line) -> KIFSystemTestActor {
         return KIFSystemTestActor(inFile: file, atLine: line, delegate: self)
     }
 }

@@ -49,15 +49,14 @@ extension HomeLaunchSectionDomain {
                   let year = current.launchYear,
                   let rocket = current.rocket,
                   let rocketName = rocket.rocketName,
-                  let RocketType = rocket.rocketType,
+                  let rocketType = rocket.rocketType,
                   let link = current.links,
                   let patch = link.missionPatch,
                   let imageURL = URL(string: patch),
                   let articleURL = URL(string: link.articleUrl ?? APIConstant.spaceXHomeURLString) else { return nil }
             let isLaunchSuccess = current.launchSuccess ?? false
             let date = dateHelper.getUTCDayFormatted(dateString: launchDateString)
-            let rocketString = "\(rocketName) / \(RocketType)"
-
+            let rocketString = "\(rocketName) / \(rocketType)"
             return LaunchDomain(missionName: missionName,
                                 date: date,
                                 rocket: rocketString,
@@ -75,11 +74,9 @@ extension HomeLaunchSectionDomain {
         let totalDays = dateHelper.numberOfDaysBetween(launchDate, and: today)
         if totalDays > 0 {
             return "\(totalDays) days\n since now:"
-
         } else if totalDays == 0 {
             return "now"
-        }
-        else {
+        } else {
             return "\(abs(totalDays)) days\n from now:"
         }
     }
@@ -89,15 +86,13 @@ extension HomeLaunchSectionDomain {
         let totalDays = dateHelper.numberOfDaysBetween(launchDate, and: today)
         if totalDays > 0 {
             return "\(dateHelper.getDateString(date: today)) - \(dateHelper.getDateString(date: launchDate))"
-
         } else if totalDays == 0 {
             return "today"
-        }
-        else {
+        } else {
             return "\(dateHelper.getDateString(date: launchDate)) - \(dateHelper.getDateString(date: today))"
         }
     }
-    
+
     private func getSiteNameFormatted(site: String) -> String {
         return site.components(separatedBy: " ").prefix(3).joined(separator: " ")
     }
@@ -114,7 +109,6 @@ public typealias LaunchDomainItems = [LaunchDomain]
 
 public enum LaunchType {
     case upcoming, past, all
-    
     public var longTitle: String {
         switch self {
         case .upcoming:

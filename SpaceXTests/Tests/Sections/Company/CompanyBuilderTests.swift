@@ -36,7 +36,6 @@ class CompanyBuilderTests: XCTestCase {
         let interactorOutput = widget.presenter?.input.output
         let presenterOutput = widget.presenter?.output
 
-
         // 2. WHEN
 
         // 3. THEN

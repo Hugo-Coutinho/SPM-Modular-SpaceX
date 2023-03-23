@@ -11,8 +11,7 @@ import Launch
 import Network
 
 final class HomeLaunchSectionBuilderSpy: HomeLaunchSectionBuilderInput {
-    func make(with type: LaunchType = .all,
-                     output: HomeLaunchSectionOutput) -> HomeLaunchSection {
+    func make(with type: LaunchType = .all, output: HomeLaunchSectionOutput) -> HomeLaunchSection {
         let section = HomeLaunchSection()
         let presenter = makePresenter(with: type, section: section)
         section.launchType = type
@@ -38,4 +37,3 @@ extension HomeLaunchSectionBuilderSpy {
         return presenter
     }
 }
-

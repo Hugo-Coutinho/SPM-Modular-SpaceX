@@ -10,7 +10,6 @@ import Foundation
 import UIKit
 import UIComponent
 
-
 // MARK: - LAUNCH SECTION OUTPUT -
 public protocol HomeLaunchSectionOutput: SectionOutput {
     func openBrowserWith(articleLink: URL)
@@ -24,7 +23,7 @@ public final class HomeLaunchSection: Section {
     public var launchType: LaunchType!
     private var launch: HomeLaunchSectionDomain!
     private lazy var isLastPage: Bool = false
-    private var currentScopeButton = Constant.Launch.ScopeButtons.asc
+    private var currentScopeButton = Constant.ScopeButtons.asc
 
     // MARK: - CONSTRUCTORS -
     public override init() {
@@ -44,7 +43,7 @@ public final class HomeLaunchSection: Section {
 
     public func searchBar(searchBar: UISearchBar, selectedScopeButtonIndexDidChange selectedScope: Int) {
         switch selectedScope {
-        case Constant.Launch.ScopeButtons.asc.rawValue:
+        case Constant.ScopeButtons.asc.rawValue:
             currentScopeButton = .asc
             self.output?.reloadSection(section: self, animation: .automatic)
         default:
@@ -147,7 +146,6 @@ extension HomeLaunchSection: TableSectionCellInput {
         let launch = items[indexPath.row] as? LaunchDomain else { return }
         cell.setup(launch: launch)
     }
-    
     public func estimatedRowHeight() -> CGFloat {
         return 150
     }
@@ -174,7 +172,7 @@ extension HomeLaunchSection: TableSectionHeaderInput {
 }
 
 // MARK: - PRESENTER OUTPUT -
-extension HomeLaunchSection : HomeLaunchSectionPresenterOutput {
+extension HomeLaunchSection: HomeLaunchSectionPresenterOutput {
     public func handleSuccess(domain: HomeLaunchSectionDomain) {
         if self.items.first as? LaunchDomain  == nil && !self.items.isEmpty { self.items.removeFirst() }
         guard !domain.launches.isEmpty else { isLastPage = true; return }
@@ -189,5 +187,3 @@ extension HomeLaunchSection : HomeLaunchSectionPresenterOutput {
         self.output?.removeItem(from: 0, in: self, animation: .fade, completion: nil)
     }
 }
-
-

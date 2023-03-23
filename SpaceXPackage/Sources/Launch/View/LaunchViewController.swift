@@ -18,8 +18,8 @@ public class LaunchViewController: TableViewController {
         searchController.searchBar.showsScopeBar = true
         searchController.searchBar.placeholder = Constant.Launch.searchBarPlaceHolder
         searchController.searchBar.scopeButtonTitles = [
-            Constant.Launch.ScopeButtons.asc.name,
-            Constant.Launch.ScopeButtons.desc.name
+            Constant.ScopeButtons.asc.name,
+            Constant.ScopeButtons.desc.name
         ]
         searchController.isAccessibilityElement = true
         searchController.accessibilityTraits = .searchField
@@ -72,5 +72,3 @@ extension LaunchViewController: HomeLaunchSectionOutput {
         UIApplication.shared.open(articleLink, options: [:], completionHandler: nil)
     }
 }
-
-

@@ -11,12 +11,12 @@ import Company
 
 class CompanyInteractorTests: XCTestCase {
 
-    //MARK: - DECLARATIONS -
+    // MARK: - DECLARATIONS -
     var infoEntityResult: InfoEntity?
     var isCompanyError: Bool = false
     private var expectedFounder: String = "Elon Musk"
 
-    //MARK: - OVERRIDE TESTS FUNCTIONS -
+    // MARK: - OVERRIDE TESTS FUNCTIONS -
     override func tearDown() {
         super.tearDown()
         self.infoEntityResult = nil
@@ -102,4 +102,3 @@ extension CompanyInteractorTests {
         return CompanyInteractor(service: service)
     }
 }
-

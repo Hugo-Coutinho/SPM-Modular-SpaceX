@@ -32,5 +32,3 @@ import UIKit
     @objc optional func viewForHeaderInSection(tableView: UITableView) -> UIView?
     @objc optional func heightForHeaderInSection() -> CGFloat
 }
-
-

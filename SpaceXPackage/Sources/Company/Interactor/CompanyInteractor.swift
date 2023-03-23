@@ -18,7 +18,6 @@ public class CompanyInteractor: CompanyInteractorInput {
     public init(service: CompanyServiceInput) {
         self.service = service
     }
-    
     public func getInfo() {
         service.getInfo { [weak self] dataResult in
             guard let strongSelf = self else { return }
@@ -44,4 +43,3 @@ extension CompanyInteractor {
         }
     }
 }
-

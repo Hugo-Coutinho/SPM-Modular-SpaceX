@@ -35,5 +35,3 @@ extension CompanyPresenter: CompanyInteractorOutput {
         self.output?.removeSection()
     }
 }
-
-

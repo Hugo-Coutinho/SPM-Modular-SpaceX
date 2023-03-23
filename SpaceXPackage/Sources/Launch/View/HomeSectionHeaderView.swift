@@ -65,8 +65,7 @@ extension HomeSectionHeaderView {
             headerLabel.topAnchor.constraint(equalTo: topAnchor),
             headerLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 8),
             headerLabel.trailingAnchor.constraint(equalTo: trailingAnchor),
-            headerLabel.bottomAnchor.constraint(equalTo: bottomAnchor),
+            headerLabel.bottomAnchor.constraint(equalTo: bottomAnchor)
         ])
     }
 }
-

@@ -10,10 +10,10 @@ import Launch
 
 final class LaunchBuilderSpy: LaunchBuilderInput {
     func make(with type: LaunchType = .all) -> LaunchViewController {
-        let vc = LaunchViewController()
-        vc.homeSections = [
-            HomeLaunchSectionBuilderSpy().make(output: vc)
+        let launchViewController = LaunchViewController()
+        launchViewController.homeSections = [
+            HomeLaunchSectionBuilderSpy().make(output: launchViewController)
         ]
-        return vc
+        return launchViewController
     }
 }

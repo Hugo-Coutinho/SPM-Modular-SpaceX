@@ -32,5 +32,3 @@ extension HomeLaunchSectionServiceTests {
         return HomeLaunchSectionInteractor(service: service)
     }
 }
-
-

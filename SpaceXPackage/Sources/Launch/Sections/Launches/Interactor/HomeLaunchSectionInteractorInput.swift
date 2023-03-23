@@ -26,4 +26,3 @@ public protocol HomeLaunchSectionInteractorOutput: AnyObject {
     func handleSuccess(launches: Launches)
     func removeSection()
 }
-

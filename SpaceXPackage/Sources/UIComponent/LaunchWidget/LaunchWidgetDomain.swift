@@ -11,7 +11,7 @@ public struct LaunchWidgetDomain {
     public let didSelectUpcomingLaunches: () -> Void
     public let didSelectPastLaunches: () -> Void
     public let didSelectAllLaunches: () -> Void
-    
+
     public init(didSelectUpcomingLaunches: @escaping () -> Void,
                 didSelectPastLaunches: @escaping () -> Void,
                 didSelectAllLaunches: @escaping () -> Void) {

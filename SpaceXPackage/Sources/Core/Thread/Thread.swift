@@ -17,4 +17,3 @@ public func executeOnMainQueue(force: Bool = false, _ completion: @escaping () -
         })
     }
 }
-

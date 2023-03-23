@@ -11,19 +11,19 @@ import Company
 
 class CompanyPresenterTests: XCTestCase {
 
-    //MARK: - DECLARATIONS -
+    // MARK: - DECLARATIONS -
     var companyDomainResult: CompanyDomain?
     var isCompanyError: Bool = false
-    private var expectedInfo: String = "SpaceX was founded by Elon Musk in 2002.\n\n It has now 7000 employees, 3 Company sites, and is valued at USD $27500000000.00"
+    private var expectedInfo: String = ["SpaceX was founded by Elon Musk in 2002.\n\nIt has now 7000 employees, ",
+                                        "3 Company sites, and is valued at USD $27500000000.00"].joined()
 
-    //MARK: - OVERRIDE TESTS FUNCTIONS -
+    // MARK: - OVERRIDE TESTS FUNCTIONS -
     override func tearDown() {
         super.tearDown()
         self.companyDomainResult = nil
         self.isCompanyError = false
         self.expectedInfo = ""
     }
-
 
     func test_outputNotRetained() {
         // 1. GIVEN
@@ -109,5 +109,3 @@ extension CompanyPresenterTests {
         return sut
     }
 }
-
-

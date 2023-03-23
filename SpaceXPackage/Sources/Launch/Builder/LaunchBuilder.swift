@@ -9,13 +9,13 @@ import UIKit
 
 public final class LaunchBuilder: LaunchBuilderInput {
     // MARK: - CONSTRUCTOR -
-    public init(){}
+    public init() {}
 
     public func make(with type: LaunchType) -> LaunchViewController {
-        let vc = LaunchViewController()
-        vc.homeSections = [
-            HomeLaunchSectionBuilder().make(with: type, output: vc)
+        let launchViewController = LaunchViewController()
+        launchViewController.homeSections = [
+            HomeLaunchSectionBuilder().make(with: type, output: launchViewController)
         ]
-        return vc
+        return launchViewController
     }
 }

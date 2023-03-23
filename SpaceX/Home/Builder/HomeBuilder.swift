@@ -9,7 +9,7 @@ import UIKit
 
 public final class HomeBuilder: HomeBuilderInput {
     // MARK: - CONSTRUCTOR -
-    public init(){}
+    public init() {}
 
     public func make() -> UIViewController {
         return HomeViewController()

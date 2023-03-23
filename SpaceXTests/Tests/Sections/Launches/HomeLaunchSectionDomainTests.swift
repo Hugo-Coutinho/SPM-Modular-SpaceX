@@ -15,8 +15,7 @@ class HomeLaunchSectionDomainTests: XCTestCase {
     private lazy var dateHelper = DateHelper()
     private var sut: HomeLaunchSectionDomain?
     private var presenter: HomeLaunchSectionPresenterInput?
-    
-    //MARK: - OVERRIDE TESTS FUNCTIONS -
+    // MARK: - OVERRIDE TESTS FUNCTIONS -
     override func setUp() {
         super.setUp()
         self.presenter = makeSUT()
@@ -89,7 +88,6 @@ class HomeLaunchSectionDomainTests: XCTestCase {
         let fourthFifthItemExpected = "2008"
         let sixthItemExpected = "2009"
 
-
         // 2. WHEN
         sut?.getLaunchesAscendingOrder()
 
@@ -121,7 +119,6 @@ class HomeLaunchSectionDomainTests: XCTestCase {
         XCTAssertEqual(sut?.launches[2].launchYear, secondThirdItemsExpected)
         XCTAssertEqual(sut?.launches[3].launchYear, fourthItemExpected)
     }
-    
     func test_shouldFormatteSite() {
         let expected = "Kwajalein Atoll Omelek"
 
@@ -136,7 +133,6 @@ extension HomeLaunchSectionDomainTests: HomeLaunchSectionPresenterOutput {
     func handleSuccess(domain: Launch.HomeLaunchSectionDomain) {
         sut = domain
     }
-    
     func removeSection() {
         sut = nil
     }
@@ -154,4 +150,3 @@ extension HomeLaunchSectionDomainTests {
         return presenter
     }
 }
-

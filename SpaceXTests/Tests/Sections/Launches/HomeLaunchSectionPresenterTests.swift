@@ -11,19 +11,18 @@ import Launch
 
 class HomeLaunchSectionPresenterTests: XCTestCase {
 
-    //MARK: - DECLARATIONS -
+    // MARK: - DECLARATIONS -
     var launchDomainResult: HomeLaunchSectionDomain?
     var isLaunchError: Bool = false
     private var expectedMissionName: String = "Falconzin Sat"
 
-    //MARK: - OVERRIDE TESTS FUNCTIONS -
+    // MARK: - OVERRIDE TESTS FUNCTIONS -
     override func tearDown() {
         super.tearDown()
         self.launchDomainResult = nil
         self.isLaunchError = false
         self.expectedMissionName = ""
     }
-
 
     func test_outputNotRetained() {
         // 1. GIVEN
@@ -109,4 +108,3 @@ extension HomeLaunchSectionPresenterTests {
         return sut
     }
 }
-

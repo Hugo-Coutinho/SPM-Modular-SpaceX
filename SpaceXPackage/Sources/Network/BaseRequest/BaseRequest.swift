@@ -9,10 +9,9 @@
 import Foundation
 
 public class BaseRequest: BaseRequestInput {
-    
     // MARK: - INIT -
     public init() {}
-    
+
     // MARK: - EXPOSED METHODS -
     public func doRequest(urlString: String, completionHandler: @escaping (Data?) -> Void) {
         guard let urlComponents = URLComponents(string: urlString),
@@ -28,4 +27,3 @@ public class BaseRequest: BaseRequestInput {
         }.resume()
     }
 }
-

@@ -36,5 +36,3 @@ extension HomeLaunchSectionPresenter: HomeLaunchSectionInteractorOutput {
         self.output?.removeSection()
     }
 }
-
-

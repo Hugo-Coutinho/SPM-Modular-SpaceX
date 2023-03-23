@@ -10,4 +10,3 @@ import UIKit
 public protocol CompanyBuilderInput {
     func make() -> CompanyWidget
 }
-

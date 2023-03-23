@@ -8,7 +8,6 @@
 
 import Foundation
 
-
 // MARK: - Info -
 public struct CompanyDomain {
     public var info: String = ""
@@ -16,7 +15,9 @@ public struct CompanyDomain {
     public init() {}
 
     public init(info: InfoEntity) {
-        self.info = "\(info.name ?? "") was founded by \(info.founder ?? "") in \(info.founded ?? 0).\n\n It has now \(info.employees ?? 0) employees, \(info.launchSites ?? 0) Company sites, and is valued at USD \(String(format: "$%.02f", info.valuation ?? 0))"
+        let foundedInfo = "\(info.name ?? "") was founded by \(info.founder ?? "") in \(info.founded ?? 0).\n\n"
+        let employeeAndSite = "It has now \(info.employees ?? 0) employees, \(info.launchSites ?? 0) Company sites,"
+        let valuation = " and is valued at USD \(String(format: "$%.02f", info.valuation ?? 0))"
+        self.info = foundedInfo + employeeAndSite + valuation
     }
 }
-

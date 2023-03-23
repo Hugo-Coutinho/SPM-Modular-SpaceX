@@ -13,7 +13,7 @@ import Network
 public final class CompanyBuilder: CompanyBuilderInput {
 
     // MARK: - CONSTRUCTOR -
-    public init(){}
+    public init() {}
 
     public func make() -> CompanyWidget {
         let widget = CompanyWidget()
@@ -36,4 +36,3 @@ extension CompanyBuilder {
         return presenter
     }
 }
-

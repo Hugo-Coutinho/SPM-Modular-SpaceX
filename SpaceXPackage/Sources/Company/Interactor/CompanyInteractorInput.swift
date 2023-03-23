@@ -21,9 +21,7 @@ public protocol CompanyInteractorInput: AnyObject {
 
 // MARK: - INTERACTOR OUTPUT PROTOCOL -
 public protocol CompanyInteractorOutput: AnyObject {
-
     // MARK: - OUTPUT METHODS -
     func handleSuccess(info: InfoEntity)
     func removeSection()
 }
-

@@ -9,20 +9,18 @@
 import Foundation
 
 public struct DateHelper {
-    
     public init() {}
-    
     public func getDateString(date: Date) -> String {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "YYYY/MM/dd"
         return dateFormatter.string(from: date)
     }
 
-    public func numberOfDaysBetween(_ from: Date, and to: Date) -> Int {
+    public func numberOfDaysBetween(_ from: Date, and toDate: Date) -> Int {
         let calendar = Calendar.current
 
         let date1 = calendar.startOfDay(for: from)
-        let date2 = calendar.startOfDay(for: to)
+        let date2 = calendar.startOfDay(for: toDate)
 
         let components = calendar.dateComponents([.day], from: date1, to: date2)
         return components.day ?? 0
@@ -66,7 +64,6 @@ public struct DateHelper {
 
             return dateFormatter.string(from: date)
     }
-    
     public func isUpcomingDate(launchDate: Date) -> Bool {
         return numberOfDaysBetween(launchDate, and: Date()) < -1
     }

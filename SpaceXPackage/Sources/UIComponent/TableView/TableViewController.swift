@@ -25,7 +25,7 @@ open class TableViewController: UIViewController {
 
     public var sections: [Section] = []
 
-    //MARK: - Life Cycle
+    // MARK: - Life Cycle
     public override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .systemBackground
@@ -59,7 +59,7 @@ open class TableViewController: UIViewController {
     }
 }
 
-//MARK: - constraints -
+// MARK: - constraints -
 extension TableViewController {
     private func setupConstraints() {
         view.addSubview(tableView)
@@ -67,12 +67,12 @@ extension TableViewController {
             tableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
             tableView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
             tableView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
-            tableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
+            tableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
         ])
     }
 }
 
-//MARK: - UITableViewDelegate
+// MARK: - UITableViewDelegate
 extension TableViewController: UITableViewDelegate {
     public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         guard let cell = tableView.cellForRow(at: indexPath) else { return }
@@ -80,7 +80,7 @@ extension TableViewController: UITableViewDelegate {
     }
 }
 
-//MARK: - UITableViewDataSource
+// MARK: - UITableViewDataSource
 extension TableViewController: UITableViewDataSource {
 
     public func numberOfSections(in tableView: UITableView) -> Int {
@@ -95,12 +95,12 @@ extension TableViewController: UITableViewDataSource {
 
         let section = sections[indexPath.section]
 
-        let identifier = (section as? TableSectionCellInput)?.cell(for: indexPath).defaultReuseIdentifier ?? UITableViewCell.defaultReuseIdentifier
+        let identifier = (section as? TableSectionCellInput)?
+            .cell(for: indexPath).defaultReuseIdentifier ?? UITableViewCell.defaultReuseIdentifier
 
         registerCell(section, at: indexPath)
 
-
-        let cell = tableView.dequeueReusableCell(withIdentifier:identifier, for:indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: identifier, for: indexPath)
 
         cell.clipsToBounds = true
         cell.selectionStyle = .none
@@ -110,10 +110,10 @@ extension TableViewController: UITableViewDataSource {
         return cell
     }
 
-
     public func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
 
-        guard let height = (sections[indexPath.section] as? TableSectionCellInput)?.heightForRowInSection?(indexPath: indexPath) else {
+        guard let height = (sections[indexPath.section] as? TableSectionCellInput)?
+            .heightForRowInSection?(indexPath: indexPath) else {
             return UITableView.automaticDimension
         }
         return height
@@ -128,7 +128,8 @@ extension TableViewController: UITableViewDataSource {
 
     public func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
         let section = sections[section]
-        guard let sectionHeader = section as? TableSectionHeaderInput, sectionHeader.shouldDisplayHeader() else { return }
+        guard let sectionHeader = section as? TableSectionHeaderInput,
+                sectionHeader.shouldDisplayHeader() else { return }
         sectionHeader.willDisplayHeader?(view)
     }
 
@@ -138,8 +139,9 @@ extension TableViewController: UITableViewDataSource {
         registerHeader(section)
 
         guard let sectionHeader = section as? TableSectionHeaderInput, sectionHeader.shouldDisplayHeader(),
-            let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: sectionHeader.header().defaultReuseIdentifier) else
-        { return UIView(frame: CGRect.zero) }
+              let header = tableView.dequeueReusableHeaderFooterView(withIdentifier:
+                                                                        sectionHeader.header()
+                .defaultReuseIdentifier) else { return UIView(frame: CGRect.zero) }
 
         header.prepareForReuse()
 
@@ -147,24 +149,32 @@ extension TableViewController: UITableViewDataSource {
     }
 
     public func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        guard let height = (sections[section] as? TableSectionHeaderInput)?.heightForHeaderInSection?() else { return .leastNonzeroMagnitude }
+        guard let height = (sections[section] as? TableSectionHeaderInput)?.heightForHeaderInSection?()
+        else { return .leastNonzeroMagnitude }
         return height
     }
 }
 
-
-//MARK: - SectionOutput
+// MARK: - SectionOutput
 extension TableViewController: SectionOutput {
-    public func setSelectedCell(from index: Int, in section: Section, animated:Bool, scrollPosition:UITableView.ScrollPosition) {
+    public func setSelectedCell(from index: Int,
+                                in section: Section,
+                                animated: Bool,
+                                scrollPosition: UITableView.ScrollPosition) {
         executeOnMainQueue {
-            guard let indexOfSection = self.sections.firstIndex(of:section) else { return }
-            self.tableView.selectRow(at: IndexPath.init(row:index, section: indexOfSection), animated: animated, scrollPosition: scrollPosition)
+            guard let indexOfSection = self.sections.firstIndex(of: section)
+            else { return }
+            self.tableView.selectRow(at: IndexPath.init(row: index, section: indexOfSection),
+                                     animated: animated, scrollPosition: scrollPosition)
         }
     }
 
-    public func removeItem(from index: Int, in section: Section, animation:UITableView.RowAnimation, completion: (() -> Void)?) {
+    public func removeItem(from index: Int,
+                           in section: Section,
+                           animation: UITableView.RowAnimation,
+                           completion: (() -> Void)?) {
         self.runPerformBatchUpdates({
-            self.remove(from:index, in:section, with:animation)
+            self.remove(from: index, in: section, with: animation)
         }, completion: {
             completion?()
         })
@@ -172,15 +182,15 @@ extension TableViewController: SectionOutput {
 
     public func endRefreshing(error: String?) {  }
 
-    public func reloadSection(section: Section, animation:UITableView.RowAnimation) {
+    public func reloadSection(section: Section, animation: UITableView.RowAnimation) {
         self.reload(with: section, and: animation)
     }
 }
 
-//MARK: - HelpersfirstIndex
+// MARK: - HelpersfirstIndex
 extension TableViewController {
 
-    private func runPerformBatchUpdates(_ block: @escaping ()->(), completion:@escaping ()->Void) {
+    private func runPerformBatchUpdates(_ block: @escaping () -> Void, completion: @escaping () -> Void) {
 
         executeOnMainQueue {
 
@@ -216,22 +226,22 @@ extension TableViewController {
         }
     }
 
-    private func remove(from index: Int, in section:Section, with animation:UITableView.RowAnimation) {
+    private func remove(from index: Int, in section: Section, with animation: UITableView.RowAnimation) {
 
-        if let sectionIndex = self.sections.firstIndex(of:section), section.items.count > index {
-            section.items.remove(at:index)
-            let changed = [IndexPath.init(item:index, section:sectionIndex)]
-            self.tableView.deleteRows(at:changed, with:animation)
+        if let sectionIndex = self.sections.firstIndex(of: section), section.items.count > index {
+            section.items.remove(at: index)
+            let changed = [IndexPath.init(item: index, section: sectionIndex)]
+            self.tableView.deleteRows(at: changed, with: animation)
         }
     }
 
-    private func reload(with section:Section, and animation:UITableView.RowAnimation) {
+    private func reload(with section: Section, and animation: UITableView.RowAnimation) {
 
-        guard let sectionIndex = self.sections.lastIndex(of:section) else {
+        guard let sectionIndex = self.sections.lastIndex(of: section) else {
             return
         }
         executeOnMainQueue { [unowned self] in
-            self.tableView.reloadSections(IndexSet.init(integer:sectionIndex), with: animation)
+            self.tableView.reloadSections(IndexSet.init(integer: sectionIndex), with: animation)
             self.reloadWithoutAnimation()
         }
     }
@@ -244,9 +254,3 @@ extension TableViewController {
         self.tableView.setContentOffset(lastScrollOffset, animated: false)
     }
 }
-
-
-
-
-
-

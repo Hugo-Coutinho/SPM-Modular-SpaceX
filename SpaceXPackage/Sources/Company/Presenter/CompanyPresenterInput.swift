@@ -24,5 +24,3 @@ public protocol CompanyPresenterOutput: AnyObject {
     func handleSuccess(domain: CompanyDomain)
     func removeSection()
 }
-
-

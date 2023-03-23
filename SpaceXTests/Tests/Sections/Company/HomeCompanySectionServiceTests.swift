@@ -32,6 +32,3 @@ extension HomeCompanySectionServiceTests {
         return CompanyInteractor(service: service)
     }
 }
-
-
-

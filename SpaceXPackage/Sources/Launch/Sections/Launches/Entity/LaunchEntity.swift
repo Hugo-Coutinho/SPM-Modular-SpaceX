@@ -19,7 +19,7 @@ public struct LaunchEntity: Codable {
     public let links: Links?
     public let site: Site?
     public let launchSuccess: Bool?
-    
+
     public init(missionName: String? = nil,
                 launchDate: String? = nil,
                 launchYear: String? = nil,
@@ -35,7 +35,7 @@ public struct LaunchEntity: Codable {
         self.site = site
         self.launchSuccess = launchSuccess
     }
-    
+
     public enum CodingKeys: String, CodingKey {
         case missionName = "mission_name"
         case launchDate = "launch_date_utc"
