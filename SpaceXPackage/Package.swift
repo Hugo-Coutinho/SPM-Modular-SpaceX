@@ -42,7 +42,8 @@ let package = Package(
         .target(
             name: "UIComponent",
             dependencies: [
-                "Core"
+                "Core",
+                "Nuke"
             ]),
         .target(
             name: "Launch",

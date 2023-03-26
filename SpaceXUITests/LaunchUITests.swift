@@ -27,14 +27,14 @@ class SpaceXKifTests: BaseXCTestCase {
                                         isUpcomingLaunch: false,
                                         imageURL: URL(string: imageStringURL)!,
                                         articleURL: URL(string: imageStringURL)!))
-        activateTestConstraints(component: cell.contentView, componentHeight: 204)
-        assertSnapshotTest(named: "launchCellTest")
+        activateTestConstraints(component: cell.contentView, componentHeight: 172)
+        assertSnapshotTest(named: "launchCellTest", waitForTimeInteval: 5.0)
     }
     func test_companyWidget() {
         let widget = HomeCompanySectionBuilderSpy().make()
         widget.setupInfo()
         activateTestConstraints(component: widget, componentHeight: 204)
-        assertSnapshotTest(named: "CompanyWidgetTest")
+        assertSnapshotTest(named: "CompanyWidgetTest", waitForTimeInteval: 5.0)
     }
     func test_launchBannerWidget() {
         let domain = LaunchWidgetDomain(didSelectUpcomingLaunches: {},

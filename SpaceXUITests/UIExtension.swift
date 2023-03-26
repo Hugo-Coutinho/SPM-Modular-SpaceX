@@ -9,9 +9,9 @@ import KIF
 @testable import SpaceX
 
 extension XCTestCase {
-    func setRootViewController(_ viewController: UIViewController) {
+    func setRootViewController(_ viewController: UIViewController, waitForTimeInterval: CGFloat) {
         UIApplication.shared.windows.first?.rootViewController?.dismiss(animated: false, completion: {
-            self.tester().wait(forTimeInterval: 5.0)
+            self.tester().wait(forTimeInterval: waitForTimeInterval)
             UIApplication.shared.windows.first?.rootViewController = viewController
             UIApplication.shared.windows.first?.makeKeyAndVisible()
         })

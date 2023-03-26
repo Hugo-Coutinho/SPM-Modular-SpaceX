@@ -116,22 +116,6 @@ class HomeLaunchSectionSuccessTableViewCell: UITableViewCell {
         return label
     }()
 
-    private lazy var moreDetailsLinkLabel: UILabel = {
-        let label = UILabel()
-        label.text = "More"
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.numberOfLines = 0
-        label.font = UIFont.preferredFont(forTextStyle: .callout)
-        label.textColor = .link
-        label.textAlignment = .right
-        label.isAccessibilityElement = true
-        label.accessibilityTraits = .button
-        label.adjustsFontForContentSizeCategory = true
-        label.accessibilityIgnoresInvertColors = true
-        label.accessibilityLabel = "More"
-        return label
-    }()
-
     // MARK: - OVERRIDE -
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -183,15 +167,13 @@ extension HomeLaunchSectionSuccessTableViewCell {
         // - LAUNCH STATUS -
         rocketStatusLabel.accessibilityValue =
         launch.isLaunchSuccess ? Constants.successStatus.rawValue : Constants.failedstatus.rawValue
-
-        // - LAUNCH STATUS -
-        moreDetailsLinkLabel.accessibilityValue = "Tap to enter the \(launch.missionName) details"
     }
 }
 
 // MARK: - UI -
 extension HomeLaunchSectionSuccessTableViewCell {
     private func setupComponents() {
+        accessoryType = .disclosureIndicator
         contentView.isAccessibilityElement = true
         contentView.accessibilityTraits = .selected
         contentView.addSubview(rocketImageView)
@@ -204,7 +186,6 @@ extension HomeLaunchSectionSuccessTableViewCell {
         contentView.addSubview(siteNameLabel)
         contentView.addSubview(rocketStatusIconImageview)
         contentView.addSubview(rocketStatusLabel)
-        contentView.addSubview(moreDetailsLinkLabel)
         activateConstraints()
     }
 
@@ -219,7 +200,6 @@ extension HomeLaunchSectionSuccessTableViewCell {
         activateSiteNameConstraints()
         activateRocketStatusIconConstraints()
         activateRocketStatusConstraints()
-        activateMoreConstraints()
     }
 
     private func rocketStatusVisibility(isHidden: Bool) {
@@ -312,16 +292,8 @@ extension HomeLaunchSectionSuccessTableViewCell {
         NSLayoutConstraint.activate([
             rocketStatusLabel.topAnchor.constraint(equalTo: siteNameLabel.bottomAnchor, constant: 8),
             rocketStatusLabel.leadingAnchor.constraint(equalTo: rocketIconImageView.trailingAnchor, constant: 8),
-            rocketStatusLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor)
-        ])
-    }
-
-    private func activateMoreConstraints() {
-        NSLayoutConstraint.activate([
-            moreDetailsLinkLabel.topAnchor.constraint(equalTo: rocketStatusLabel.bottomAnchor, constant: 8),
-            moreDetailsLinkLabel.leadingAnchor.constraint(equalTo: rocketIconImageView.trailingAnchor, constant: 8),
-            moreDetailsLinkLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -8),
-            moreDetailsLinkLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -16)
+            rocketStatusLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
+            rocketStatusLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -16)
         ])
     }
 }

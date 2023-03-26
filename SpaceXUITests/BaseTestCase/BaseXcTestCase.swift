@@ -38,9 +38,15 @@ class BaseXCTestCase: XCTestCase {
         activateContentViewConstraints(height: contentViewHeight)
         activateComponentConstraints(component: component, componentHeight: componentHeight)
     }
-    func assertSnapshotTest(named: String, record: Bool = false) {
-        setRootViewController(UINavigationController(rootViewController: testRootViewController))
-        assertSnapshot(matching: testRootViewController, as: .image(on: .iPhone13), named: named, record: record)
+    func assertSnapshotTest(named: String,
+                            record: Bool = false,
+                            waitForTimeInteval: CGFloat = 0.0) {
+        setRootViewController(UINavigationController(rootViewController: testRootViewController),
+                              waitForTimeInterval: waitForTimeInteval)
+        assertSnapshot(matching: testRootViewController,
+                       as: .image(on: .iPhoneSe),
+                       record: record,
+                       testName: named)
     }
 }
 
