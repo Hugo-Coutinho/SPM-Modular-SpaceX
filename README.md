@@ -3,21 +3,21 @@
     <table>
         <tr>
             <td style="text-align: center">
-                    <img src="https://github.com/Hugo-Coutinho/SpaceX/blob/master/SpaceX/Core/Helper/readme%20gifs/filtering.gif?raw=true" width="200" height="350"/>
+                    <img src="https://github.com/Hugo-Coutinho/README-Assets/blob/master/SPM-Modular-SpaceX/filtering.gif?raw=true" width="200" height="350"/>
                 </a>
             </td>            
             <td style="text-align: center">
-                    <img src="https://github.com/Hugo-Coutinho/SpaceX/blob/master/SpaceX/Core/Helper/readme%20gifs/opening.gif?raw=true" width="200" height="350"/>
+                    <img src="https://github.com/Hugo-Coutinho/README-Assets/blob/master/SPM-Modular-SpaceX/opening.gif?raw=true" width="200" height="350"/>
                 </a>
             </td>            
             <td style="text-align: center">
-                    <img src="https://github.com/Hugo-Coutinho/SpaceX/blob/master/SpaceX/Core/Helper/readme%20gifs/scrolling.gif?raw=true" width="200" height="350"/>
+                    <img src="https://github.com/Hugo-Coutinho/README-Assets/blob/master/SPM-Modular-SpaceX/scrolling.gif?raw=true" width="200" height="350"/>
                 </a>
             </td>            
         </tr>
         <tr>         
             <td style="text-align: center">
-                    <img src="https://github.com/Hugo-Coutinho/SpaceX/blob/master/SpaceX/Core/Helper/readme%20gifs/sorting.gif?raw=true" width="200" height="350"/>
+                    <img src="https://github.com/Hugo-Coutinho/README-Assets/blob/master/SPM-Modular-SpaceX/sorting.gif?raw=true" width="200" height="350"/>
                 </a>
             </td>              
         </tr>
@@ -61,7 +61,7 @@ It’s possible that your .xcodeproj still contains a reference to the Pods fold
 Now that you are free of CocoaPods, you can open and use the .xcodeproj. With It opened, to add a package you have to select the option “Add Package Dependency” in File > Swift Packages, and paste the URL of your dependency’s git repository. For example: https://github.com/kean/Nuke
 
 <div align="center">
-<img src="https://github.com/Hugo-Coutinho/SPM-Modular-SpaceX/blob/master/SpaceX/Core/Helper/readme%20gifs/add_dependency.png?raw=true"/>
+<img src="https://github.com/Hugo-Coutinho/README-Assets/blob/master/SPM-Modular-SpaceX/add_dependency.png?raw=true"/>
 </div>
 
 ## Defining the libraries
@@ -73,7 +73,7 @@ Doing this way, allow us to build our features in insolation. So, using individu
 To create the package, go to File -> New -> Package, define the name and do not forget to select the target in the Add To: and Group: options
 
 <div align="center">
-<img src="https://github.com/Hugo-Coutinho/SPM-Modular-SpaceX/blob/master/SpaceX/Core/Helper/readme%20gifs/adding_package.png?raw=true"/>
+<img src="https://github.com/Hugo-Coutinho/README-Assets/blob/master/SPM-Modular-SpaceX/adding_package.png?raw=true"/>
 </div>
 
 After creating the package and adding the dependency packages that how the project navigation looks like:
@@ -87,7 +87,7 @@ Well, now inside the package you have a package file that you are gonna use to m
 The folder structure on the left is my modular SpaceX with CocoaPods, and on the right is with SPM. As you can see, what before each feature and kit modules were targets linked directly to SpaceX, now with SPM they become libraries with each of them having your own target as well. For this to work, you must have to put the “target” folders inside the Sources folder like in the image below.
 
 <div align="center">
-<img src="https://github.com/Hugo-Coutinho/SPM-Modular-SpaceX/blob/master/SpaceX/Core/Helper/readme%20gifs/comparing_structure_folders.png?raw=true"/>
+<img src="https://github.com/Hugo-Coutinho/README-Assets/blob/master/SPM-Modular-SpaceX/structure_folders_spm.png?raw=true"/>
 </div>
 
 Let’s take a peek inside of the package file. As you can see, that’s how I define the libraries and do not forget to put the target names the same as the folders shown in the previous image.
@@ -95,7 +95,7 @@ Let’s take a peek inside of the package file. As you can see, that’s how I d
 If your package has external dependencies like mine has with Nuke, just add it in the dependency Array specifying the GitHub url and the version number.
 
 <div align="center">
-<img src="https://github.com/Hugo-Coutinho/SPM-Modular-SpaceX/blob/master/SpaceX/Core/Helper/readme%20gifs/package_file.png?raw=true"/>
+<img src="https://github.com/Hugo-Coutinho/README-Assets/blob/master/SPM-Modular-SpaceX/package_file.png?raw=true"/>
 </div>
 
 Now to finish the package configuration, just create the targets for each folder that you put inside the source folder.
@@ -103,7 +103,7 @@ Now to finish the package configuration, just create the targets for each folder
 If your target depends on another target, you just have to define the dependency target name inside of the dependency array attribute. Launch depends on my others 2 targets and an external package “Nuke”, and you can see below how I declared as a dependency.
 
 <div align="center">
-<img src="https://github.com/Hugo-Coutinho/SPM-Modular-SpaceX/blob/master/SpaceX/Core/Helper/readme%20gifs/package_file2.png?raw=true"/>
+<img src="https://github.com/Hugo-Coutinho/README-Assets/blob/master/SPM-Modular-SpaceX/package_file2.png?raw=true"/>
 </div>
 
 ## Why Libraries and not multiple packages? 
