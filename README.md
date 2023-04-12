@@ -79,7 +79,7 @@ To create the package, go to File -> New -> Package, define the name and do not 
 After creating the package and adding the dependency packages that how the project navigation looks like:
 
 <div align="center">
-<img src="https://github.com/Hugo-Coutinho/SPM-Modular-SpaceX/blob/master/SpaceX/Core/Helper/readme%20gifs/structure_folders_spm.png?raw=true"/>
+<img src="https://github.com/Hugo-Coutinho/README-Assets/blob/master/SPM-Modular-SpaceX/structure_folders_spm.png?raw=true"/>
 </div>
 
 Well, now inside the package you have a package file that you are gonna use to manage the dependencies, create the libraries and targets, configure resources and much more.
@@ -87,7 +87,7 @@ Well, now inside the package you have a package file that you are gonna use to m
 The folder structure on the left is my modular SpaceX with CocoaPods, and on the right is with SPM. As you can see, what before each feature and kit modules were targets linked directly to SpaceX, now with SPM they become libraries with each of them having your own target as well. For this to work, you must have to put the “target” folders inside the Sources folder like in the image below.
 
 <div align="center">
-<img src="https://github.com/Hugo-Coutinho/README-Assets/blob/master/SPM-Modular-SpaceX/structure_folders_spm.png?raw=true"/>
+<img src="https://github.com/Hugo-Coutinho/README-Assets/blob/master/SPM-Modular-SpaceX/comparing_structure_folders.png?raw=true"/>
 </div>
 
 Let’s take a peek inside of the package file. As you can see, that’s how I define the libraries and do not forget to put the target names the same as the folders shown in the previous image.
