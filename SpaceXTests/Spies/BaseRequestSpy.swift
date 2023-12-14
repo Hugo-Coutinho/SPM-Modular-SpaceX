@@ -7,7 +7,7 @@
 //
 
 import Foundation
-import Network
+import HGNetworkLayer
 
 public class BaseRequestSuccessHandlerSpy: BaseRequestInput {
 

@@ -7,8 +7,9 @@
 
 import UIKit
 import UIComponent
-import Network
+import HGNetworkLayer
 import Launch
+import Core
 
 public final class LaunchWidgetBuilder {
 

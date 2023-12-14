@@ -45,6 +45,7 @@
 		9AF5619528E5F23A006F746B /* HomeBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AF5619328E5F23A006F746B /* HomeBuilder.swift */; };
 		9AF5619628E5F23A006F746B /* HomeBuilderInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AF5619428E5F23A006F746B /* HomeBuilderInput.swift */; };
 		A601CCE329CC53AD0086BC1C /* BaseXcTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = A601CCE229CC53AD0086BC1C /* BaseXcTestCase.swift */; };
+		A6A8ACAB2B2AFB9600DFB86F /* HGNetworkLayer in Frameworks */ = {isa = PBXBuildFile; productRef = A6A8ACAA2B2AFB9600DFB86F /* HGNetworkLayer */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -119,6 +120,7 @@
 			files = (
 				9AF5619028E5AD6E006F746B /* Company in Frameworks */,
 				9A2020D628A8164A00439E0D /* Launch in Frameworks */,
+				A6A8ACAB2B2AFB9600DFB86F /* HGNetworkLayer in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -364,6 +366,7 @@
 			packageProductDependencies = (
 				9A2020D528A8164A00439E0D /* Launch */,
 				9AF5618F28E5AD6E006F746B /* Company */,
+				A6A8ACAA2B2AFB9600DFB86F /* HGNetworkLayer */,
 			);
 			productName = SpaceX;
 			productReference = 098F8324277A3FF000E89652 /* SpaceX.app */;
@@ -467,6 +470,7 @@
 			packageReferences = (
 				9AB2749228A9B98600B7F614 /* XCRemoteSwiftPackageReference "KIF" */,
 				9AC4A60F28EB25390087C414 /* XCRemoteSwiftPackageReference "swift-snapshot-testing" */,
+				A6A8ACA92B2AFB9600DFB86F /* XCRemoteSwiftPackageReference "Network-Layer-Framework" */,
 			);
 			productRefGroup = 098F8325277A3FF000E89652 /* Products */;
 			projectDirPath = "";
@@ -687,7 +691,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -742,7 +746,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -767,6 +771,7 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -795,6 +800,7 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -994,6 +1000,14 @@
 				minimumVersion = 1.0.0;
 			};
 		};
+		A6A8ACA92B2AFB9600DFB86F /* XCRemoteSwiftPackageReference "Network-Layer-Framework" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Hugo-Coutinho/Network-Layer-Framework.git";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -1014,6 +1028,11 @@
 		9AF5618F28E5AD6E006F746B /* Company */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = Company;
+		};
+		A6A8ACAA2B2AFB9600DFB86F /* HGNetworkLayer */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A6A8ACA92B2AFB9600DFB86F /* XCRemoteSwiftPackageReference "Network-Layer-Framework" */;
+			productName = HGNetworkLayer;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

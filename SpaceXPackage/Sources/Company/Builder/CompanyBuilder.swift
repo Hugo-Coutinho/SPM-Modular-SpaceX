@@ -8,7 +8,7 @@
 
 import UIKit
 import UIComponent
-import Network
+import HGNetworkLayer
 
 public final class CompanyBuilder: CompanyBuilderInput {
 

@@ -7,7 +7,7 @@
 //
 
 import Foundation
-import Network
+import HGNetworkLayer
 
 // MARK: - SERVICE INPUT PROTOCOL -
 public protocol CompanyServiceInput: AnyObject {

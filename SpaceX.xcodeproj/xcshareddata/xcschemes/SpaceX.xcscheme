@@ -32,7 +32,7 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "098F8339277A3FF400E89652"
+               BlueprintIdentifier = "9AB2740A28A9B42700B7F614"
                BuildableName = "SpaceXTests.xctest"
                BlueprintName = "SpaceXTests"
                ReferencedContainer = "container:SpaceX.xcodeproj">
@@ -42,7 +42,7 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "098F8343277A3FF400E89652"
+               BlueprintIdentifier = "9AB2747C28A9B93A00B7F614"
                BuildableName = "SpaceXUITests.xctest"
                BlueprintName = "SpaceXUITests"
                ReferencedContainer = "container:SpaceX.xcodeproj">

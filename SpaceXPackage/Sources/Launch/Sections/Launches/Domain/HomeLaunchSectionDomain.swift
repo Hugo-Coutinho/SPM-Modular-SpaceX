@@ -8,7 +8,7 @@
 
 import Foundation
 import Core
-import Network
+import HGNetworkLayer
 
 public struct HomeLaunchSectionDomain {
     // MARK: - PROPERTIES -

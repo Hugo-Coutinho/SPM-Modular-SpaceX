@@ -43,7 +43,7 @@ class SpaceXKifTests: BaseXCTestCase {
         guard let launchWidget = LaunchWidgetBuilder().make(domain: domain) else { return }
 
         activateTestConstraints(component: launchWidget, componentHeight: 439)
-        assertSnapshotTest(named: "LaunchWidgetTest")
+        assertSnapshotTest(named: "LaunchWidgetTest", waitForTimeInteval: 5.0)
     }
     func test_headerWidget() {
         let widget = HeaderWidget()

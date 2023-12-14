@@ -7,7 +7,8 @@
 //
 
 import Foundation
-import Network
+import HGNetworkLayer
+import Core
 
 public class CompanyService: CompanyServiceInput {
 
