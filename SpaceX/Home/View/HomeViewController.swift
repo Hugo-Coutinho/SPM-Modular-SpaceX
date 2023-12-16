@@ -52,7 +52,7 @@ extension HomeViewController {
         view.addSubview(scrollView)
         scrollView.addSubview(contentView)
         contentView.addSubview(stackView)
-        addCompanyInfoWidget()
+//        addCompanyInfoWidget()
         addLaunchesWidget()
         setupConstraints()
     }

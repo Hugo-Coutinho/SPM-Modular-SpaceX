@@ -41,22 +41,24 @@ public struct HomeLaunchSectionDomain {
 extension HomeLaunchSectionDomain {
     private func mapLaunches(launches: Launches, dateHelper: DateHelper) -> LaunchDomainItems {
         return launches.compactMap({ (current) -> LaunchDomain? in
-            guard let missionName = current.missionName,
-                  let launchDateString = current.launchDate,
+            guard let mission = current.mission,
+                  let missionName = mission.name,
+                  let launchDateString = current.net,
                   let launchDate = dateHelper.fromUTCToDate(dateString: launchDateString),
-                  let site = current.site,
-                  let siteName = site.siteName,
-                  let year = current.launchYear,
+                  let pad = current.pad,
+                  let site = pad.location,
+                  let siteName = site.name,
+                  let year = current.windowEnd,
                   let rocket = current.rocket,
-                  let rocketName = rocket.rocketName,
-                  let rocketType = rocket.rocketType,
-                  let link = current.links,
-                  let patch = link.missionPatch,
+                  let configuration = rocket.configuration,
+                  let rocketName = configuration.name,
+                  let patch = current.image,
                   let imageURL = URL(string: patch),
-                  let articleURL = URL(string: link.articleUrl ?? APIConstant.spaceXHomeURLString) else { return nil }
-            let isLaunchSuccess = current.launchSuccess ?? false
+                  let articleURL = URL(string: current.url ?? APIConstant.spaceXHomeURLString),
+                  let status = current.status else { return nil }
+            let isLaunchSuccess = status.id == 3
             let date = dateHelper.getUTCDayFormatted(dateString: launchDateString)
-            let rocketString = "\(rocketName) / \(rocketType)"
+            let rocketString = "\(rocketName) / \("")"
             return LaunchDomain(missionName: missionName,
                                 date: date,
                                 rocket: rocketString,

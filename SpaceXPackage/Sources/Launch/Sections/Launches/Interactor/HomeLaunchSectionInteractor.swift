@@ -36,8 +36,8 @@ public class HomeLaunchSectionInteractor: HomeLaunchSectionInteractorInput {
 extension HomeLaunchSectionInteractor {
     private func decodeLaunches(data: Data) {
         do {
-            let launches = try JSONDecoder().decode(Launches.self, from: data)
-            output?.handleSuccess(launches: launches)
+            let result = try JSONDecoder().decode(LaunchResult.self, from: data)
+            output?.handleSuccess(launches: result.launches)
 
         } catch {
             print("error scene")
