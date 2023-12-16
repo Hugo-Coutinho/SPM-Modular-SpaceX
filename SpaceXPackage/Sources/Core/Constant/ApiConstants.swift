@@ -9,8 +9,8 @@ public struct APIConstant {
     // MARK: - SPACEX PATH -
     public static let info = "/info"
     public static let launches = "/launch"
-    public static let upcomingLaunches = "/launches/upcoming"
-    public static let pastLaunches = "/launches/past"
+    public static let upcomingLaunches = launches + "/upcoming"
+    public static let pastLaunches = launches + "/previous"
     // MARK: - SPACEX URL -
     public static let baseURLString = "https://lldev.thespacedevs.com/2.2.0"
     public static let spaceXHomeURLString = "https://www.space.com"
