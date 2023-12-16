@@ -293,7 +293,7 @@ extension HomeLaunchSectionSuccessTableViewCell {
             rocketStatusLabel.topAnchor.constraint(equalTo: siteNameLabel.bottomAnchor, constant: 8),
             rocketStatusLabel.leadingAnchor.constraint(equalTo: rocketIconImageView.trailingAnchor, constant: 8),
             rocketStatusLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
-            rocketStatusLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -16)
+            rocketStatusLabel.bottomAnchor.constraint(lessThanOrEqualTo: contentView.bottomAnchor, constant: -16)
         ])
     }
 }

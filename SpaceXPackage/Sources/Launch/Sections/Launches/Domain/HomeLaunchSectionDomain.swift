@@ -58,12 +58,11 @@ extension HomeLaunchSectionDomain {
                   let status = current.status else { return nil }
             let isLaunchSuccess = status.id == 3
             let date = dateHelper.getUTCDayFormatted(dateString: launchDateString)
-            let rocketString = "\(rocketName) / \("")"
             return LaunchDomain(missionName: missionName,
                                 date: date,
-                                rocket: rocketString,
+                                rocket: rocketName,
                                 launchYear: year,
-                                siteName: getSiteNameFormatted(site: siteName),
+                                siteName: siteName,
                                 isLaunchSuccess: isLaunchSuccess,
                                 isUpcomingLaunch: dateHelper.isUpcomingDate(launchDate: launchDate),
                                 imageURL: imageURL,
@@ -93,10 +92,6 @@ extension HomeLaunchSectionDomain {
         } else {
             return "\(dateHelper.getDateString(date: launchDate)) - \(dateHelper.getDateString(date: today))"
         }
-    }
-
-    private func getSiteNameFormatted(site: String) -> String {
-        return site.components(separatedBy: " ").prefix(3).joined(separator: " ")
     }
 }
 
