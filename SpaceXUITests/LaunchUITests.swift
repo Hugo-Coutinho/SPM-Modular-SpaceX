@@ -30,12 +30,14 @@ class SpaceXKifTests: BaseXCTestCase {
         activateTestConstraints(component: cell.contentView, componentHeight: 172)
         assertSnapshotTest(named: "launchCellTest", waitForTimeInteval: 5.0)
     }
+
     func test_companyWidget() {
         let widget = HomeCompanySectionBuilderSpy().make()
         widget.setupInfo()
         activateTestConstraints(component: widget, componentHeight: 204)
         assertSnapshotTest(named: "CompanyWidgetTest", waitForTimeInteval: 5.0)
     }
+
     func test_launchBannerWidget() {
         let domain = LaunchWidgetDomain(didSelectUpcomingLaunches: {},
                                         didSelectPastLaunches: {},
@@ -45,6 +47,7 @@ class SpaceXKifTests: BaseXCTestCase {
         activateTestConstraints(component: launchWidget, componentHeight: 439)
         assertSnapshotTest(named: "LaunchWidgetTest", waitForTimeInteval: 5.0)
     }
+
     func test_headerWidget() {
         let widget = HeaderWidget()
         widget.setupHeaderDescription(text: "Header view testing case")

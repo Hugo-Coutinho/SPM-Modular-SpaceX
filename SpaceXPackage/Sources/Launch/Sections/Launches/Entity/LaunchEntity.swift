@@ -61,7 +61,11 @@ public struct LaunchEntity: Codable {
 // MARK: - Mission
 public struct Mission: Codable {
     public let name: String?
-    
+
+    public init(name: String? = nil) {
+        self.name = name
+    }
+
     public enum CodingKeys: String, CodingKey {
         case name
     }

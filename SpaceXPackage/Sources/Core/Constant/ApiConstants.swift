@@ -14,6 +14,7 @@ public struct APIConstant {
     // MARK: - SPACEX URL -
     public static let baseURLString = "https://lldev.thespacedevs.com/2.2.0"
     public static let spaceXHomeURLString = "https://www.space.com"
+    public static let defaultRocketURLString = "https://storage.googleapis.com/pod_public/1300/150491.jpg"
     // MARK: - SPACEX BANNER URL -
     public static let upcomingImageUrlString = "https://media.timeout.com/images/105653190/image.jpg"
     public static let pastImageUrlString =

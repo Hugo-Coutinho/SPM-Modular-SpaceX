@@ -14,7 +14,7 @@ class HomeLaunchSectionPresenterTests: XCTestCase {
     // MARK: - DECLARATIONS -
     var launchDomainResult: HomeLaunchSectionDomain?
     var isLaunchError: Bool = false
-    private var expectedMissionName: String = "Falconzin Sat"
+    private var expectedMissionName: String = "Sputnik 1"
 
     // MARK: - OVERRIDE TESTS FUNCTIONS -
     override func tearDown() {

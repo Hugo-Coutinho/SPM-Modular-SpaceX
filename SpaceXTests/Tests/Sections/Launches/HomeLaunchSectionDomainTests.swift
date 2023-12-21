@@ -30,7 +30,7 @@ class HomeLaunchSectionDomainTests: XCTestCase {
 
     func test_shouldMatchDate() {
         // 1. GIVEN
-        let expected = "2006/03/24"
+        let expected = "1957/10/04"
 
         // 2. WHEN
 
@@ -50,14 +50,14 @@ class HomeLaunchSectionDomainTests: XCTestCase {
         XCTAssertNotEqual(sut?.launches.first?.date, "")
         XCTAssertNotEqual(sut?.launches.first?.rocket, "")
         XCTAssertNotEqual(sut?.launches.first?.launchYear, "")
-        XCTAssertFalse(sut!.launches.first!.isLaunchSuccess)
+        XCTAssert(sut!.launches.first!.isLaunchSuccess)
         XCTAssertNotEqual(sut?.launches.first?.imageURL.absoluteString, "")
         XCTAssertNotEqual(sut?.launches.first?.articleURL.absoluteString, "")
     }
 
     func test_shouldMatchRocket() {
         // 1. GIVEN
-        let expected = "Falcon 1 / Merlin A"
+        let expected = "Sputnik 8K74PS"
 
         // 2. WHEN
 
@@ -68,59 +68,52 @@ class HomeLaunchSectionDomainTests: XCTestCase {
 
     func test_shouldFilter_2007Launches() {
         // 1. GIVEN
-        let expected = "2007"
-        let expectedName = "CRS-1"
+        let expected = "1957"
+        let expectedName = "Sputnik 2"
 
         // 2. WHEN
         sut?.getLaunchesFilteredBy(text: expected)
 
         // 3. THEN
         XCTAssertNotNil(sut)
-        XCTAssertEqual(sut?.launches.count, 2)
+        XCTAssertEqual(sut?.launches.count, 3)
         XCTAssertEqual(sut?.launches.first?.launchYear, expected)
         XCTAssertEqual(sut?.launches[1].missionName, expectedName)
     }
 
     func test_shouldSortYear_ascendingOrder() {
         // 1. GIVEN
-        let firstItemExpected = "2006"
-        let secondThirdItemsExpected = "2007"
-        let fourthFifthItemExpected = "2008"
-        let sixthItemExpected = "2009"
+        let firstYearExpected = "1957"
+        let secondYearExpected = "1958"
 
         // 2. WHEN
         sut?.getLaunchesAscendingOrder()
 
         // 3. THEN
         XCTAssertNotNil(sut)
-        XCTAssertEqual(sut?.launches.count, 9)
-        XCTAssertEqual(sut?.launches.first?.launchYear, firstItemExpected)
-        XCTAssertEqual(sut?.launches[1].launchYear, secondThirdItemsExpected)
-        XCTAssertEqual(sut?.launches[2].launchYear, secondThirdItemsExpected)
-        XCTAssertEqual(sut?.launches[3].launchYear, fourthFifthItemExpected)
-        XCTAssertEqual(sut?.launches[4].launchYear, fourthFifthItemExpected)
-        XCTAssertEqual(sut?.launches[5].launchYear, sixthItemExpected)
+        XCTAssertEqual(sut?.launches.count, 20)
+        XCTAssertEqual(sut?.launches.first?.launchYear, firstYearExpected)
+        XCTAssertEqual(sut?.launches[3].launchYear, secondYearExpected)
+        XCTAssertEqual(sut?.launches.last?.launchYear, secondYearExpected)
     }
 
     func test_shouldSortYear_descendingOrder() {
         // 1. GIVEN
-        let firstItemExpected = "2012"
-        let secondThirdItemsExpected = "2010"
-        let fourthItemExpected = "2009"
+        let firstYearExpected = "1958"
+        let secondYearExpected = "1957"
 
         // 2. WHEN
         sut?.getLaunchesDescendingOrder()
 
         // 3. THEN
         XCTAssertNotNil(sut)
-        XCTAssertEqual(sut?.launches.count, 9)
-        XCTAssertEqual(sut?.launches.first?.launchYear, firstItemExpected)
-        XCTAssertEqual(sut?.launches[1].launchYear, secondThirdItemsExpected)
-        XCTAssertEqual(sut?.launches[2].launchYear, secondThirdItemsExpected)
-        XCTAssertEqual(sut?.launches[3].launchYear, fourthItemExpected)
+        XCTAssertEqual(sut?.launches.count, 20)
+        XCTAssertEqual(sut?.launches.first?.launchYear, firstYearExpected)
+        XCTAssertEqual(sut?.launches[17].launchYear, secondYearExpected)
+        XCTAssertEqual(sut?.launches.last?.launchYear, secondYearExpected)
     }
     func test_shouldFormatteSite() {
-        let expected = "Kwajalein Atoll Omelek"
+        let expected = "Baikonur Cosmodrome, Republic of Kazakhstan"
 
         // 2. WHEN
 

@@ -40,34 +40,40 @@ public struct HomeLaunchSectionDomain {
 // MARK: - AUX METHODS -
 extension HomeLaunchSectionDomain {
     private func mapLaunches(launches: Launches, dateHelper: DateHelper) -> LaunchDomainItems {
-        return launches.compactMap({ (current) -> LaunchDomain? in
-            guard let mission = current.mission,
-                  let missionName = mission.name,
-                  let launchDateString = current.net,
-                  let launchDate = dateHelper.fromUTCToDate(dateString: launchDateString),
-                  let pad = current.pad,
-                  let site = pad.location,
-                  let siteName = site.name,
-                  let year = current.windowEnd,
-                  let rocket = current.rocket,
-                  let configuration = rocket.configuration,
-                  let rocketName = configuration.name,
-                  let patch = current.image,
-                  let imageURL = URL(string: patch),
-                  let articleURL = URL(string: current.url ?? APIConstant.spaceXHomeURLString),
-                  let status = current.status else { return nil }
+        return launches.compactMap { current in
+            guard
+                let mission = current.mission,
+                let missionName = mission.name,
+                let launchDateString = current.net,
+                let launchDate = dateHelper.fromUTCToDate(dateString: launchDateString),
+                let pad = current.pad,
+                let site = pad.location,
+                let siteName = site.name,
+                let year = current.windowEnd,
+                let rocket = current.rocket,
+                let configuration = rocket.configuration,
+                let rocketName = configuration.name,
+                let imageURL = URL(string: current.image ?? APIConstant.defaultRocketURLString),
+                let articleURL = URL(string: current.url ?? APIConstant.spaceXHomeURLString),
+                let status = current.status
+            else { return nil }
+
             let isLaunchSuccess = status.id == 3
             let date = dateHelper.getUTCDayFormatted(dateString: launchDateString)
-            return LaunchDomain(missionName: missionName,
-                                date: date,
-                                rocket: rocketName,
-                                launchYear: year,
-                                siteName: siteName,
-                                isLaunchSuccess: isLaunchSuccess,
-                                isUpcomingLaunch: dateHelper.isUpcomingDate(launchDate: launchDate),
-                                imageURL: imageURL,
-                                articleURL: articleURL)
-        })
+            let launchYear = dateHelper.getUTCDayFormatted(dateString: launchDateString, onlyYear: true)
+
+            return LaunchDomain(
+                missionName: missionName,
+                date: date,
+                rocket: rocketName,
+                launchYear: launchYear,
+                siteName: siteName,
+                isLaunchSuccess: isLaunchSuccess,
+                isUpcomingLaunch: dateHelper.isUpcomingDate(launchDate: launchDate),
+                imageURL: imageURL,
+                articleURL: articleURL
+            )
+        }
     }
 
     private func getDaysDescriptionMessage(launchDate: Date, dateHelper: DateHelper) -> String {

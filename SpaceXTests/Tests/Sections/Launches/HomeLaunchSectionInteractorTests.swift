@@ -15,12 +15,12 @@ class HomeLaunchSectionInteractorTests: XCTestCase {
     private var launchEntity: LaunchEntity?
     private var launchEntityResult: LaunchEntity?
     private var isLaunchError: Bool = false
-    private var expectedMissionName: String = "Falconzin Sat"
+    private var expectedMissionName: String = "Sputnik 1"
 
     // MARK: - OVERRIDE TESTS FUNCTIONS -
     override func setUp() {
         super.setUp()
-        self.launchEntity = LaunchEntity(missionName: expectedMissionName)
+        self.launchEntity = LaunchEntity(mission: Mission(name: expectedMissionName))
     }
 
     override func tearDown() {
@@ -67,7 +67,7 @@ class HomeLaunchSectionInteractorTests: XCTestCase {
         // 3. THEN
         XCTAssertNotNil(self.launchEntity)
         XCTAssertNotNil(self.launchEntityResult)
-        assert(self.launchEntity?.missionName == self.launchEntityResult?.missionName)
+        assert(self.launchEntity?.mission?.name == self.launchEntityResult?.mission?.name)
     }
 
     func test_shouldHandleError_Launches() {

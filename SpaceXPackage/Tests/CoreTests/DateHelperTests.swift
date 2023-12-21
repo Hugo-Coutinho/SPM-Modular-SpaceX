@@ -19,6 +19,7 @@ class DateHelperTests: XCTestCase {
         super.setUp()
         helper = DateHelper()
     }
+
     func test_shouldReturn_stringDate() {
         // GIVEN
         let expectedDate = helper.fromUTCToDate(dateString: "2018-04-10T04:00:00.000Z")
@@ -40,6 +41,7 @@ class DateHelperTests: XCTestCase {
         XCTAssertNotNil(toDate)
         XCTAssertEqual(helper.numberOfDaysBetween(from!, and: toDate!), expectedNumberOfDays)
     }
+
     func test_shouldReturn_negativeNumberOfDaysBetween() {
         // GIVEN
         let from = helper.fromUTCToDate(dateString: "2019-04-10T04:00:00.000Z")
@@ -51,6 +53,7 @@ class DateHelperTests: XCTestCase {
         XCTAssertNotNil(toDate)
         XCTAssertEqual(helper.numberOfDaysBetween(from!, and: toDate!), expectedNumberOfDays)
     }
+
     func test_shouldReturn_zero() {
         // GIVEN
         let from = helper.fromUTCToDate(dateString: "2019-04-10T04:00:00.000Z")
@@ -80,6 +83,7 @@ class DateHelperTests: XCTestCase {
         XCTAssertNotNil(date)
         XCTAssertEqual(helper.fromDateToUTC(date: date!), expected)
     }
+
     func test_shouldReturn_numberOfDaysNegative() {
         // GIVEN
         let expected = false
@@ -90,6 +94,7 @@ class DateHelperTests: XCTestCase {
         XCTAssertNotNil(date)
         XCTAssertEqual(helper.isUpcomingDate(launchDate: date!), expected)
     }
+
     func test_shouldReturn_numberOfDaysPositive() {
         // GIVEN
         let expected = true
@@ -101,4 +106,11 @@ class DateHelperTests: XCTestCase {
         XCTAssertEqual(helper.isUpcomingDate(launchDate: date!), expected)
     }
 
+    func test_shouldReturn_UTCDayFormattedOnlyYear() {
+        // GIVEN
+        let expected = "2018"
+
+        // THEN
+        XCTAssertEqual(helper.getUTCDayFormatted(dateString: "2018-04-10T04:00:00.000Z", onlyYear: true), expected)
+    }
 }
