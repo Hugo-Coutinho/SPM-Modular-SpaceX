@@ -23,17 +23,17 @@ public struct HomeLaunchSectionDomain {
 
     // MARK: - EXPOSED METHODS -
     public mutating func getLaunchesFilteredBy(text: String) {
-        launches = launches.filter({ $0.launchYear.lowercased().contains(text.lowercased()) })
+        launches = launches.filter({ $0.date.lowercased().contains(text.lowercased()) })
     }
 
     public mutating func getLaunchesAscendingOrder() {
         launches =  launches.sorted(by: { (lItem: LaunchDomain, rItem: LaunchDomain) -> Bool in
-            return lItem.launchYear < rItem.launchYear })
+            return lItem.date < rItem.date })
     }
 
     public mutating func getLaunchesDescendingOrder() {
         launches = launches.sorted(by: { (lItem: LaunchDomain, rItem: LaunchDomain) -> Bool in
-            return lItem.launchYear > rItem.launchYear })
+            return lItem.date > rItem.date })
     }
 }
 
@@ -49,7 +49,6 @@ extension HomeLaunchSectionDomain {
                 let pad = current.pad,
                 let site = pad.location,
                 let siteName = site.name,
-                let year = current.windowEnd,
                 let rocket = current.rocket,
                 let configuration = rocket.configuration,
                 let rocketName = configuration.name,
@@ -60,13 +59,11 @@ extension HomeLaunchSectionDomain {
 
             let isLaunchSuccess = status.id == 3
             let date = dateHelper.getUTCDayFormatted(dateString: launchDateString)
-            let launchYear = dateHelper.getUTCDayFormatted(dateString: launchDateString, onlyYear: true)
 
             return LaunchDomain(
                 missionName: missionName,
                 date: date,
                 rocket: rocketName,
-                launchYear: launchYear,
                 siteName: siteName,
                 isLaunchSuccess: isLaunchSuccess,
                 isUpcomingLaunch: dateHelper.isUpcomingDate(launchDate: launchDate),
@@ -103,7 +100,7 @@ extension HomeLaunchSectionDomain {
 
 // MARK: - LAUNCH ITEM -
 public struct LaunchDomain {
-    public let missionName, date, rocket, launchYear, siteName: String
+    public let missionName, date, rocket, siteName: String
     public let isLaunchSuccess, isUpcomingLaunch: Bool
     public let imageURL, articleURL: URL
 }

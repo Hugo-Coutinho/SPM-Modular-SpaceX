@@ -21,7 +21,6 @@ class SpaceXKifTests: BaseXCTestCase {
         cell.setup(launch: LaunchDomain(missionName: "FalconSat",
                                         date: "2007/03/20 - 7:30 pm",
                                         rocket: "Falcon 1 / Merlin A",
-                                        launchYear: "launchYear",
                                         siteName: "Maracana",
                                         isLaunchSuccess: false,
                                         isUpcomingLaunch: false,

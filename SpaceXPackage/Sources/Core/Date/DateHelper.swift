@@ -26,7 +26,7 @@ public struct DateHelper {
         return components.day ?? 0
     }
 
-    public func getUTCDayFormatted(dateString: String, onlyYear: Bool = false) -> String {
+    public func getUTCDayFormatted(dateString: String) -> String {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss"
         dateFormatter.timeZone = TimeZone(abbreviation: "UTC")
@@ -39,7 +39,7 @@ public struct DateHelper {
             return ""
         }
 
-        dateFormatter.dateFormat = onlyYear ? "yyyy": "yyyy/MM/dd"
+        dateFormatter.dateFormat = "yyyy/MM/dd"
         dateFormatter.timeZone = TimeZone.current
         return dateFormatter.string(from: date)
     }
