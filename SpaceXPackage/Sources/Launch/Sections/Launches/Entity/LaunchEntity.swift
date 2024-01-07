@@ -13,7 +13,7 @@ public typealias Launches = [LaunchEntity]
 // MARK: - Result
 public struct LaunchResult: Codable {
     public let launches: Launches
-    
+
     public enum CodingKeys: String, CodingKey {
         case launches = "results"
     }

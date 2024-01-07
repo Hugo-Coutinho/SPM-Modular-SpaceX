@@ -26,6 +26,7 @@ class BannerView: UIView {
         label.accessibilityLabel = "Banner Title"
         return label
     }()
+
     private lazy var bannerImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.contentMode = .scaleToFill
@@ -37,14 +38,17 @@ class BannerView: UIView {
         imageView.accessibilityLabel = "Rocket Launching"
         return imageView
     }()
+
     // MARK: - INITS -
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupComponents()
     }
+
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+
     // MARK: - PUBLIC FUNCTIONS -
     func setupBanner(domain: BannerDomain) {
         applyAccessibility(value: domain.title)

@@ -37,6 +37,13 @@ class SpaceXKifTests: BaseXCTestCase {
         assertSnapshotTest(named: "CompanyWidgetTest", waitForTimeInteval: 5.0)
     }
 
+    func test_astronautWidget() {
+        let widget = AstronautSectionBuilderSpy().make()
+        widget.setupAstronauts()
+        activateTestConstraints(component: widget, componentHeight: 204)
+        assertSnapshotTest(named: "AstronautWidgetTest", waitForTimeInteval: 5.0)
+    }
+
     func test_launchBannerWidget() {
         let domain = LaunchWidgetDomain(didSelectUpcomingLaunches: {},
                                         didSelectPastLaunches: {},

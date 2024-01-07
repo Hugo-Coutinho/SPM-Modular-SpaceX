@@ -15,6 +15,7 @@ class HomeLaunchSectionDomainTests: XCTestCase {
     private lazy var dateHelper = DateHelper()
     private var sut: HomeLaunchSectionDomain?
     private var presenter: HomeLaunchSectionPresenterInput?
+
     // MARK: - OVERRIDE TESTS FUNCTIONS -
     override func setUp() {
         super.setUp()

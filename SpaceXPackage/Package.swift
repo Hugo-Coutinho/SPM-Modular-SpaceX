@@ -21,7 +21,10 @@ let package = Package(
             targets: ["Launch"]),
         .library(
             name: "Company",
-            targets: ["Company"])
+            targets: ["Company"]),
+        .library(
+            name: "Astronaut",
+            targets: ["Astronaut"])
     ],
     dependencies: [
         // Dependencies declare other packages that this package depends on.
@@ -47,6 +50,11 @@ let package = Package(
             ]),
         .target(
             name: "Company",
+            dependencies: [
+                "UIComponent"
+            ]),
+        .target(
+            name: "Astronaut",
             dependencies: [
                 "UIComponent"
             ]),

@@ -8,6 +8,8 @@
 public struct APIConstant {
     // MARK: - SPACEX PATH -
     public static let info = "/info"
+    public static let brazilianAstronaut = "/?nationality=Brazilian"
+    public static let astronaut = "/astronaut" + brazilianAstronaut
     public static let launches = "/launch"
     public static let upcomingLaunches = launches + "/upcoming"
     public static let pastLaunches = launches + "/previous"

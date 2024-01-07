@@ -15,6 +15,7 @@ public class BaseRequestSuccessHandlerSpy: BaseRequestInput {
     public enum ServiceEnum {
         case company
         case launch
+        case astronaut
     }
 
     // MARK: - DECLARATIONS -
@@ -42,6 +43,8 @@ extension BaseRequestSuccessHandlerSpy {
             return "launch_data"
         case .company:
             return "company_info_data"
+        case .astronaut:
+            return "Astronaut_data"
         }
     }
 

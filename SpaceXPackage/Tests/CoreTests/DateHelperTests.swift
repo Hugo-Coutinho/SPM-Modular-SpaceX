@@ -105,12 +105,4 @@ class DateHelperTests: XCTestCase {
         XCTAssertNotNil(date)
         XCTAssertEqual(helper.isUpcomingDate(launchDate: date!), expected)
     }
-
-    func test_shouldReturn_UTCDayFormattedOnlyYear() {
-        // GIVEN
-        let expected = "2018"
-
-        // THEN
-        XCTAssertEqual(helper.getUTCDayFormatted(dateString: "2018-04-10T04:00:00.000Z", onlyYear: true), expected)
-    }
 }

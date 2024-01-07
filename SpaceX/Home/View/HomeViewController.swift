@@ -6,7 +6,7 @@
 //
 
 import UIKit
-import Company
+import Astronaut
 import Launch
 import UIComponent
 
@@ -35,7 +35,7 @@ public class HomeViewController: UIViewController {
 
     // MARK: - PROPERTIES DELCARATIONS -
     private enum HomeWidgetsEnum: Int {
-        case companyInfo = 0
+        case astronaut = 0
         case launches = 1
     }
 
@@ -52,14 +52,14 @@ extension HomeViewController {
         view.addSubview(scrollView)
         scrollView.addSubview(contentView)
         contentView.addSubview(stackView)
-//        addCompanyInfoWidget()
+        addAstronautWidget()
         addLaunchesWidget()
         setupConstraints()
     }
 
-    private func addCompanyInfoWidget() {
-        let companyWidget = CompanyBuilder().make()
-        companyWidget.tag = HomeWidgetsEnum.companyInfo.rawValue
+    private func addAstronautWidget() {
+        let companyWidget = AstronautBuilder().make()
+        companyWidget.tag = HomeWidgetsEnum.astronaut.rawValue
         companyWidget.translatesAutoresizingMaskIntoConstraints = false
         stackView.addArrangedSubview(companyWidget)
     }
