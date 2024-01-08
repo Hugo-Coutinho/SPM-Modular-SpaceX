@@ -1,5 +1,5 @@
 //
-//  HomeCompanySectionBuilderInput.swift
+//  AstronautBuilderInput.swift
 //  SpaceX
 //
 //  Created by Hugo on 19/03/2022.

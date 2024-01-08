@@ -73,7 +73,7 @@ public class LaunchWidget: UIView {
     }
 
     // MARK: - PUBLIC FUNCTIONS -
-    public func setupInfo(domain: LaunchWidgetDomain,
+    public func setup(domain: LaunchWidgetDomain,
                           upcomingLaunchDomain: BannerDomain,
                           pastLaunchDomain: BannerDomain,
                           allLaunchDomain: BannerDomain) {

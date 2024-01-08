@@ -1,5 +1,5 @@
 //
-//  HomeCompanySectionDomain.swift
+//  AstronautDomain.swift
 //  SpaceX
 //
 //  Created by hugo.coutinho on 16/12/21.
@@ -8,7 +8,6 @@
 
 import Foundation
 
-// MARK: - Info -
 public struct AstronautDomain {
     public var profiles: [URL] = []
     

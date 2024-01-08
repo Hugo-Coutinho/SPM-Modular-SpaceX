@@ -24,7 +24,7 @@ public final class LaunchWidgetBuilder {
         let upcomingLaunchDomain = BannerDomain(imageURL: upcomingLaunchImageURL, title: LaunchType.upcoming.longTitle)
         let pastLaunchDomain = BannerDomain(imageURL: pastLaunchImageURL, title: LaunchType.past.longTitle)
         let allLaunchDomain = BannerDomain(imageURL: allLaunchImageURL, title: LaunchType.all.longTitle)
-        launchWidget.setupInfo(domain: domain,
+        launchWidget.setup(domain: domain,
                                upcomingLaunchDomain: upcomingLaunchDomain,
                                pastLaunchDomain: pastLaunchDomain,
                                allLaunchDomain: allLaunchDomain)

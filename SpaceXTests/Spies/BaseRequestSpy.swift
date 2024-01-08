@@ -13,7 +13,6 @@ public class BaseRequestSuccessHandlerSpy: BaseRequestInput {
 
     // MARK: - ENUM -
     public enum ServiceEnum {
-        case company
         case launch
         case astronaut
     }
@@ -39,12 +38,8 @@ public class BaseRequestSuccessHandlerSpy: BaseRequestInput {
 extension BaseRequestSuccessHandlerSpy {
     private func getLocalFileNameByService() -> String {
         switch self.service {
-        case .launch:
-            return "launch_data"
-        case .company:
-            return "company_info_data"
-        case .astronaut:
-            return "Astronaut_data"
+        case .launch: "launch_data"
+        case .astronaut: "Astronaut_data"
         }
     }
 

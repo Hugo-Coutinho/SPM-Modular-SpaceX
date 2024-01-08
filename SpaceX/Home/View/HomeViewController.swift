@@ -58,10 +58,10 @@ extension HomeViewController {
     }
 
     private func addAstronautWidget() {
-        let companyWidget = AstronautBuilder().make()
-        companyWidget.tag = HomeWidgetsEnum.astronaut.rawValue
-        companyWidget.translatesAutoresizingMaskIntoConstraints = false
-        stackView.addArrangedSubview(companyWidget)
+        let astronautWidget = AstronautBuilder().make()
+        astronautWidget.tag = HomeWidgetsEnum.astronaut.rawValue
+        astronautWidget.translatesAutoresizingMaskIntoConstraints = false
+        stackView.addArrangedSubview(astronautWidget)
     }
 
     private func addLaunchesWidget() {

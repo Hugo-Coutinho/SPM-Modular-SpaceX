@@ -20,9 +20,6 @@ let package = Package(
             name: "Launch",
             targets: ["Launch"]),
         .library(
-            name: "Company",
-            targets: ["Company"]),
-        .library(
             name: "Astronaut",
             targets: ["Astronaut"])
     ],
@@ -46,11 +43,6 @@ let package = Package(
             name: "Launch",
             dependencies: [
                 "Nuke",
-                "UIComponent"
-            ]),
-        .target(
-            name: "Company",
-            dependencies: [
                 "UIComponent"
             ]),
         .target(
