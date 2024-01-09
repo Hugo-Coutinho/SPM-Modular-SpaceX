@@ -35,9 +35,23 @@ class AstronautDomainTests: XCTestCase {
 
         // 3. THEN
         XCTAssertNotNil(sut)
-        XCTAssertEqual(sut?.profiles.count, 2)
-        XCTAssertEqual(sut?.profiles.first?.absoluteString, firstAbsolutString)
-        XCTAssertEqual(sut?.profiles[1].absoluteString, secondAbsolutString)
+        XCTAssertEqual(sut?.astronauts.count, 2)
+        XCTAssertEqual(sut?.astronauts.first?.profile.absoluteString, firstAbsolutString)
+        XCTAssertEqual(sut?.astronauts[1].profile.absoluteString, secondAbsolutString)
+    }
+
+    func test_shouldMatchNames() {
+        // 1. GIVEN
+        let firstAstronaut = "Marcos Pontes"
+        let secondAstronaut = "Victor Correa Hespanha"
+
+        // 2. WHEN
+
+        // 3. THEN
+        XCTAssertNotNil(sut)
+        XCTAssertEqual(sut?.astronauts.count, 2)
+        XCTAssertEqual(sut?.astronauts.first?.name, firstAstronaut)
+        XCTAssertEqual(sut?.astronauts[1].name, secondAstronaut)
     }
 }
 

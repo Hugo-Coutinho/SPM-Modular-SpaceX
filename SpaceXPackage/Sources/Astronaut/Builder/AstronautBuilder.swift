@@ -24,7 +24,7 @@ public final class AstronautBuilder: AstronautBuilderInput {
     }
 }
 
-// MARK: - AUX METHODS -
+// MARK: - ASSISTANT METHODS -
 extension AstronautBuilder {
     // MARK: - PRESENTER BUILDER -
     private func makePresenter(widget: AstronautWidget) -> AstronautPresenter {

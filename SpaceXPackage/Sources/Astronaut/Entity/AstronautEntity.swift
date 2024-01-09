@@ -21,9 +21,10 @@ public struct AstronautResult: Codable {
 
 // MARK: - AstronautEntity
 public struct AstronautEntity: Codable {
-    public let profileImage: String
+    public let profileImage, name: String
 
     public enum CodingKeys: String, CodingKey {
+        case name
         case profileImage = "profile_image"
     }
 }

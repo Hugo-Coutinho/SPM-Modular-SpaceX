@@ -23,7 +23,7 @@ final class HomeLaunchSectionBuilderSpy: HomeLaunchSectionBuilderInput {
     }
 }
 
-// MARK: - AUX METHODS -
+// MARK: - ASSISTANT METHODS -
 extension HomeLaunchSectionBuilderSpy {
     // MARK: - PRESENTER BUILDER -
     private func makePresenter(with type: LaunchType,

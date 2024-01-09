@@ -59,8 +59,8 @@ class AstronautPresenterTests: XCTestCase {
 
         // 3. THEN
         XCTAssertNotNil(self.astronautDomainResult)
-        XCTAssertEqual(2, self.astronautDomainResult?.profiles.count)
-        XCTAssertEqual(self.expectedProfileImage, self.astronautDomainResult?.profiles.first?.absoluteString)
+        XCTAssertEqual(2, self.astronautDomainResult?.astronauts.count)
+        XCTAssertEqual(self.expectedProfileImage, self.astronautDomainResult?.astronauts.first?.profile.absoluteString)
     }
 
     func test_shouldHandleError_astronauts() {

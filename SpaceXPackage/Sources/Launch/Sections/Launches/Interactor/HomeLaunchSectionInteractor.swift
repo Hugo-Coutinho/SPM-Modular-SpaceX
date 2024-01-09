@@ -32,7 +32,7 @@ public class HomeLaunchSectionInteractor: HomeLaunchSectionInteractorInput {
     }
 }
 
-// MARK: - AUX METHODS -
+// MARK: - ASSISTANT METHODS -
 extension HomeLaunchSectionInteractor {
     private func decodeLaunches(data: Data) {
         do {

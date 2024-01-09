@@ -9,14 +9,21 @@
 import Foundation
 
 public struct AstronautDomain {
-    public var profiles: [URL] = []
-    
+    public var astronauts: Astronauts = []
+
     public init() {}
-    
+
     public init(astronauts: AstronautsEntity) {
-        self.profiles = astronauts.compactMap({ (astronaut) -> URL? in
-            return URL(string: astronaut.profileImage)
+        self.astronauts = astronauts.compactMap({ (astronaut) -> Astronaut? in
+            guard let profile = URL(string: astronaut.profileImage) else { return nil }
+            return Astronaut(name: astronaut.name, profile: profile)
         })
     }
 }
 
+public struct Astronaut {
+    public let name: String
+    public let profile: URL
+}
+
+public typealias Astronauts = [Astronaut]

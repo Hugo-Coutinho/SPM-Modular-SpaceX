@@ -84,14 +84,49 @@ extension AstronautWidget {
         bodyView.addSubview(scrollView)
         scrollView.addSubview(stackView)
 
-        domain.profiles.forEach({
-            let imageView = UIImageView()
-            imageView.widthAnchor.constraint(equalToConstant: 150).isActive = true
-            Nuke.loadImage(with: $0, into: imageView)
-            stackView.addArrangedSubview(imageView)
+        domain.astronauts.forEach({
+            addAstronautView(astronaut: $0)
         })
 
         setupSuccessSceneConstraints()
+    }
+}
+
+// MARK: - ASSISTANT -
+extension AstronautWidget {
+    private func addAstronautView(astronaut: Astronaut) {
+        let astronautView = UIView()
+        let profileImage = UIImageView()
+        let name = UILabel()
+
+        astronautView.translatesAutoresizingMaskIntoConstraints = false
+        profileImage.translatesAutoresizingMaskIntoConstraints = false
+        name.translatesAutoresizingMaskIntoConstraints = false
+
+        name.textAlignment = .center
+
+        astronautView.addSubview(profileImage)
+        astronautView.addSubview(name)
+
+        Nuke.loadImage(with: astronaut.profile, into: profileImage)
+        name.text = astronaut.name.extractFirstTwoNames()
+
+        stackView.addArrangedSubview(astronautView)
+
+        NSLayoutConstraint.activate([
+            astronautView.widthAnchor.constraint(equalToConstant: 150),
+
+            profileImage.topAnchor.constraint(equalTo: astronautView.topAnchor),
+            profileImage.leadingAnchor.constraint(equalTo: astronautView.leadingAnchor),
+            profileImage.trailingAnchor.constraint(equalTo: astronautView.trailingAnchor),
+            profileImage.heightAnchor.constraint(equalToConstant: 150),
+
+            name.topAnchor.constraint(equalTo: profileImage.bottomAnchor, constant: 8),
+            name.leadingAnchor.constraint(equalTo: astronautView.leadingAnchor),
+            name.trailingAnchor.constraint(equalTo: astronautView.trailingAnchor),
+            name.bottomAnchor.constraint(equalTo: astronautView.bottomAnchor),
+            name.heightAnchor.constraint(equalToConstant: 25)
+        ])
     }
 }
 

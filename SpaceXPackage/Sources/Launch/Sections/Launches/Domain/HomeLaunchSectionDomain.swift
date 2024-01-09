@@ -37,7 +37,7 @@ public struct HomeLaunchSectionDomain {
     }
 }
 
-// MARK: - AUX METHODS -
+// MARK: - ASSISTANT METHODS -
 extension HomeLaunchSectionDomain {
     private func mapLaunches(launches: Launches, dateHelper: DateHelper) -> LaunchDomainItems {
         return launches.compactMap { current in

@@ -30,7 +30,7 @@ public class AstronautInteractor: AstronautInteractorInput {
     }
 }
 
-// MARK: - AUX METHODS -
+// MARK: - ASSISTANT METHODS -
 extension AstronautInteractor {
     private func decode(data: Data) {
         do {

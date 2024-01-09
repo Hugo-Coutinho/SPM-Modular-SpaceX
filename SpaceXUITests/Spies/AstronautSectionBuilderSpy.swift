@@ -18,7 +18,7 @@ final class AstronautSectionBuilderSpy: AstronautBuilderInput {
     }
 }
 
-// MARK: - AUX METHODS -
+// MARK: - ASSISTANT METHODS -
 extension AstronautSectionBuilderSpy {
     // MARK: - PRESENTER BUILDER -
     private func makePresenter(widget: AstronautWidget) -> AstronautPresenter {
