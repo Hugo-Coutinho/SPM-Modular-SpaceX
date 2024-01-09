@@ -95,23 +95,43 @@ extension AstronautWidget {
 // MARK: - ASSISTANT -
 extension AstronautWidget {
     private func addAstronautView(astronaut: Astronaut) {
+        let astronautName = astronaut.name.extractFirstTwoNames()
+        let astronautView = createAstronautView(astronaut: astronaut)
+        let profileImage = createProfileImageView(astronautName: astronautName)
+        let name = createNameLabel(astronautName: astronautName)
+
+        loadImage(for: profileImage, imageURL: astronaut.profile)
+        setupConstraints(for: astronautView, profileImage: profileImage, name: name)
+    }
+
+    private func createAstronautView(astronaut: Astronaut) -> UIView {
         let astronautView = UIView()
-        let profileImage = UIImageView()
-        let name = UILabel()
-
         astronautView.translatesAutoresizingMaskIntoConstraints = false
+        return astronautView
+    }
+
+    private func createProfileImageView(astronautName: String) -> UIImageView {
+        let profileImage = UIImageView()
         profileImage.translatesAutoresizingMaskIntoConstraints = false
+        profileImage.isAccessibilityElement = true
+        profileImage.accessibilityTraits = .image
+        profileImage.accessibilityLabel = "\(astronautName) picture"
+        return profileImage
+    }
+
+    private func createNameLabel(astronautName: String) -> UILabel {
+        let name = UILabel()
         name.translatesAutoresizingMaskIntoConstraints = false
-
+        name.isAccessibilityElement = false
         name.textAlignment = .center
+        name.text = astronautName
+        return name
+    }
 
+    private func setupConstraints(for astronautView: UIView, profileImage: UIImageView, name: UILabel) {
+        stackView.addArrangedSubview(astronautView)
         astronautView.addSubview(profileImage)
         astronautView.addSubview(name)
-
-        Nuke.loadImage(with: astronaut.profile, into: profileImage)
-        name.text = astronaut.name.extractFirstTwoNames()
-
-        stackView.addArrangedSubview(astronautView)
 
         NSLayoutConstraint.activate([
             astronautView.widthAnchor.constraint(equalToConstant: 150),
@@ -127,6 +147,10 @@ extension AstronautWidget {
             name.bottomAnchor.constraint(equalTo: astronautView.bottomAnchor),
             name.heightAnchor.constraint(equalToConstant: 25)
         ])
+    }
+
+    private func loadImage(for profileImage: UIImageView, imageURL: URL) {
+        Nuke.loadImage(with: imageURL, into: profileImage)
     }
 }
 
@@ -193,20 +217,12 @@ extension AstronautWidget {
     }
 }
 
-// MARK: - APPLYING ACCESSIBILITY -
-extension AstronautWidget {
-    private func applyAccessibility(value: String) {
-//        infoLabel.accessibilityValue = value
-    }
-}
-
 // MARK: - PRESENTER OUTPUT -
 extension AstronautWidget: AstronautPresenterOutput {
     public func handleSuccess(domain: AstronautDomain) {
         DispatchQueue.main.async { [weak self] in
             guard let self = self else { return }
             self.setupSuccessScene(domain: domain)
-//            self.applyAccessibility(value: domain)
         }
     }
 
