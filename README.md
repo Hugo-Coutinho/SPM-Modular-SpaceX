@@ -1,28 +1,11 @@
 # SpaceX
-<div style="text-align: center">
-    <table>
-        <tr>
-            <td style="text-align: center">
-                    <img src="https://github.com/Hugo-Coutinho/README-Assets/blob/master/SPM-Modular-SpaceX/filtering.gif?raw=true" width="200" height="350"/>
-                </a>
-            </td>            
-            <td style="text-align: center">
-                    <img src="https://github.com/Hugo-Coutinho/README-Assets/blob/master/SPM-Modular-SpaceX/opening.gif?raw=true" width="200" height="350"/>
-                </a>
-            </td>            
-            <td style="text-align: center">
-                    <img src="https://github.com/Hugo-Coutinho/README-Assets/blob/master/SPM-Modular-SpaceX/scrolling.gif?raw=true" width="200" height="350"/>
-                </a>
-            </td>            
-        </tr>
-        <tr>         
-            <td style="text-align: center">
-                    <img src="https://github.com/Hugo-Coutinho/README-Assets/blob/master/SPM-Modular-SpaceX/sorting.gif?raw=true" width="200" height="350"/>
-                </a>
-            </td>              
-        </tr>
-    </table>
-</div>
+<p align="left">
+  <img src="https://github.com/Hugo-Coutinho/README-Assets/blob/master/SPM-Modular-SpaceX/filtering.gif?raw=true" width="200"/>
+  <img src="https://github.com/Hugo-Coutinho/README-Assets/blob/master/SPM-Modular-SpaceX/opening.gif?raw=true" width="200"/>
+  <img src="https://github.com/Hugo-Coutinho/README-Assets/blob/master/SPM-Modular-SpaceX/scrolling.gif?raw=true" width="200"/>
+  <img src="https://github.com/Hugo-Coutinho/README-Assets/blob/master/SPM-Modular-SpaceX/sorting.gif?raw=true" width="200"/>
+</p>
+
 
 ## Dependency Managers
 
